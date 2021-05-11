@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>The Soul Expanding Ocean</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <style>
+    .hidden {display:none;}
+  </style>
+  <body>
+    <main id="main">
+    </main>
+    <script type="text/javascript">
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const main = document.querySelector('main');
+      const introElements = [
+        {"title":"IW","parent":"main","content":[]},
+        {"title":"IM","parent":"IW","content":[{"element":"span","text":"We can introduce the exhibition/this experience, eventually add hyperlinks/logos/... here."}]},{"title":"IFC","parent":"IW","content":[]},{"title":"IF","parent":"IW","content":[{"element":"button","onclick":"passIntro()","text":"I LIKE THAT AND WANT TO KNOW MORE"}]}];
+      function createStep(step){
+        step.map((e) => {
+          const gen = document.createElement('div');
+          gen.setAttribute('id', e.title);
+          document.getElementById(e.parent).appendChild(gen);
+          e.content.length && (
+            e.content.map((c) => {
+              const genCh = document.createElement(c.element);
+              genCh.innerHTML = c.text;
+              if (c.element==="button") {
+                genCh.setAttribute("onclick", c.onclick);
+              }
+              document.getElementById(e.title).appendChild(genCh);
+            })
+          )
+        })
+      }
+      function hideStep(step){
+        console.log("here");
+        step.map((e) => {
+          document.getElementById(e.title).classList.toggle("hidden");
+        })
+      }
+      function kickItOff() {
+        function intro() {
+          const hlaska = document.createElement("div");
+          main.appendChild(hlaska);
+          hlaska.innerText = "current width is: "+width+"px; current height is: "+height+"px";
+        }
+        intro();
+        function participation() {
+
+        }
+        createStep(introElements)
+      }
+      kickItOff();
+    </script>
+  </body>
+</html>
+
+
+<!-- //         const newTH = document.createElement('th');
+// newTH.innerHTML = 'Hello, World!';
+// newTH.onclick = function () {
+//     this.parentElement.removeChild(this);
+// };
+
+// var table = document.getElementById('content');
+// table.appendChild(newTH); -->
