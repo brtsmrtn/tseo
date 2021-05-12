@@ -23,5 +23,5 @@ phases:
       # - command
   post_build:
     commands:
-      - aws s3 cp --recursive --exclude "buildspec.yml" --exclude "invalidation.js" --exclude "node_modules/*" --sse AES256 . $TARGET_S3_LOCATION
+      - aws s3 cp --recursive --exclude "buildspec.yml" --exclude "invalidation.js" --exclude "node_modules/*" --exclude "package-lock.json" --sse AES256 . $TARGET_S3_LOCATION
       - node invalidation.js
