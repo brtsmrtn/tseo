@@ -23,6 +23,5 @@ phases:
       # - command
   post_build:
     commands:
-      - aws s3 cp --recursive --exclude "buildspec.yml" --sse AES256 . $TARGET_S3_LOCATION
-      - aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID
-
+      - aws s3 cp --recursive --exclude "buildspec.yml" --exclude "invalidation.js" --sse AES256 . $TARGET_S3_LOCATION
+      - node invalidation.js
