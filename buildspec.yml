@@ -1,0 +1,27 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+#  install:
+#    commands:
+#      npm install --unsafe-perm
+      # - command
+  #pre_build:
+    #commands:
+      # - command
+      # - command
+  #build:
+  #  commands:
+  #    - npm run build
+      # - command
+  post_build:
+    commands:
+      - aws s3 cp --recursive --exclude "buildspec.yml" --sse AES256 . $TARGET_S3_LOCATION
+
