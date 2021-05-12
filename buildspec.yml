@@ -9,9 +9,9 @@ version: 0.2
      # key: "value"
 
 phases:
-#  install:
-#    commands:
-#      npm install --unsafe-perm
+  install:
+    commands:
+      npm install aws-sdk
       # - command
   #pre_build:
     #commands:
@@ -23,5 +23,5 @@ phases:
       # - command
   post_build:
     commands:
-      - aws s3 cp --recursive --exclude "buildspec.yml" --exclude "invalidation.js" --sse AES256 . $TARGET_S3_LOCATION
+      - aws s3 cp --recursive --exclude "buildspec.yml" --exclude "invalidation.js" --exclude "node_modules/*" --sse AES256 . $TARGET_S3_LOCATION
       - node invalidation.js
