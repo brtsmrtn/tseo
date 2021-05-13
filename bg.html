@@ -155,7 +155,8 @@
         backdrop-filter: blur(500px) opacity(0.2);
       }
       div.N1,
-      div.N3 {
+      div.N3,
+      div.S1 {
         bottom: 10vh;
         right: 7vh;
       }
@@ -373,6 +374,24 @@
           />
         </svg>
       </div>
+      <div class="S1 node hidden">
+        <div class="close"></div>
+        <div class="text">
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+            tincidunt nunc vitae velit semper efficitur. Nulla facilisis neque
+            venenatis mollis faucibus. Pellentesque habitant morbi tristique
+            senectus et netus et malesuada fames ac turpis egestas. Morbi non
+            tellus non massa semper dapibus in eu neque. Quisque ullamcorper
+            dictum nibh, auctor viverra ex varius eget. Nulla facilisi. Praesent
+            vel sapien risus. Duis vitae fermentum enim. Quisque sed est
+            euismod, scelerisque nunc non, egestas turpis. Integer quis nibh
+            faucibus, posuere arcu et, congue justo. Sed nec porttitor tortor.
+            Nulla fermentum erat sed leo ullamcorper, et pellentesque urna
+            laoreet.
+          </div>
+        </div>
+      </div>
       <div class="N1 node hidden">
         <div class="close"></div>
         <div class="text">
@@ -387,40 +406,7 @@
             euismod, scelerisque nunc non, egestas turpis. Integer quis nibh
             faucibus, posuere arcu et, congue justo. Sed nec porttitor tortor.
             Nulla fermentum erat sed leo ullamcorper, et pellentesque urna
-            laoreet. Proin congue ut tortor non posuere. Quisque interdum sem
-            lacus, eget imperdiet risus bibendum vitae. Duis luctus nulla sed
-            turpis ultrices accumsan. Fusce volutpat gravida leo nec elementum.
-            Mauris laoreet velit in sapien gravida, a tempus urna pharetra.
-            Curabitur fringilla placerat eros, ut sodales turpis. In eget sapien
-            felis. Aliquam in tincidunt nisi. Quisque vestibulum, quam id mollis
-            fringilla, enim libero euismod nisi, quis ornare lorem lorem eget
-            odio. Etiam eget commodo odio. In placerat ligula nibh, a laoreet
-            velit gravida a. Nunc aliquet justo euismod malesuada convallis.
-            Donec feugiat scelerisque neque, quis semper quam hendrerit sit
-            amet. Aenean id convallis nisi. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-            dictum erat eget ipsum semper, non vehicula arcu suscipit. Mauris
-            placerat sodales nulla quis aliquam. Pellentesque vestibulum
-            pellentesque massa non tincidunt. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Donec
-            lectus arcu, vestibulum ut turpis id, porttitor egestas nunc.
-            Quisque quis lectus volutpat, molestie sem a, lobortis elit.
-            Suspendisse vulputate metus dolor, eu dictum ipsum sollicitudin et.
-            Pellentesque feugiat nulla euismod, eleifend mauris vehicula,
-            fermentum lacus. Nam finibus condimentum mauris ac feugiat. Etiam
-            sed nunc tempus, efficitur orci id, accumsan purus. Nam id odio a
-            nulla auctor posuere. Maecenas venenatis magna in massa ornare, eu
-            mollis mi fermentum. Quisque vitae odio non felis tempor commodo.
-            Vivamus pretium, ante sed laoreet consequat, lacus lectus varius
-            lectus, eget luctus leo massa at massa. Maecenas luctus et leo vitae
-            vulputate. Sed in turpis fringilla orci vulputate hendrerit. Etiam
-            eu magna cursus tortor luctus pulvinar. Curabitur in sapien ac neque
-            condimentum sagittis vitae quis nisl. Curabitur molestie magna
-            tincidunt nisi aliquam pharetra a ut dolor. Pellentesque quis felis
-            id tellus tempus tincidunt. Vivamus in mauris vel massa varius
-            feugiat. Aenean dictum tellus in sodales dignissim. Duis egestas
-            velit fringilla turpis suscipit, eu porta nisl sodales. Ut eu
-            porttitor erat.
+            laoreet.
           </div>
         </div>
       </div>
@@ -651,11 +637,18 @@
       ("use strict");
       const [nodes, image, islands] = [
         [
-          { id: "N1", moveX: "-50%", moveY: "-50%", content: "text" },
-          { id: "N2", moveX: "50%", moveY: "-50%", content: "text" },
-          { id: "N3", moveX: "-50%", moveY: "-50%", content: "video" },
-          { id: "N4", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "N5", moveX: "0%", moveY: "0%", content: "video" },
+          { id: "S1", shape: 1, moveX: "-50%", moveY: "-50%", content: "text" },
+          { id: "N1", shape: 0, moveX: "-50%", moveY: "-50%", content: "text" },
+          { id: "N2", shape: 0, moveX: "50%", moveY: "-50%", content: "text" },
+          {
+            id: "N3",
+            shape: 0,
+            moveX: "-50%",
+            moveY: "-50%",
+            content: "video",
+          },
+          { id: "N4", shape: 0, moveX: "0%", moveY: "0%", content: "audio" },
+          { id: "N5", shape: 0, moveX: "0%", moveY: "0%", content: "video" },
         ],
         document.getElementById("island"),
         [].slice.call(document.querySelectorAll(".island,#island,svg")),
