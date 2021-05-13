@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <style type="text/css">
+    .st0 {
+      fill: #010101;
+    }
+    .st1 {
+      clip-path: url(#XMLID_52_);
+      fill: #010101;
+    }
+    .st2 {
+      clip-path: url(#XMLID_53_);
+      fill: #010101;
+    }
+    .st3 {
+      clip-path: url(#XMLID_54_);
+      fill: #010101;
+    }
+    .st4 {
+      clip-path: url(#XMLID_56_);
+      fill: #010101;
+    }
+    .st5 {
+      clip-path: url(#XMLID_57_);
+      fill: #010101;
+    }
+    .st6 {
+      clip-path: url(#XMLID_58_);
+      fill: #010101;
+    }
+    .st7 {
+      clip-path: url(#XMLID_60_);
+      fill: #010101;
+    }
+    .st8 {
+      clip-path: url(#XMLID_61_);
+      fill: #010101;
+    }
+    .st9 {
+      clip-path: url(#XMLID_62_);
+      fill: #010101;
+    }
+    .st10 {
+      clip-path: url(#XMLID_64_);
+      fill: #010101;
+    }
+    .st11 {
+      clip-path: url(#XMLID_65_);
+      fill: #010101;
+    }
+    .st12 {
+      clip-path: url(#XMLID_66_);
+      fill: #010101;
+    }
+    .st13 {
+      clip-path: url(#XMLID_68_);
+      fill: #010101;
+    }
+    .st14 {
+      clip-path: url(#XMLID_69_);
+      fill: #010101;
+    }
+    .st15 {
+      clip-path: url(#XMLID_70_);
+      fill: #010101;
+    }
+    .st16 {
+      clip-path: url(#XMLID_72_);
+      fill: #010101;
+    }
+  </style>
+  <symbol id="shape_1">
+  <g id="XMLID_50_" transform="scale(4)">
+    <polygon
+      id="XMLID_48_"
+      class="st0"
+      points="9.938,9.989 18.887,11.052 18.887,8.926 	"
+    />
+    <g id="XMLID_111_">
+      <defs>
+        <rect
+          id="XMLID_46_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_52_">
+        <use xlink:href="#XMLID_46_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_47_"
+        class="st1"
+        d="M18.029,9.989c0,0.587,0.366,1.063,0.818,1.063c0.451,0,0.818-0.476,0.818-1.063
+			c0-0.587-0.366-1.063-0.818-1.063C18.395,8.926,18.029,9.402,18.029,9.989"
+      />
+    </g>
+    <polygon
+      id="XMLID_45_"
+      class="st0"
+      points="9.938,9.989 0.989,11.052 0.989,8.926 	"
+    />
+    <g id="XMLID_107_">
+      <defs>
+        <rect
+          id="XMLID_43_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_53_">
+        <use xlink:href="#XMLID_43_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_44_"
+        class="st2"
+        d="M1.847,9.989c0,0.587-0.366,1.063-0.818,1.063c-0.451,0-0.818-0.476-0.818-1.063
+			c0-0.587,0.366-1.063,0.818-1.063C1.481,8.926,1.847,9.402,1.847,9.989"
+      />
+    </g>
+    <polygon
+      id="XMLID_42_"
+      class="st0"
+      points="9.938,9.989 11.001,1.04 8.875,1.04 	"
+    />
+    <g id="XMLID_103_">
+      <defs>
+        <rect
+          id="XMLID_40_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_54_">
+        <use xlink:href="#XMLID_40_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_41_"
+        class="st3"
+        d="M9.938,1.898c0.587,0,1.063-0.366,1.063-0.818c0-0.451-0.476-0.818-1.063-0.818
+			c-0.587,0-1.063,0.366-1.063,0.818C8.875,1.532,9.351,1.898,9.938,1.898"
+      />
+    </g>
+    <polygon
+      id="XMLID_39_"
+      class="st0"
+      points="9.938,9.989 17.017,4.413 15.514,2.91 	"
+    />
+    <g id="XMLID_99_">
+      <defs>
+        <rect
+          id="XMLID_37_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_56_">
+        <use xlink:href="#XMLID_37_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_38_"
+        class="st4"
+        d="M15.659,4.268c0.415,0.415,1.01,0.493,1.329,0.173c0.32-0.32,0.242-0.914-0.173-1.33
+			c-0.415-0.415-1.01-0.493-1.33-0.174C15.166,3.258,15.244,3.853,15.659,4.268"
+      />
+    </g>
+    <polygon
+      id="XMLID_36_"
+      class="st0"
+      points="9.938,9.989 2.859,4.413 4.362,2.91 	"
+    />
+    <g id="XMLID_95_">
+      <defs>
+        <rect
+          id="XMLID_34_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_57_">
+        <use xlink:href="#XMLID_34_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_35_"
+        class="st5"
+        d="M4.217,4.268c-0.415,0.415-1.01,0.493-1.329,0.173c-0.32-0.32-0.242-0.914,0.173-1.33
+			c0.415-0.415,1.01-0.493,1.33-0.174C4.71,3.258,4.632,3.853,4.217,4.268"
+      />
+    </g>
+    <polygon
+      id="XMLID_33_"
+      class="st0"
+      points="9.933,9.994 5.526,2.134 7.49,1.32 	"
+    />
+    <g id="XMLID_91_">
+      <defs>
+        <rect
+          id="XMLID_31_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_58_">
+        <use xlink:href="#XMLID_31_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_32_"
+        class="st6"
+        d="M6.837,2.52C6.294,2.744,5.714,2.588,5.542,2.171C5.369,1.754,5.668,1.233,6.211,1.008
+			C6.753,0.784,7.333,0.94,7.506,1.357C7.679,1.774,7.379,2.295,6.837,2.52"
+      />
+    </g>
+    <polygon
+      id="XMLID_30_"
+      class="st0"
+      points="9.933,9.995 14.339,2.134 12.375,1.32 	"
+    />
+    <g id="XMLID_87_">
+      <defs>
+        <rect
+          id="XMLID_28_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_60_">
+        <use xlink:href="#XMLID_28_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_29_"
+        class="st7"
+        d="M13.029,2.52c0.542,0.225,1.122,0.068,1.295-0.349c0.173-0.417-0.127-0.937-0.669-1.162
+			c-0.542-0.224-1.122-0.068-1.295,0.349C12.187,1.774,12.487,2.295,13.029,2.52"
+      />
+    </g>
+    <polygon
+      id="XMLID_27_"
+      class="st0"
+      points="9.938,9.989 18.612,7.547 17.799,5.582 	"
+    />
+    <g id="XMLID_83_">
+      <defs>
+        <rect
+          id="XMLID_25_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_61_">
+        <use xlink:href="#XMLID_25_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_26_"
+        class="st8"
+        d="M17.413,6.893c0.224,0.542,0.745,0.842,1.162,0.669c0.417-0.173,0.573-0.753,0.349-1.295
+			c-0.225-0.542-0.745-0.842-1.162-0.669C17.344,5.771,17.188,6.35,17.413,6.893"
+      />
+    </g>
+    <polygon
+      id="XMLID_24_"
+      class="st0"
+      points="9.938,9.989 1.263,7.547 2.077,5.582 	"
+    />
+    <g id="XMLID_79_">
+      <defs>
+        <rect
+          id="XMLID_22_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_62_">
+        <use xlink:href="#XMLID_22_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_23_"
+        class="st9"
+        d="M2.463,6.893C2.238,7.435,1.718,7.735,1.3,7.562C0.883,7.389,0.727,6.809,0.952,6.267
+			c0.225-0.542,0.745-0.842,1.162-0.669C2.532,5.771,2.688,6.35,2.463,6.893"
+      />
+    </g>
+    <polygon
+      id="XMLID_21_"
+      class="st0"
+      points="9.938,10 11.001,18.949 8.875,18.949 	"
+    />
+    <g id="XMLID_75_">
+      <defs>
+        <rect
+          id="XMLID_19_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_64_">
+        <use xlink:href="#XMLID_19_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_20_"
+        class="st10"
+        d="M9.938,18.091c0.587,0,1.063,0.366,1.063,0.818c0,0.451-0.476,0.818-1.063,0.818
+			c-0.587,0-1.063-0.366-1.063-0.818C8.875,18.457,9.351,18.091,9.938,18.091"
+      />
+    </g>
+    <polygon
+      id="XMLID_18_"
+      class="st0"
+      points="9.938,10 17.017,15.576 15.514,17.079 	"
+    />
+    <g id="XMLID_71_">
+      <defs>
+        <rect
+          id="XMLID_16_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_65_">
+        <use xlink:href="#XMLID_16_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_17_"
+        class="st11"
+        d="M15.659,15.721c0.415-0.415,1.01-0.493,1.329-0.173c0.32,0.32,0.242,0.914-0.173,1.33
+			c-0.415,0.415-1.01,0.493-1.33,0.174C15.166,16.732,15.244,16.136,15.659,15.721"
+      />
+    </g>
+    <polygon
+      id="XMLID_15_"
+      class="st0"
+      points="9.938,10 2.859,15.576 4.362,17.079 	"
+    />
+    <g id="XMLID_67_">
+      <defs>
+        <rect
+          id="XMLID_13_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_66_">
+        <use xlink:href="#XMLID_13_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_14_"
+        class="st12"
+        d="M4.217,15.721c-0.415-0.415-1.01-0.493-1.329-0.173c-0.32,0.32-0.242,0.914,0.173,1.33
+			c0.415,0.415,1.01,0.493,1.33,0.174C4.71,16.732,4.632,16.136,4.217,15.721"
+      />
+    </g>
+    <polygon
+      id="XMLID_12_"
+      class="st0"
+      points="9.933,9.995 5.526,17.855 7.49,18.669 	"
+    />
+    <g id="XMLID_63_">
+      <defs>
+        <rect
+          id="XMLID_10_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_68_">
+        <use xlink:href="#XMLID_10_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_11_"
+        class="st13"
+        d="M6.837,17.469c-0.542-0.225-1.122-0.068-1.295,0.349c-0.173,0.417,0.127,0.937,0.669,1.162
+			c0.542,0.224,1.122,0.068,1.295-0.349C7.679,18.215,7.379,17.694,6.837,17.469"
+      />
+    </g>
+    <polygon
+      id="XMLID_9_"
+      class="st0"
+      points="9.933,9.994 14.339,17.855 12.375,18.669 	"
+    />
+    <g id="XMLID_59_">
+      <defs>
+        <rect
+          id="XMLID_7_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_69_">
+        <use xlink:href="#XMLID_7_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_8_"
+        class="st14"
+        d="M13.029,17.469c0.542-0.225,1.122-0.068,1.295,0.349c0.173,0.417-0.127,0.937-0.669,1.162
+			c-0.542,0.224-1.122,0.068-1.295-0.349C12.187,18.215,12.487,17.694,13.029,17.469"
+      />
+    </g>
+    <polygon
+      id="XMLID_6_"
+      class="st0"
+      points="9.938,10 18.612,12.443 17.799,14.407 	"
+    />
+    <g id="XMLID_55_">
+      <defs>
+        <rect
+          id="XMLID_4_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_70_">
+        <use xlink:href="#XMLID_4_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_5_"
+        class="st15"
+        d="M17.413,13.096c0.224-0.542,0.745-0.842,1.162-0.669c0.417,0.173,0.573,0.753,0.349,1.295
+			c-0.225,0.542-0.745,0.842-1.162,0.669C17.344,14.219,17.188,13.639,17.413,13.096"
+      />
+    </g>
+    <polygon
+      id="XMLID_3_"
+      class="st0"
+      points="9.938,10 1.263,12.443 2.077,14.407 	"
+    />
+    <g id="XMLID_51_">
+      <defs>
+        <rect
+          id="XMLID_1_"
+          x="-69.789"
+          y="-17.449"
+          width="111.691"
+          height="78.973"
+        />
+      </defs>
+      <clipPath id="XMLID_72_">
+        <use xlink:href="#XMLID_1_" style="overflow: visible" />
+      </clipPath>
+      <path
+        id="XMLID_2_"
+        class="st16"
+        d="M2.463,13.096c-0.224-0.542-0.745-0.842-1.162-0.669C0.883,12.6,0.727,13.18,0.952,13.722
+			c0.225,0.542,0.745,0.842,1.162,0.669C2.532,14.219,2.688,13.639,2.463,13.096"
+      />
+    </g>
+  </g>
+  </symbol>
+</svg>
