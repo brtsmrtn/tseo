@@ -1,6 +1,9 @@
-const [main, canvas, continueButton] = [
+const [main, canvas, downloadLink, downloadButton, continueButton] = [
   document.querySelector("main"),
   document.createElement("canvas"),
+  document.getElementById("download-recording"),
+  document.querySelector("#download-recording button"),
+  document.getElementById("continue-to-content"),
 ];
 document.querySelector("body").appendChild(canvas);
 const [
@@ -81,27 +84,27 @@ class AudioVisualizer {
               ac.close().then(function () {
                 mediaRecorder.stop();
                 mediaRecorder.addEventListener("stop", function () {
-                  // downloadLink.href = URL.createObjectURL(
-                  //   new Blob(recordedChunks)
-                  // );
-                  // downloadLink.download = "chant.wav";
+                  downloadLink.href = URL.createObjectURL(
+                    new Blob(recordedChunks)
+                  );
+                  downloadLink.download = "chant.wav";
                   source.disconnect(0);
-
                   document
-                    .querySelectorAll("#recording-message span")
-                    .forEach((e) => {
-                      e.classList.toggle("start-from-end");
-                    });
+                    .querySelector("#recording-message span")
+                    .classList.toggle("start-from-end");
                   setTimeout(function () {
                     document
                       .querySelector("main")
                       .classList.toggle("background-move-5");
                     canvas.classList.toggle("fast-end");
-                    goToContent("no");
-                    //continueButton.classList.toggle("start-from-end");
+                    [downloadButton, continueButton].map((e) => {
+                      e.classList.toggle("start-from-end");
+                    });
                   }, 2000);
                   setTimeout(function () {
-                    canvas.classList.toggle("hidden");
+                    [canvas, downloadButton, continueButton].map((e) => {
+                      e.classList.toggle("hidden");
+                    });
                   }, 4000);
                   clearInterval(recordingOfSatisfyingDuration);
                 });
@@ -301,7 +304,7 @@ function handleMicrophoneInput() {
   resizeCanvas();
   const a = new AudioVisualizer(audioContext, processFrame, processError);
   setTimeout(function () {
-    // document.querySelector("#recording-message span").innerHTML =
-    //   "Thanks! You can download the recording and continue to the content (not yet ready).";
+    document.querySelector("#recording-message span").innerHTML =
+      "Thanks! You can download the recording and continue to the content (not yet ready).";
   }, 2000);
 }
