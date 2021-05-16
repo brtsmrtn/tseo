@@ -595,6 +595,10 @@ main.background-move-4::after {
       </div>
       <div class="S3 node hidden" style="width:56vw!important;">
         <div class="video">
+            <iframe
+              src="https://ocean-archive.org/embed/1957"
+              frameborder="0"
+            ></iframe>
         <div class="close"></div>
         </div>
       </div>
@@ -753,6 +757,10 @@ main.background-move-4::after {
       </div>
       <div class="S5 node hidden">
         <div class="video-rev">
+            <iframe
+              src="https://ocean-archive.org/embed/1957"
+              frameborder="0"
+            ></iframe>
           <div class="close" style="margin-right: -20px"></div>
         </div>
         <div class="island-rev hidden">
@@ -1092,31 +1100,31 @@ main.background-move-4::after {
       function tryOne(id) {
         const node = nodes.find((n) => n.id === id);
         const el = document.getElementById(id);
-        if (node.content==="video") {
-          if (node.embed.title!=="" & node.embed.url!=="") {
-              function iframeLoaded() {
-                console.log("happende");
-              }
-              const iframe = document.createElement('iframe');
-              // iframe.setAttribute("scrolling", "no");
-              // iframe.setAttribute("frameborder", "0");
-              iframe.setAttribute("title", node.embed.title);
-              iframe.style.zIndex = "9999999999999999";
-              // iframe.style.minHeight = "100%";
-              // iframe.style.minWidth = "100%";
-              // iframe.style.position = "absolute";
-              // iframe.style.left = "0";
-              // iframe.style.right = "0";
-              // iframe.setAttribute("width", "100%");
-              // iframe.setAttribute("height", "100%");
-              iframe.src = node.embed.url;
-              const mainnn = document.querySelector("main")
-              //document.querySelector("main").appendChild(iframe);
-              mainnn.insertBefore(iframe, mainnn.firstChild);
-              //document.querySelector("div." + el.id + " div").appendChild(iframe);
-              iframe.onload=iframeLoaded();
-          }
-        }
+        // if (node.content==="video") {
+        //   if (node.embed.title!=="" & node.embed.url!=="") {
+        //       function iframeLoaded() {
+        //         console.log("happende");
+        //       }
+        //       const iframe = document.createElement('iframe');
+        //       // iframe.setAttribute("scrolling", "no");
+        //       // iframe.setAttribute("frameborder", "0");
+        //       iframe.setAttribute("title", node.embed.title);
+        //       iframe.style.zIndex = "9999999999999999";
+        //       // iframe.style.minHeight = "100%";
+        //       // iframe.style.minWidth = "100%";
+        //       // iframe.style.position = "absolute";
+        //       // iframe.style.left = "0";
+        //       // iframe.style.right = "0";
+        //       // iframe.setAttribute("width", "100%");
+        //       // iframe.setAttribute("height", "100%");
+        //       iframe.src = node.embed.url;
+        //       const mainnn = document.querySelector("main")
+        //       //document.querySelector("main").appendChild(iframe);
+        //       mainnn.insertBefore(iframe, mainnn.firstChild);
+        //       //document.querySelector("div." + el.id + " div").appendChild(iframe);
+        //       iframe.onload=iframeLoaded();
+        //   }
+        // }
         document
           .querySelector("div." + el.id + " div div.close")
           .addEventListener("click", function () {
