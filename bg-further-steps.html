@@ -491,8 +491,8 @@ main.background-move-4::after {
         </svg>
       </div>
       <div class="S1 node hidden">
-        <div class="close"></div>
         <div class="text">
+        <div class="close"></div>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             tincidunt nunc vitae velit semper efficitur. Nulla facilisis neque
@@ -542,8 +542,8 @@ main.background-move-4::after {
         </div>
       </div>
       <div class="S2 node hidden">
-        <div class="close"></div>
         <div class="text rtl">
+        <div class="close"></div>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             tincidunt nunc vitae velit semper efficitur. Nulla facilisis neque
@@ -593,20 +593,13 @@ main.background-move-4::after {
         </div>
       </div>
       <div class="S3 node hidden" style="width:56vw!important;">
-        <div class="close"></div>
         <div class="video">
-          <iframe
-            id="N3_video"
-            src="https://ocean-archive.org/embed/1626"
-            frameborder="0"
-            scrolling="no"
-            title="Hyena lullaby"
-          ></iframe>
+        <div class="close"></div>
         </div>
       </div>
       <div class="S6 node hidden">
-        <div class="close"></div>
         <div class="audio">
+        <div class="close"></div>
           <div
               class="file row"
               style="
@@ -759,13 +752,6 @@ main.background-move-4::after {
       </div>
       <div class="S5 node hidden">
         <div class="video-rev">
-          <iframe
-            id="S5_video"
-            src="https://ocean-archive.org/embed/1626"
-            frameborder="0"
-            scrolling="no"
-            title="Hyena lullaby"
-          ></iframe>
           <div class="close" style="margin-right: -20px"></div>
         </div>
         <div class="island-rev hidden">
@@ -1043,28 +1029,28 @@ main.background-move-4::after {
       ("use strict");
       const [nodes, image, islands] = [
         [
-          { id: "S1", moveX: "-50%", moveY: "-50%", content: "text" },
-          { id: "S2", moveX: "50%", moveY: "-50%", content: "text" },
-          { id: "S3", moveX: "-50%", moveY: "-50%", content: "video" },
-          { id: "S4", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S5", moveX: "0%", moveY: "0%", content: "video" },
-          { id: "S6", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S7", moveX: "50%", moveY: "-50%", content: "text" },
-          { id: "S8", moveX: "-50%", moveY: "-50%", content: "video" },
-          { id: "S9", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S10", moveX: "0%", moveY: "0%", content: "video" },
-          { id: "S11", moveX: "-50%", moveY: "-50%", content: "text" },
-          { id: "S12", moveX: "50%", moveY: "-50%", content: "text" },
-          { id: "S13", moveX: "-50%", moveY: "-50%", content: "video" },
-          { id: "S14", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S15", moveX: "0%", moveY: "0%", content: "video" },
-          { id: "S16", moveX: "-50%", moveY: "-50%", content: "text" },
-          { id: "S17", moveX: "50%", moveY: "-50%", content: "text" },
-          { id: "S18", moveX: "-50%", moveY: "-50%", content: "video" },
-          { id: "S19", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S20", moveX: "0%", moveY: "0%", content: "video" },
-          { id: "S21", moveX: "0%", moveY: "0%", content: "audio" },
-          { id: "S22", moveX: "0%", moveY: "0%", content: "video" },
+          { id: "S1", moveX: "-50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S2", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S3", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"https://ocean-archive.org/embed/1626",title:"Hyena lullaby"} },
+          { id: "S4", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S5", moveX: "0%", moveY: "0%", content: "video", embed: {url:"https://ocean-archive.org/embed/1626",title:"Hyena lullaby"} },
+          { id: "S6", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S7", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S8", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"",title:""} },
+          { id: "S9", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S10", moveX: "0%", moveY: "0%", content: "video", embed: {url:"",title:""} },
+          { id: "S11", moveX: "-50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S12", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S13", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"",title:""} },
+          { id: "S14", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S15", moveX: "0%", moveY: "0%", content: "video", embed: {url:"",title:""} },
+          { id: "S16", moveX: "-50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S17", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          { id: "S18", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"",title:""} },
+          { id: "S19", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S20", moveX: "0%", moveY: "0%", content: "video", embed: {url:"",title:""} },
+          { id: "S21", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          { id: "S22", moveX: "0%", moveY: "0%", content: "video", embed: {url:"",title:""} },
         ],
         document.getElementById("island"),
         [].slice.call(document.querySelectorAll(".island,#island,svg")),
@@ -1096,8 +1082,18 @@ main.background-move-4::after {
       function tryOne(id) {
         const node = nodes.find((n) => n.id === id);
         const el = document.getElementById(id);
+        if (node.content==="video") {
+          if (node.embed.title!=="" & node.embed.url!=="") {
+              const iframe = document.createElement('iframe');
+              iframe.setAttribute("scrolling", "no");
+              iframe.setAttribute("frameborder", "0");
+              iframe.setAttribute("title", node.embed.title);
+              iframe.src = node.embed.url;
+              document.querySelector("div." + el.id + " div").appendChild(iframe);
+          }
+        }
         document
-          .querySelector("div." + el.id + " div.close")
+          .querySelector("div." + el.id + " div div.close")
           .addEventListener("click", function () {
             moveIt(el.id, "back", "0%", "0%", node.content);
           });
@@ -1110,7 +1106,7 @@ main.background-move-4::after {
         const node = nodes.find((n) => n.id === id);
         const el = document.getElementById(id);
         document
-          .querySelector("div." + el.id + " div.close")
+          .querySelector("div." + el.id + " div div.close")
           .addEventListener("click", function () {
             moveIt(el.id, "back", "0%", "0%", node.content);
           });
