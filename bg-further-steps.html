@@ -134,9 +134,19 @@
         stroke: #6610f2;
         cursor: pointer;
       }
-      div.island > *,
-      div.island-rev > *,
+      #about {
+        position: absolute;
+        right: -4vw;
+        top: 2vh;
+        z-index:1000!important;
+      }
       #about > * {
+        cursor: pointer;height: 60px;
+    z-index: 10000;
+    transition: all 0.5s ease 0s;
+      }
+      div.island > *,
+      div.island-rev > *{
         max-width: 100%;
         max-height: 100%;
         bottom: 0;
@@ -463,21 +473,12 @@ main.background-move-4::after {
           </g>
         </svg>
       </div>
-      <div id="about" style="z-index: 1000 !important">
+      <div id="about">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
           focusable="true"
-          style="
-            -ms-transform: rotate(360deg);
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-            bottom: 90vh;
-            left: 95vw;
-            height: 60px;
-            z-index: 10000;
-          "
           class="about_svg"
           viewBox="0 0 60 20"
           preserveAspectRatio="xMidYMid meet"
@@ -1061,6 +1062,8 @@ main.background-move-4::after {
         });
       };
       function moveIt(id, where, moveX, moveY, content) {
+        document.getElementById("about").classList.toggle("hidden");
+        document.getElementById("logo").classList.toggle("hidden");
         if (where === "out") {
           document.querySelector("." + id).classList.remove("hidden");
           document.getElementById(id).classList.remove("expired");
@@ -1073,6 +1076,13 @@ main.background-move-4::after {
           i.style.transition = "all 0.5s ease";
           i.style.left = moveX;
           i.style.top = moveY;
+          if (where === "out") {
+            i.style.cursor = "default";
+            i.setAttribute("pointer-events","none");
+          } else {
+            i.style.cursor = "pointer";
+            i.setAttribute("pointer-events","auto");
+          }
         });
         if ((content === "video") & (where === "back")) {
           //const frame = document.getElementById(id + "_video");
@@ -1084,12 +1094,27 @@ main.background-move-4::after {
         const el = document.getElementById(id);
         if (node.content==="video") {
           if (node.embed.title!=="" & node.embed.url!=="") {
+              function iframeLoaded() {
+                console.log("happende");
+              }
               const iframe = document.createElement('iframe');
               // iframe.setAttribute("scrolling", "no");
               // iframe.setAttribute("frameborder", "0");
               iframe.setAttribute("title", node.embed.title);
+              iframe.style.zIndex = "9999999999999999";
+              // iframe.style.minHeight = "100%";
+              // iframe.style.minWidth = "100%";
+              // iframe.style.position = "absolute";
+              // iframe.style.left = "0";
+              // iframe.style.right = "0";
+              // iframe.setAttribute("width", "100%");
+              // iframe.setAttribute("height", "100%");
               iframe.src = node.embed.url;
-              document.querySelector("div." + el.id + " div").appendChild(iframe);
+              const mainnn = document.querySelector("main")
+              //document.querySelector("main").appendChild(iframe);
+              mainnn.insertBefore(iframe, mainnn.firstChild);
+              //document.querySelector("div." + el.id + " div").appendChild(iframe);
+              iframe.onload=iframeLoaded();
           }
         }
         document
