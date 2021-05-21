@@ -53,20 +53,6 @@
   </head>
   <body>
     <main>
-      <div
-        id="logo"
-        style="
-          position: absolute;
-          bottom: 2vh;
-          right: 3vh;
-          z-index: 100000;
-          justify-content: flex-end;
-          width: 100vw;
-          display: block;
-        "
-      >
-        <img src="./img/OA_type_white.png" style="width: 15%" />
-      </div>
       <div id="intro">
         <div id="intro-message" class="message">
           <span
@@ -119,7 +105,6 @@
                 ATTC Kuakumba Bird of Paradise (0:19)
               </div>
               <audio
-                playsinline
                 preload="false"
                 src="./nodes/sound/ATTC Kuakumba Bird of Paradise 30 sec sample.mp3"
                 style="width: 100%"
@@ -329,7 +314,7 @@
             width="100%"
           >
             <g
-              transform="translate(0,1080) scale(0.1,-0.1)"
+              transform="translate(0, 1080) scale(0.1, -0.1)"
               fill="#000000"
               stroke="none"
             >
@@ -393,70 +378,11 @@
               </svg>
             </div>
             <div class="title-time"></div>
-            <div
-              id="wavepreview_1287_slider"
-              style="
-                font-size: 1rem;
-                font-weight: 400;
-                line-height: 1.5;
-                color: #212529;
-                text-align: left;
-              "
-            >
-              <wave
-                style="
-                  display: block;
-                  position: relative;
-                  user-select: none;
-                  height: 80px;
-                  overflow: hidden;
-                "
-                ><wave
-                  style="
-                    position: absolute;
-                    z-index: 3;
-                    left: 0px;
-                    top: 0px;
-                    bottom: 0px;
-                    overflow: hidden;
-                    width: 0px;
-                    display: block;
-                    box-sizing: border-box;
-                    border-right: 0px solid rgb(74, 116, 165);
-                    pointer-events: none;
-                  "
-                  ><canvas
-                    width="1873"
-                    height="80"
-                    style="
-                      position: absolute;
-                      left: 0px;
-                      top: 0px;
-                      bottom: 0px;
-                      height: 100%;
-                      width: 1873px;
-                    "
-                  ></canvas></wave
-                ><canvas
-                  width="1873"
-                  height="80"
-                  style="
-                    position: absolute;
-                    z-index: 2;
-                    left: 0px;
-                    top: 0px;
-                    bottom: 0px;
-                    height: 100%;
-                    pointer-events: none;
-                    width: 1873px;
-                  "
-                ></canvas></wave
-              ><audio
-                preload="false"
-                src="https://audio.ocean-archive.org/private/eu-central-1:12102e0b-bb96-42f0-9d3c-1df78ee120b2/418b7876-0b02-4d53-b0c4-38683f95c14b/6e46a790-b47c-11ea-ab3f-b3e2d9e4ba0f-Sonic Warfare _ Collateral Damage.m4a"
-                style="width: 100%"
-              ></audio>
-            </div>
+            <audio
+              preload="false"
+              src="https://audio.ocean-archive.org/private/eu-central-1:12102e0b-bb96-42f0-9d3c-1df78ee120b2/418b7876-0b02-4d53-b0c4-38683f95c14b/6e46a790-b47c-11ea-ab3f-b3e2d9e4ba0f-Sonic Warfare _ Collateral Damage.m4a"
+              style="width: 100%"
+            ></audio>
           </div>
           <div class="close"></div>
         </div>
@@ -489,13 +415,12 @@
             controls
             class="video-source"
             preload="metadata"
+            poster="./nodes/vid/reduced/Snippet_1_.png"
+            autoplay
             loop
             style="width: 100% !important; object-fit: contain"
           >
-            <source
-              src="./nodes/vid/reduced/Snippet_1_.webm"
-              type="video/webm"
-            />
+            <source src="./nodes/vid/Taloi 1b_sound.mp4" type="video/mp4" />
           </video>
           <div class="close" style="margin-right: -20px"></div>
         </div>
@@ -505,13 +430,9 @@
             preserveAspectRatio="xMidYMid slice"
             height="100%"
             width="100%"
-            transform="scale(0.6,2.85)"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <g
-              transform="translate(0,1080) scale(0.1,-0.1)"
-              fill="#000000"
-              stroke="none"
-            >
+            <g>
               <path
                 d="M0 5400 l0 -5400 9600 0 9600 0 0 5400 0 5400 -9600 0 -9600 0 0
           -5400z m12819 3671 c66 -22 158 -69 320 -163 124 -72 318 -180 431 -241 112
@@ -558,9 +479,9 @@
           <div class="close"></div>
         </div>
       </div>
-      <div class="island">
+      <div class="island" class="hidden">
         <svg
-          class="hidden"
+          class="hidden start"
           id="island"
           viewBox="0 0 1920 1080"
           preserveAspectRatio="xMidYMid meet"
@@ -571,7 +492,7 @@
           <use href="./img/shapes-adjust.svg#island"></use>
         </svg>
       </div>
-      <div class="island">
+      <div class="island" class="hidden">
         <svg
           class="hidden"
           id="nodes"
@@ -580,7 +501,7 @@
           fill="currentColor"
           class="nodes"
           style="
-            position: absolute;
+            position: fixed;
             z-index: 65 !important;
             cursor: default !important;
           "
@@ -752,8 +673,8 @@
         </svg>
       </div>
       <div id="notes" class="hidden">
-        <div class="welcome">
-          <span
+        <div class="welcome hidden start">
+          <span class="hidden"
             ><strong>Welcome to the island.</strong><br /><br />
             Thank you for your answer.<br /><br />
             Now, you can dive into
@@ -761,8 +682,10 @@
             the artwork <i>Answer to the Call</i> (2021).
           </span>
         </div>
-        <div class="welcome">
-          <span>Tap on any of the 22 elements to see more. </span>
+        <div class="welcome hidden start">
+          <span class="hidden"
+            >Tap on any of the 22 elements to see more.
+          </span>
         </div>
       </div>
       <div class="rnInner">
@@ -778,6 +701,9 @@
         <div class="rnUnit"></div>
       </div>
     </main>
+    <div id="logo">
+      <img src="./img/OA_type_white.png" />
+    </div>
     <script type="text/javascript">
       let firstClick = false;
       const [
@@ -980,7 +906,19 @@
             audioInvitationControls[0].classList.remove("hide");
             audioInvitationControls[0].classList.add("hide");
             audioInvitationControls[1].classList.remove("hide");
-            audioInvitation.play();
+            const promise = audioInvitation.play();
+            if (promise !== undefined) {
+              promise
+                .catch((error) => {
+                  console.log("auto-play prevented");
+                  // Auto-play was prevented
+                  // Show a UI element to let the user manually start playback
+                })
+                .then(() => {
+                  console.log("auto-play ok");
+                  // Auto-play started
+                });
+            }
           }
         }
         let audioInvitationIsPlaying = false;
@@ -997,6 +935,10 @@
         audioInvitationState.addEventListener("click", function () {
           togglePlay("play");
         });
+        if (audioInvitation.readyState > 0) {
+          audioInvitation.play();
+          audioInvitation.pause();
+        }
         setTimeout(function () {
           if (audioInvitation.readyState > 0) {
             togglePlay("play");
@@ -1062,9 +1004,13 @@
         }, 2000);
       }
       function goToContent(skipped) {
+        audioInvitation.pause();
         document
           .getElementById("recording")
-          .classList.toggle("recording-feedback-move-in");
+          .classList.remove("recording-feedback-move-in");
+        document
+          .getElementById("participation")
+          .classList.remove("participation-feedback-move-in");
         document.getElementById("recording").classList.add("hidden");
         document.getElementById("participation").classList.add("hidden");
         showContent();
@@ -1072,12 +1018,6 @@
         document.querySelector("body").classList.toggle("out");
         if (skipped === "yes") {
           document.querySelector("main").classList.toggle("background-move-4");
-          document
-            .querySelectorAll("#participation-feedback,#participation-message")
-            .forEach(function (e) {
-              e.classList.toggle("participation-feedback-move-in");
-              e.classList.toggle("participation-feedback-move-out");
-            });
           setTimeout(function () {
             document
               .querySelectorAll(
@@ -1092,30 +1032,26 @@
         }
       }
       function showContent() {
+        notes.classList.toggle("hidden");
         setTimeout(function () {
-          island.classList.toggle("hidden");
-          document.querySelectorAll("div.island svg").forEach((e) => {
-            e.classList.toggle("start");
-          });
-          nodesArray.map((n) => {
-            document.getElementById(n.id).classList.toggle("start");
-          });
           document.querySelector("main").classList.toggle("cover");
-        }, 2000);
-        setTimeout(function () {
-          // islands.map((i) => {
-          //   i.classList.remove("start");
-          // });
-          notes.classList.toggle("hidden");
-          about.classList.toggle("hidden");
-          nodesArray.map((n) => {
-            document.getElementById(n.id).classList.toggle("start");
-          });
-          islands.map((i) => {
-            i.classList.remove("hidden");
-          });
-          //document.getElementById("island-nodes").classList.toggle("start");
+          island.classList.remove("hidden");
+          document
+            .querySelectorAll("#notes .welcome span")
+            .forEach(function (e) {
+              e.classList.toggle("hidden");
+              e.classList.toggle("start");
+            });
         }, 4000);
+        setTimeout(function () {
+          nodes.classList.remove("hidden");
+          document.querySelectorAll("#notes .welcome").forEach(function (e) {
+            e.classList.toggle("hidden");
+          });
+        }, 6000);
+        setTimeout(function () {
+          about.classList.toggle("hidden");
+        }, 9000);
       }
       function moveIt(id, where, moveX, moveY, content) {
         if (firstClick === false) {
@@ -1174,8 +1110,9 @@
             });
           } else if (el.id === "S16") {
             setTimeout(function () {
-              nodes.classList.toggle("hidden");
-              island.classList.toggle("hidden");
+              islands.map((i) => {
+                i.classList.toggle("hidden");
+              });
               nodeSpace
                 .querySelectorAll("div.image-action img")[0]
                 .classList.toggle("notyet");
@@ -1191,8 +1128,9 @@
                 .classList.toggle("notyet");
             }, 4000);
             close.addEventListener("click", function clean(event) {
-              nodes.classList.toggle("hidden");
-              island.classList.toggle("hidden");
+              islands.map((i) => {
+                i.classList.toggle("hidden");
+              });
               nodeSpace
                 .querySelectorAll("div.image-action img")
                 .forEach((e) => {
@@ -1212,6 +1150,19 @@
           if (el.id === "S15") {
             function removeControls(video) {
               video.removeAttribute("controls");
+            }
+            const promiseS15 = video.play();
+            if (promiseS15 !== undefined) {
+              promiseS15
+                .catch((error) => {
+                  console.log("auto-play prevented");
+                })
+                .then(() => {
+                  video.play();
+                });
+            } else {
+              console.log("something went wrong");
+              video.play();
             }
             window.onload = removeControls(video);
             if (video.paused) {
@@ -1257,7 +1208,19 @@
               audioControls[0].classList.remove("hide");
               audioControls[0].classList.add("hide");
               audioControls[1].classList.remove("hide");
-              audio.play();
+              const promise = audio.play();
+              if (promise !== undefined) {
+                promise
+                  .catch((error) => {
+                    console.log("auto-play prevented");
+                    // Auto-play was prevented
+                    // Show a UI element to let the user manually start playback
+                  })
+                  .then(() => {
+                    console.log("auto-play ok");
+                    // Auto-play started
+                  });
+              }
             }
           }
           const audio = nodeSpace.querySelector("audio");
@@ -1300,7 +1263,7 @@
         }
       }
       aboutButton.addEventListener("click", function () {
-        [logo.querySelector("svg"), about.querySelector("svg")].forEach((e) => {
+        [logo.querySelector("img"), about.querySelector("svg")].forEach((e) => {
           e.classList.toggle("invert");
         });
         aboutSection.classList.toggle("hidden");

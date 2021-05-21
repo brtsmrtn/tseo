@@ -222,6 +222,7 @@ body.out > main > .rnInner {
   cursor: grab;
 }
 .start {
+  -webkit-animation: show_anything 2s 2s normal forwards ease-out;
   animation: show_anything 2s 2s normal forwards ease-out;
 }
 .feedback .space {
@@ -241,13 +242,44 @@ body.out > main > .rnInner {
   display: unset !important;
   visibility: hidden;
   opacity: 0;
+  -webkit-animation: show_anything 2s 2s normal forwards ease-in !important;
   animation: show_anything 2s 2s normal forwards ease-in !important;
 }
 .end {
+  -webkit-animation: hide_anything 2s 2s normal forwards ease-out !important;
   animation: hide_anything 2s 2s normal forwards ease-out !important;
 }
 .fast-end {
+  -webkit-animation: hide_anything 1s 1s normal forwards ease-out;
   animation: hide_anything 1s 1s normal forwards ease-out;
+}
+@-webkit-keyframes show_anything {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  10% {
+    visibility: visible;
+    opacity: 0.05;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes hide_anything {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  10% {
+    visibility: visible;
+    opacity: 0.95;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 @keyframes show_anything {
   0% {
@@ -773,6 +805,9 @@ main.background-move-5::after {
 }
 .audio-wave {
   -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
   filter: blur(6px);
   z-index: -1;
   position: absolute;
@@ -827,17 +862,19 @@ main.background-move-5::after {
 /* ISLAND SECTION */
 #logo {
   position: absolute;
-  bottom: -5vh;
-  right: -5vh;
-  z-index: 100000;
+  bottom: 0;
+  width: 100vw;
+  z-index: 50;
 }
-#logo svg {
-  width: 400px;
-  height: 200px;
+#logo img {
+  width: 15%;
+  bottom: 3vh;
+  right: 2vw;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  position: absolute;
 }
-#logo svg.invert {
+#logo img.invert {
   filter: invert(100%);
 }
 #about {
@@ -936,6 +973,10 @@ main.background-move-5::after {
   position: absolute;
   left: 1.5vw;
 }
+.welcome span {
+  opacity: 0;
+  visibility: hidden;
+}
 .welcome:nth-child(1) {
   width: 35vw;
   top: 3vh;
@@ -969,7 +1010,7 @@ div.island > * {
 div.island svg.nodes > * {
   fill: black;
 }
-div.island svg.start > * {
+div.island svg > * {
   z-index: 100000 !important;
   stroke: transparent;
   stroke-width: 15;
@@ -1067,11 +1108,11 @@ div.S16 div.close {
 div.S12 {
   width: 100vw !important;
   height: 100vw !important;
-  z-index: 104 !important;
+  z-index: 65 !important;
 }
 div.S12 .image-action img {
-  -webkit-transition: all 3s;
-  transition: all 3s;
+  -webkit-transition: all 6s;
+  transition: all 6s;
 }
 div.S12 .image-action img.scale {
   opacity: 0.5;
@@ -1092,6 +1133,19 @@ div.S15 div.video-rev {
   max-height: 100vh;
   z-index: 12;
   background-color: black;
+}
+div.S15 div.island-rev svg {
+  transform: scale(0.6, 2.85);
+  -webkit-transform: scale(0.6, 2.85);
+}
+div.S15 div.island-rev svg g {
+  -ms-transform: translate(0px, 1080px) scale(0.1, -0.1);
+  -webkit-transform: translate(0px, 1080px) scale(0.1, -0.1);
+  -moz-transform: translate(0px, 1080px) scale(0.1, -0.1);
+  -o-transform: translate(0px, 1080px) scale(0.1, -0.1);
+  transform: translate(0px, 1080px) scale(0.1, -0.1);
+  fill: #000000;
+  stroke: none;
 }
 div.node div.image {
   width: 100%;
@@ -1183,6 +1237,19 @@ div.node div.close:after {
   transform: rotate(-45deg);
 }
 .expired {
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
+  filter: blur(8px);
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+.expired > * {
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
   filter: blur(8px);
   -webkit-transition: all 2s;
   transition: all 2s;
@@ -1444,6 +1511,9 @@ svg.video-player {
 }
 .audio-wave {
   -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
   filter: blur(6px);
   z-index: -1;
   position: absolute;
