@@ -3,6 +3,7 @@ const [main, canvas, continueButton] = [
   document.createElement("canvas"),
 ];
 document.querySelector("body").appendChild(canvas);
+canvas.classList.toggle("hidden");
 const [
   ctx,
   previousLevels,
@@ -70,14 +71,6 @@ class AudioVisualizer {
                 "satisfyingDurationMet"
               ] === false
             ) {
-              console.log(
-                "Great! You chanted approx. for " +
-                  duration +
-                  " consecutive seconds; your chant should be somewhere between " +
-                  beginning +
-                  " and " +
-                  ending
-              );
               ac.close().then(function () {
                 mediaRecorder.stop();
                 mediaRecorder.addEventListener("stop", function () {
@@ -94,11 +87,13 @@ class AudioVisualizer {
                     });
                   setTimeout(function () {
                     document
+                      .getElementById("recording")
+                      .classList.toggle("hidden");
+                    document
                       .querySelector("main")
                       .classList.toggle("background-move-5");
                     canvas.classList.toggle("fast-end");
                     goToContent("no");
-                    //continueButton.classList.toggle("start-from-end");
                   }, 2000);
                   setTimeout(function () {
                     canvas.classList.toggle("hidden");
@@ -300,8 +295,4 @@ function handleMicrophoneInput() {
   };
   resizeCanvas();
   const a = new AudioVisualizer(audioContext, processFrame, processError);
-  setTimeout(function () {
-    // document.querySelector("#recording-message span").innerHTML =
-    //   "Thanks! You can download the recording and continue to the content (not yet ready).";
-  }, 2000);
 }

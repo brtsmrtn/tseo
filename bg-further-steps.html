@@ -12,490 +12,149 @@
       href="bg-further-steps.css"
       media="screen"
     />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="fonts/roboto-v20-latin-ext-regular.woff2"
-      crossorigin="crossorigin"
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="fonts/roboto-v20-latin-ext-900.woff2"
-      crossorigin="crossorigin"
-    />
     <style>
       @font-face {
-        font-family: Roboto;
+        font-family: "Amare Alta";
+        font-style: normal;
+  padding: 20px;
+  font-size: 30pt;
+  font-weight: 800;
+  line-height: 42pt;
+        font-weight: 800;
+        src: url("./fonts/Amare-Alta.otf") format("opentype");
+        src: url("./fonts/Amare-Alta.eot") format("embedded-opentype"),
+          url("./fonts/Amare-Alta.eot?#iefix") format("embedded-opentype"),
+          url("./fonts/Amare-Alta.woff2") format("woff2"),
+          url("./fonts/Amare-Alta.woff") format("woff"),
+          url("./fonts/Amare-Alta.ttf") format("truetype"),
+          url("./fonts/Amare-Alta.svg") format("svg");
+      }
+      @font-face {
+        font-family: "Amare Medium";
         font-style: normal;
         font-weight: 400;
-        src: url(fonts/roboto-v20-latin-ext-regular.eot);
-        src: local("Roboto"), local("Roboto-Regular"),
-          url(fonts/roboto-v20-latin-ext-regular.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-regular.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-regular.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-regular.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-regular.svg#Roboto) format("svg");
+        src: url("./fonts/Amare-Medium.otf") format("opentype");
+        src: url("./fonts/Amare-Medium.eot") format("embedded-opentype"),
+          url("./fonts/Amare-Medium.eot?#iefix") format("eot"),
+          url("./fonts/Amare-Medium.woff2") format("woff2"),
+          url("./fonts/Amare-Medium.woff") format("woff"),
+          url("./fonts/Amare-Medium.ttf") format("truetype"),
+          url("./fonts/Amare-Medium.svg") format("svg");
       }
       @font-face {
-        font-family: Roboto;
+        font-family: "Amare Linnea";
         font-style: normal;
         font-weight: 100;
-        src: url(fonts/roboto-v20-latin-ext-100.eot);
-        src: local("Roboto Thin"), local("Roboto-Thin"),
-          url(fonts/roboto-v20-latin-ext-100.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-100.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-100.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-100.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-100.svg#Roboto) format("svg");
+        src: url("./fonts/Amare-Linnea.otf") format("opentype");
+        src: url("./fonts/Amare-Linnea.eot") format("embedded-opentype"),
+          url("./fonts/Amare-Linnea.eot?#iefix") format("embedded-opentype"),
+          url("./fonts/Amare-Linnea.woff2") format("woff2"),
+          url("./fonts/Amare-Linnea.woff") format("woff"),
+          url("./fonts/Amare-Linnea.ttf") format("truetype"),
+          url("./fonts/Amare-Linnea.svg") format("svg");
       }
-      @font-face {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 300;
-        src: url(fonts/roboto-v20-latin-ext-300.eot);
-        src: local("Roboto Light"), local("Roboto-Light"),
-          url(fonts/roboto-v20-latin-ext-300.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-300.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-300.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-300.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-300.svg#Roboto) format("svg");
-      }
-      @font-face {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        src: url(fonts/roboto-v20-latin-ext-500.eot);
-        src: local("Roboto Medium"), local("Roboto-Medium"),
-          url(fonts/roboto-v20-latin-ext-500.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-500.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-500.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-500.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-500.svg#Roboto) format("svg");
-      }
-      @font-face {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 700;
-        src: url(fonts/roboto-v20-latin-ext-700.eot);
-        src: local("Roboto Bold"), local("Roboto-Bold"),
-          url(fonts/roboto-v20-latin-ext-700.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-700.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-700.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-700.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-700.svg#Roboto) format("svg");
-      }
-      @font-face {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 900;
-        src: url(fonts/roboto-v20-latin-ext-900.eot);
-        src: local("Roboto Black"), local("Roboto-Black"),
-          url(fonts/roboto-v20-latin-ext-900.eot?#iefix)
-            format("embedded-opentype"),
-          url(fonts/roboto-v20-latin-ext-900.woff2) format("woff2"),
-          url(fonts/roboto-v20-latin-ext-900.woff) format("woff"),
-          url(fonts/roboto-v20-latin-ext-900.ttf) format("truetype"),
-          url(fonts/roboto-v20-latin-ext-900.svg#Roboto) format("svg");
-      }
-      span {
-	font-size:24pt;
-  	font-weight: 200;}
-      /* width */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background-color: transparent;
-      }
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #7ff1ff;
-      }
-      circle {
-        position: absolute;
-        z-index: 668 !important;
-        r: 10;
-        stroke-width: 0;
-        fill: #e37aac;
-        transition: stroke 0s, r 0.5s;
-      }
-      circle:hover {
-        r: 12;
-        stroke-width: 5;
-        stroke: #6610f2;
-        cursor: pointer;
-      }
-      #about {
-        position: absolute;
-        right: -4vw;
-        top: 2vh;
-        z-index:1000!important;
-      }
-      #about > * {
-        cursor: pointer;height: 60px;
-    z-index: 10000;
-    transition: all 0.5s ease 0s;
-      }
-      div.island > *,
-      div.island-rev > *{
-        max-width: 100%;
-        max-height: 100%;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        overflow: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-        -o-object-fit: contain;
-        object-fit: contain;
-        object-position: 50% 50%;
-        z-index: 60;
-      }
-      div.island > * {
-        z-index: 60;
-      }
-      div.island svg {
-        z-index: 600 !important;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-      div.island-rev {
-        z-index: 70;
-      }
-      div.island-rev > * {
-        z-index: 72;
-      }
-      div.node {
-        width: 50vw;
-        height: 50vh;
-        position: absolute;
-        backdrop-filter: blur(500px) opacity(0.2);
-        z-index: 80;
-      }
-      div.N1,
-      div.S3 {
-        bottom: 10vh;
-        right: 7vh;
-      }
-      div.S6 {
-        width: 34vw;
-        height: 5vh;
-        bottom: 92vh;
-        right: 3vh;
-      }
-      div.S5 {
-        width: 100vw;
-        height: 100vh;
-        top: 0vh;
-        right: 0vh;
-        background-color: #0c1f40;
-      }
-      div.S2 {
-        bottom: 10vh;
-        left: 10vh;
-      }
-      div.S5 div.video-rev {
-        width: 100vw;
-        height: 100vh;
-        max-width: 100vw;
-        max-height: 100vh;
-        z-index: 12;
-      }
-      div.node div.text {
-        width: 100%;
-        height: 100%;
-        margin: 15px;
-        background-color: #f75a8d;
-      }
-      div.node div.video {
-        width: 100%;
-        height: 100%;
-        background-color: #f75a8d;
-        text-align: left;
-      }
-      div.node div.audio {
-        width: 100%;
-        height: 100%;
-        text-align: left;
-      }
-      div.node div.video > iframe {
-        width: calc(100% - 60px);
-        height: 100%;
-        background-color: transparent;
-        min-width: calc(100% - 60px);
-        min-height: 100%;
-        overflow: hidden;
-      }
-      div.S5 div.video-rev > iframe {
-        width: 100vw;
-        height: 100vh;
-        background-color: transparent;
-        min-width: 100vw;
-        min-height: 100vh;
-        overflow: hidden;
-      }
-      div.node div.rtl {
-        direction: rtl;
-      }
-      div.node div.text > div {
-        width: 100%;
-        height: 100%;
-        margin: 10px;
-        background-color: transparent;
-        padding: 50px 50px 30px 20px;
-        font-size: 30pt;
-        font-weight: 200;
-        text-align: justify;
-        overflow-y: scroll;
-      }
-      div.node div.close {
-        position: absolute;
-        right: 40px;
-        top: 40px;
-        width: 40px;
-        height: 40px;
-        margin-top: -15px;
-        margin-right: -45px;
-        z-index: 800;
-      }
-      div.N3 div.close {
-        margin-top: -20px;
-        margin-right: -30px;
-      }
-      div.S6 div.close {
-        margin-top: -22px;
-        margin-right: -30px;
-      }
-      div.node div.close::before,
-      div.node div.close::after {
-        position: absolute;
-        content: " ";
-        left: 19px;
-        height: 41px;
-        width: 3px;
-        background-color: #6610f2;
-        z-index: 801;
-      }
-      div.close:hover {
-        cursor: pointer;
-      }
-      div.node div.close:hover:before,
-      div.node div.close:hover:after {
-        position: absolute;
-        content: " ";
-        height: 40px;
-        width: 3px;
-        background-color: #fff;
-      }
-      div.node div.close:before {
-        transform: rotate(45deg);
-      }
-      div.node div.close:after {
-        transform: rotate(-45deg);
-      }
-      .expired {
-        fill: #4300a7 !important;
-      }
-      .shapes {
-        fill: black;
-        z-index: 100000 !important;
-        stroke: transparent;
-        stroke-width: 0;
-        transition: all 0.5s ease-in-out;
-        position: absolute;
-        width: 40px;
-        height: 40px;
-      }
-      .shapes:hover {
-        fill: green !important;
-        cursor: pointer;
-        stroke: red;
-        stroke-width: 2;
-      }
-      .shapes:hover > * {
-        fill: blue !important;
-        cursor: pointer;
-        stroke: red;
-        stroke-width: 2;
-      }
-      .about_svg {
-        fill: white;
-      }
-      .about_svg:hover .dots {
-        fill: black;
-        cursor: pointer;
-      }
-main.background-move-4 {
-  z-index: 31;
-  opacity: 1;
-  animation: inc_op_070_1 2s linear;
-}
-main.background-move-4::after {
-  content: "";
-  background: rgb(1, 35, 205, 1);
-  background: -moz-linear-gradient(
-    115deg,
-    rgba(1, 35, 205, 1) 0%,
-    rgba(102, 16, 242, 1) 21%,
-    rgba(123, 4, 198, 1) 63%,
-    rgba(67, 0, 167, 1) 95%
-  );
-  background: -webkit-linear-gradient(
-    115deg,
-    rgba(1, 35, 205, 1) 0%,
-    rgba(102, 16, 242, 1) 21%,
-    rgba(123, 4, 198, 1) 63%,
-    rgba(67, 0, 167, 1) 95%
-  );
-  background: linear-gradient(
-    115deg,
-    rgba(1, 35, 205, 1) 0%,
-    rgba(102, 16, 242, 1) 21%,
-    rgba(123, 4, 198, 1) 63%,
-    rgba(67, 0, 167, 1) 95%
-  );
-  opacity: 1;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 40;
-  animation: inc_op_0_1 2s linear;
-}
-@keyframes inc_op_070_1 {
-  0% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes inc_op_0_1 {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
     </style>
   </head>
   <body>
     <main class="background-move-4">
       <div
         id="logo"
-        style="position: absolute; bottom: -5vh; right: -5vh; z-index: 100000"
       >
         <svg
-          style="width: 400px; filter: invert(100%); height: 200px"
-          xmlns="http://www.w3.org/2000/svg"
+          class="invert"
           viewBox="0 0 1606 285"
         >
-          <defs>
-            <style>
-              .cls-1 {
-                fill-rule: evenodd;
-              }
-            </style>
-          </defs>
-          <title>OA_logo</title>
-          <g id="Type-Black" transform="scale(0.75)">
-            <path
-              id="Combined-Shape"
-              class="cls-1"
-              d="M202.23,131.48v41.64h0q0,19.88,9.52,32.78t27,12.91q22.43,0,27.16-22.17h24.87q-2.83,19.06-15.95,30.55t-36.08,11.48q-30.69,0-47.85-19.19-16.49-18.43-17.14-44h0v-44h28.51v-23.1h66v18.51h24.15v28.85H267.85V131.48Z"
-            />
-            <path
-              class="cls-1"
-              d="M530.72,216.81,530.44,188H479.67v-19.7h50.58v-4.33q0-6.88-.27-11a52.26,52.26,0,0,0-1.62-9.4,21.21,21.21,0,0,0-3.72-8.17,18.65,18.65,0,0,0-7.09-5,27.9,27.9,0,0,0-11.36-2.1q-19.32,0-23.52,17.71H458.89q4.19-37.71,48.65-37.58,28.51,0,39.33,14.53t10.82,40.21v73.39h-78v-19.7Zm-75.58,0V188h24.53v28.85Z"
-            />
-            <path
-              class="cls-1"
-              d="M867.82,168.26v-4.33q0-6.88-.27-11a52.26,52.26,0,0,0-1.62-9.4,21.21,21.21,0,0,0-3.72-8.17,18.65,18.65,0,0,0-7.09-5,27.9,27.9,0,0,0-11.36-2.1q-19.32,0-23.51,17.71H796.46q4.18-37.71,48.65-37.58,28.53,0,39.33,14.53t10.82,40.21v73.39h-78v-19.7h51L868,188H817.24v-19.7Zm-75.74,48.55V188h25.16v28.85Z"
-            />
-            <path
-              class="cls-1"
-              d="M953.59,124.38h23.62v28.85H953.59v83.28H926.16V111.9h27.43Z"
-            />
-            <path
-              class="cls-1"
-              d="M1164.2,129.07h25v-19.6h32.69v19.6h27.15V236.51H1221.7V129.07h-32.46v28.84h-25v78.6h-27.44V46h27.44Z"
-            />
-            <path
-              id="Fill-9"
-              class="cls-1"
-              d="M41.16,219.62Q24,200.56,24,173.66t17.16-46.08q17.18-19.2,48.12-19.2t48.11,19.2q17.18,19.19,17.17,46.08t-17.17,46q-17.16,19-48.11,19T41.16,219.62ZM62,141.23Q52.52,154.07,52.52,174t9.53,32.37q9.53,12.44,27.23,12.44t27.23-12.44Q126.05,193.94,126,174t-9.53-32.84q-9.53-12.9-27.23-12.91T62,141.23Z"
-            />
-            <path
-              id="Fill-12"
-              class="cls-1"
-              d="M311.2,172.58q0-26.9,16.15-45.54t47.51-18.66q57.57,0,58.11,69.74H339.72q.27,18.52,9.39,29.6t26.56,11.09q11.9,0,19.93-5.55t10.21-16.08h25.41q-2.7,16.89-16.83,29.19t-39,12.3q-31.23,0-47.71-19.32T311.2,172.58Zm29.6-12.16h64.47q-1.89-32.17-30.95-32.17Q345.52,128.25,340.8,160.42Z"
-            />
-            <path
-              id="Fill-18"
-              class="cls-1"
-              d="M588.29,236.51V111.9h27.44v18.92q15.81-22.44,42.84-22.44,42,0,42,48.93v79.2H673.3V161.77q0-16.08-4.46-23.92T651.14,130q-17.43,0-26.42,12.7t-9,33.52v60.28Z"
-            />
-            <path
-              id="Fill-22"
-              class="cls-1"
-              d="M1060.14,108.38q23,0,36.09,11.49t16,30.55h-24.87q-4.72-22.17-27.17-22.17-17.43,0-27,12.91t-9.53,32.77q0,19.6,9.53,32.24T1061,218.81q24.87,0,28-26.36h24.87q-1.89,19.61-14.33,32.91T1061,238.67q-31.48,0-48.65-19t-17.17-46q0-26.9,17.17-46.08T1060.14,108.38Z"
-            />
-            <path
-              id="Fill-23"
-              class="cls-1"
-              d="M1281.86,236.51V112.24h27.44V236.51Zm0-145V66.13h27.44V91.49Z"
-            />
-            <polygon
-              id="Fill-24"
-              class="cls-1"
-              points="1331.73 112.24 1360.52 112.24 1391.87 209.07 1423.02 112.24 1451.81 112.24 1408.77 237.32 1374.98 237.32 1331.73 112.24"
-            />
-            <path
-              id="Fill-25"
-              class="cls-1"
-              d="M1459.71,172.58q0-26.9,16.15-45.54t47.51-18.66q57.57,0,58.12,69.74h-93.26q.27,18.52,9.39,29.6t26.56,11.09q11.89,0,19.94-5.55t10.2-16.08h25.41q-2.7,16.89-16.83,29.19t-39,12.3q-31.22,0-47.71-19.32T1459.71,172.58Zm29.6-12.16h64.47q-1.89-32.17-31-32.17Q1494,128.25,1489.31,160.42Z"
-            />
-          </g>
+          <use
+            xlink:href="./img/logo.svg#logo_svg"
+          ></use>
         </svg>
       </div>
       <div id="about">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          aria-hidden="true"
-          focusable="true"
-          class="about_svg"
           viewBox="0 0 60 20"
-          preserveAspectRatio="xMidYMid meet"
-          fill="currentColor"
         >
-          <g transform="scale(1)" stroke="none" class="dots">
-            <path
-              d="M10.001 7.8a2.2 2.2 0 1 0 0 4.402A2.2 2.2 0 0 0 10 7.8zm-7 0a2.2 2.2 0 1 0 0 4.402A2.2 2.2 0 0 0 3 7.8zm14 0a2.2 2.2 0 1 0 0 4.402A2.2 2.2 0 0 0 17 7.8z"
-            />
-          </g>
+          <use
+            xlink:href="./img/about.svg#about_svg"
+          ></use>
         </svg>
+        <div class="hidden" id="about-section">
+    <div>
+          <span>This is about section.</span>
+          <div>
+            <div>
+          <svg
+            viewBox="0 -10 80 80"
+          >
+            <use
+              xlink:href="./img/shapes-adjust.svg#shape_1"
+              class="shapes"
+            ></use>
+            </svg>
+          </div>
+            <div>
+            <span class="lighter">reading</span></div>
+          </div>
+          <div>
+            <div>
+          <svg
+            viewBox="0 -10 80 80"
+          >
+            <use
+              xlink:href="./img/shapes-adjust.svg#shape_3"
+              class="shapes"
+            ></use>
+            </svg>
+          </div>
+            <div>
+            <span class="lighter">imagery</span></div>
+          </div>
+          <div>
+            <div>
+          <svg
+            viewBox="0 -10 80 80"
+          >
+            <use
+              xlink:href="./img/shapes-adjust.svg#shape_6"
+            ></use>
+            </svg>
+          </div>
+            <div>
+            <span class="lighter">sound</span></div>
+          </div>
+          <div>
+            <div>
+          <svg
+            viewBox="0 -10 80 80"
+          >
+            <use
+              xlink:href="./img/shapes-adjust.svg#shape_8"
+            ></use>
+            </svg>
+          </div>
+            <div>
+            <span class="lighter">video</span></div>
+          </div>
+          <div>
+            <div>
+          <svg
+            viewBox="0 -10 80 80"
+          >
+            <use
+              xlink:href="./img/shapes-adjust.svg#shape_10"
+            ></use>
+            </svg>
+          </div>
+            <div>
+            <span class="lighter">experience</span></div>
+          </div>
+</div>
+        </div>
       </div>
       <div class="S1 node hidden">
         <div class="text">
         <div class="close"></div>
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             tincidunt nunc vitae velit semper efficitur. Nulla facilisis neque
             venenatis mollis faucibus. Pellentesque habitant morbi tristique
             senectus et netus et malesuada fames ac turpis egestas. Morbi non
@@ -505,40 +164,7 @@ main.background-move-4::after {
             euismod, scelerisque nunc non, egestas turpis. Integer quis nibh
             faucibus, posuere arcu et, congue justo. Sed nec porttitor tortor.
             Nulla fermentum erat sed leo ullamcorper, et pellentesque urna
-            laoreet. Proin congue ut tortor non posuere. Quisque interdum sem
-            lacus, eget imperdiet risus bibendum vitae. Duis luctus nulla sed
-            turpis ultrices accumsan. Fusce volutpat gravida leo nec elementum.
-            Mauris laoreet velit in sapien gravida, a tempus urna pharetra.
-            Curabitur fringilla placerat eros, ut sodales turpis. In eget sapien
-            felis. Aliquam in tincidunt nisi. Quisque vestibulum, quam id mollis
-            fringilla, enim libero euismod nisi, quis ornare lorem lorem eget
-            odio. Etiam eget commodo odio. In placerat ligula nibh, a laoreet
-            velit gravida a. Nunc aliquet justo euismod malesuada convallis.
-            Donec feugiat scelerisque neque, quis semper quam hendrerit sit
-            amet. Aenean id convallis nisi. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-            dictum erat eget ipsum semper, non vehicula arcu suscipit. Mauris
-            placerat sodales nulla quis aliquam. Pellentesque vestibulum
-            pellentesque massa non tincidunt. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Donec
-            lectus arcu, vestibulum ut turpis id, porttitor egestas nunc.
-            Quisque quis lectus volutpat, molestie sem a, lobortis elit.
-            Suspendisse vulputate metus dolor, eu dictum ipsum sollicitudin et.
-            Pellentesque feugiat nulla euismod, eleifend mauris vehicula,
-            fermentum lacus. Nam finibus condimentum mauris ac feugiat. Etiam
-            sed nunc tempus, efficitur orci id, accumsan purus. Nam id odio a
-            nulla auctor posuere. Maecenas venenatis magna in massa ornare, eu
-            mollis mi fermentum. Quisque vitae odio non felis tempor commodo.
-            Vivamus pretium, ante sed laoreet consequat, lacus lectus varius
-            lectus, eget luctus leo massa at massa. Maecenas luctus et leo vitae
-            vulputate. Sed in turpis fringilla orci vulputate hendrerit. Etiam
-            eu magna cursus tortor luctus pulvinar. Curabitur in sapien ac neque
-            condimentum sagittis vitae quis nisl. Curabitur molestie magna
-            tincidunt nisi aliquam pharetra a ut dolor. Pellentesque quis felis
-            id tellus tempus tincidunt. Vivamus in mauris vel massa varius
-            feugiat. Aenean dictum tellus in sodales dignissim. Duis egestas
-            velit fringilla turpis suscipit, eu porta nisl sodales. Ut eu
-            porttitor erat.
+            laoreet. Proin congue ut tortor non posuere.</span>
           </div>
         </div>
       </div>
@@ -546,7 +172,7 @@ main.background-move-4::after {
         <div class="text rtl">
         <div class="close"></div>
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             tincidunt nunc vitae velit semper efficitur. Nulla facilisis neque
             venenatis mollis faucibus. Pellentesque habitant morbi tristique
             senectus et netus et malesuada fames ac turpis egestas. Morbi non
@@ -560,45 +186,58 @@ main.background-move-4::after {
             lacus, eget imperdiet risus bibendum vitae. Duis luctus nulla sed
             turpis ultrices accumsan. Fusce volutpat gravida leo nec elementum.
             Mauris laoreet velit in sapien gravida, a tempus urna pharetra.
-            Curabitur fringilla placerat eros, ut sodales turpis. In eget sapien
-            felis. Aliquam in tincidunt nisi. Quisque vestibulum, quam id mollis
-            fringilla, enim libero euismod nisi, quis ornare lorem lorem eget
-            odio. Etiam eget commodo odio. In placerat ligula nibh, a laoreet
-            velit gravida a. Nunc aliquet justo euismod malesuada convallis.
-            Donec feugiat scelerisque neque, quis semper quam hendrerit sit
-            amet. Aenean id convallis nisi. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-            dictum erat eget ipsum semper, non vehicula arcu suscipit. Mauris
-            placerat sodales nulla quis aliquam. Pellentesque vestibulum
-            pellentesque massa non tincidunt. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos. Donec
-            lectus arcu, vestibulum ut turpis id, porttitor egestas nunc.
-            Quisque quis lectus volutpat, molestie sem a, lobortis elit.
-            Suspendisse vulputate metus dolor, eu dictum ipsum sollicitudin et.
-            Pellentesque feugiat nulla euismod, eleifend mauris vehicula,
-            fermentum lacus. Nam finibus condimentum mauris ac feugiat. Etiam
-            sed nunc tempus, efficitur orci id, accumsan purus. Nam id odio a
-            nulla auctor posuere. Maecenas venenatis magna in massa ornare, eu
-            mollis mi fermentum. Quisque vitae odio non felis tempor commodo.
-            Vivamus pretium, ante sed laoreet consequat, lacus lectus varius
-            lectus, eget luctus leo massa at massa. Maecenas luctus et leo vitae
-            vulputate. Sed in turpis fringilla orci vulputate hendrerit. Etiam
-            eu magna cursus tortor luctus pulvinar. Curabitur in sapien ac neque
-            condimentum sagittis vitae quis nisl. Curabitur molestie magna
-            tincidunt nisi aliquam pharetra a ut dolor. Pellentesque quis felis
-            id tellus tempus tincidunt. Vivamus in mauris vel massa varius
-            feugiat. Aenean dictum tellus in sodales dignissim. Duis egestas
-            velit fringilla turpis suscipit, eu porta nisl sodales. Ut eu
-            porttitor erat.
+            Curabitur fringilla placerat eros, ut sodales turpis.</span>
+            
           </div>
         </div>
       </div>
       <div class="S3 node hidden" style="width:56vw!important;">
         <div class="video">
-            <!-- <iframe
-              src="https://ocean-archive.org/embed/1957"
-              frameborder="0"
-            ></iframe> -->
+      <video controls class="video-source" preload="metadata" poster="./vid/Hyena Lullaby_2020.jpg">
+        <source src="./vid/Hyena Lullaby_2020_Wcredits_HD_720p.mp4" type="video/mp4"></source>
+      </video>
+
+      <div class="video-controls hidden">
+        <div class="video-progress">
+          <progress class="progress-bar" value="0" min="0"></progress>
+          <input class="seek" value="0" min="0" type="range" step="1">
+          <div class="seek-tooltip">00:00</div>
+        </div>
+        <div class="bottom-controls">
+          <div class="left-controls">
+            <button class="video-player play" data-title="Play">
+              <svg class="video-player playback-icons">
+                <use href="#play-icon"></use>
+                <use class="hidden" href="#pause"></use>
+              </svg>
+            </button>
+            <div class="volume-controls">
+              <button data-title="Mute" class="video-player volume-button">
+                <svg class="video-player">
+                  <use class="hidden volume-mute" href="#volume-mute"></use>
+                  <use class="hidden volume-low" href="#volume-low"></use>
+                  <use class="volume-high" href="#volume-high"></use>
+                </svg>
+              </button>
+              <input class="volume" value="1"
+              data-mute="0.5" type="range" max="1" min="0" step="0.01">
+            </div>
+            <div class="time">
+              <time class="time-elapsed">00:00</time>
+              <span> / </span>
+              <time class="duration">00:00</time>
+            </div>
+          </div>
+          <div class="right-controls">
+            <button data-title="Full screen" class="video-player fullscreen-button">
+              <svg class="video-player">
+                <use href="#fullscreen"></use>
+                <use href="#fullscreen-exit" class="hidden"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
         <div class="close"></div>
         </div>
       </div>
@@ -757,10 +396,50 @@ main.background-move-4::after {
       </div>
       <div class="S5 node hidden">
         <div class="video-rev">
-            <iframe
-              src="https://ocean-archive.org/embed/1957"
-              frameborder="0"
-            ></iframe>
+            <video controls class="video-source" preload="metadata" poster="./vid/Hyena Lullaby_2020.jpg" autoplay muted>
+        <source src="./vid/Hyena Lullaby_2020_Wcredits_HD_720p.mp4" type="video/mp4"></source>
+      </video>
+      <div class="video-controls hidden">
+        <div class="video-progress">
+          <progress class="progress-bar" value="0" min="0"></progress>
+          <input class="seek" value="0" min="0" type="range" step="1">
+          <div class="seek-tooltip">00:00</div>
+        </div>
+        <div class="bottom-controls">
+          <div class="left-controls">
+            <button class="video-player play" data-title="Play">
+              <svg class="video-player playback-icons">
+                <use href="#play-icon"></use>
+                <use class="hidden" href="#pause"></use>
+              </svg>
+            </button>
+            <div class="volume-controls">
+              <button data-title="Mute" class="video-player volume-button">
+                <svg class="video-player">
+                  <use class="hidden volume-mute" href="#volume-mute"></use>
+                  <use class="hidden volume-low" href="#volume-low"></use>
+                  <use class="volume-high" href="#volume-high"></use>
+                </svg>
+              </button>
+              <input class="volume" value="1"
+              data-mute="0.5" type="range" max="1" min="0" step="0.01">
+            </div>
+            <div class="time">
+              <time class="time-elapsed">00:00</time>
+              <span> / </span>
+              <time class="duration">00:00</time>
+            </div>
+          </div>
+          <div class="right-controls">
+            <button data-title="Full screen" class="video-player fullscreen-button">
+              <svg class="video-player">
+                <use href="#fullscreen"></use>
+                <use href="#fullscreen-exit" class="hidden"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
           <div class="close" style="margin-right: -20px"></div>
         </div>
         <div class="island-rev hidden">
@@ -815,58 +494,39 @@ main.background-move-4::after {
         />
       </div>
       <div class="island">
-        <div style="width: 35vw;
-    position: relative;
-    text-align: left;
-    right: unset;
-    top: 5vh;
-    object-fit: unset;
-    object-position: unset;
-    margin: unset;
-    overflow: unset;
-    left: unset;
-    margin-left: 2vw;">
+        <div class="welcome" style="width: 35vw;top: 3vh;">
           <span><strong>Welcome to the island.</strong><br /><br /> Thank you for your answer.<br /><br />
             Now, you can dive into <i>The Soul Expanding Ocean #1: Taloi Havini</i>
             and the story of the artwork <i>Answer to the Call</i> (2021). </span>
           </span>
         </div>
-        <div style="width: 40vw;
-    position: relative;
-    text-align: left;
-    right: unset;
-    top: 63vh;
-    object-fit: unset;
-    object-position: unset;
-    margin: unset;
-    overflow: unset;
-    left: unset;margin-left: 2vw;">
+        <div class="welcome" style="width: 40vw;top: 56vh;">
           <span>Tap on any of the 22 marked points to see more.  </span>
         </div>
         <svg
           viewBox="0 0 1920 1080"
           preserveAspectRatio="xMidYMid meet"
           fill="currentColor"
-          style="position: absolute; z-index: 65 !important"
+          style="position: absolute; z-index: 65 !important;cursor:default!important;"
         >
           <use
             xlink:href="./img/shapes-adjust.svg#shape_1"
             id="S1"
-            style="x: 423; y: 675"
+            style="x: 423; y: 675;fill:#ff373a;"
             class="shapes"
             onclick="tryTwo(this.id)"
           ></use>
           <use
             xlink:href="./img/shapes-adjust.svg#shape_3"
             id="S2"
-            style="x: 284; y: 575"
+            style="x: 284; y: 575;fill:#ff373a;"
             class="shapes"
             onclick="tryOne(this.id)"
           ></use>
           <use
             xlink:href="./img/shapes-adjust.svg#shape_3"
             id="S3"
-            style="x: 932; y: 875"
+            style="x: 932; y: 875;fill:#ff373a;"
             class="shapes"
             onclick="tryOne(this.id)"
           ></use>
@@ -880,14 +540,14 @@ main.background-move-4::after {
           <use
             xlink:href="./img/shapes-adjust.svg#shape_1"
             id="S5"
-            style="x: 1672; y: 832"
+            style="x: 1672; y: 832;fill:#ff373a;"
             class="shapes"
             onclick="tryOne(this.id)"
           ></use>
           <use
             xlink:href="./img/shapes-adjust.svg#shape_6"
             id="S6"
-            style="x: 620; y: 432"
+            style="x: 620; y: 432;fill:#ff373a;"
             class="shapes"
             onclick="tryOne(this.id)"
           ></use>
@@ -1003,46 +663,44 @@ main.background-move-4::after {
             class="shapes"
             onclick="tryOne(this.id)"
           ></use>
-          <!-- <circle
-            id="N1"
-            cx="453"
-            cy="582"
-            onclick="tryOne(this.id)"
-            class="hidden"
-          />
-          <circle
-            id="N2"
-            cx="623"
-            cy="732"
-            onclick="tryOne(this.id)"
-            class="hidden"
-          />
-          <circle
-            id="N3"
-            cx="834"
-            cy="612"
-            onclick="tryOne(this.id)"
-            class="hidden"
-          />
-          <circle
-            id="N5"
-            cx="1124"
-            cy="242"
-            onclick="tryTwo(this.id)"
-            class="hidden"
-          /> -->
         </svg>
       </div>
     </main>
+    <svg style="display: none">
+    <defs>
+      <symbol id="pause" viewBox="0 0 24 24">
+        <path d="M14.016 5.016h3.984v13.969h-3.984v-13.969zM6 18.984v-13.969h3.984v13.969h-3.984z"></path>
+      </symbol>
+      <symbol id="play-icon" viewBox="0 0 24 24">
+        <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
+      </symbol>
+      <symbol id="volume-high" viewBox="0 0 24 24">
+      <path d="M14.016 3.234q3.047 0.656 5.016 3.117t1.969 5.648-1.969 5.648-5.016 3.117v-2.063q2.203-0.656 3.586-2.484t1.383-4.219-1.383-4.219-3.586-2.484v-2.063zM16.5 12q0 2.813-2.484 4.031v-8.063q1.031 0.516 1.758 1.688t0.727 2.344zM3 9h3.984l5.016-5.016v16.031l-5.016-5.016h-3.984v-6z"></path>
+      </symbol>
+      <symbol id="volume-low" viewBox="0 0 24 24">
+      <path d="M5.016 9h3.984l5.016-5.016v16.031l-5.016-5.016h-3.984v-6zM18.516 12q0 2.766-2.531 4.031v-8.063q1.031 0.516 1.781 1.711t0.75 2.32z"></path>
+      </symbol>
+      <symbol id="volume-mute" viewBox="0 0 24 24">
+      <path d="M12 3.984v4.219l-2.109-2.109zM4.266 3l16.734 16.734-1.266 1.266-2.063-2.063q-1.547 1.313-3.656 1.828v-2.063q1.172-0.328 2.25-1.172l-4.266-4.266v6.75l-5.016-5.016h-3.984v-6h4.734l-4.734-4.734zM18.984 12q0-2.391-1.383-4.219t-3.586-2.484v-2.063q3.047 0.656 5.016 3.117t1.969 5.648q0 2.203-1.031 4.172l-1.5-1.547q0.516-1.266 0.516-2.625zM16.5 12q0 0.422-0.047 0.609l-2.438-2.438v-2.203q1.031 0.516 1.758 1.688t0.727 2.344z"></path>
+      </symbol>
+      <symbol id="fullscreen" viewBox="0 0 24 24">
+      <path d="M14.016 5.016h4.969v4.969h-1.969v-3h-3v-1.969zM17.016 17.016v-3h1.969v4.969h-4.969v-1.969h3zM5.016 9.984v-4.969h4.969v1.969h-3v3h-1.969zM6.984 14.016v3h3v1.969h-4.969v-4.969h1.969z"></path>
+      </symbol>
+      <symbol id="fullscreen-exit" viewBox="0 0 24 24">
+      <path d="M15.984 8.016h3v1.969h-4.969v-4.969h1.969v3zM14.016 18.984v-4.969h4.969v1.969h-3v3h-1.969zM8.016 8.016v-3h1.969v4.969h-4.969v-1.969h3zM5.016 15.984v-1.969h4.969v4.969h-1.969v-3h-3z"></path>
+      </symbol>
+    </defs>
+  </svg>
     <script type="text/javascript">
       ("use strict");
-      const [nodes, image, islands] = [
+      let firstClick = false;
+      const [nodes, image, islands,about,aboutSection] = [
         [
           { id: "S1", moveX: "-50%", moveY: "-50%", content: "text", embed: {} },
           { id: "S2", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
           { id: "S3", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"https://ocean-archive.org/embed/1626",title:"Hyena lullaby"} },
           { id: "S4", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
-          { id: "S5", moveX: "0%", moveY: "0%", content: "video", embed: {url:"https://ocean-archive.org/embed/1626",title:"Hyena lullaby"} },
+          { id: "S5", moveX: "0%", moveY: "0%", content: "video-action", embed: {url:"https://ocean-archive.org/embed/1626",title:"Hyena lullaby"} },
           { id: "S6", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
           { id: "S7", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
           { id: "S8", moveX: "-50%", moveY: "-50%", content: "video", embed: {url:"",title:""} },
@@ -1063,13 +721,26 @@ main.background-move-4::after {
         ],
         document.getElementById("island"),
         [].slice.call(document.querySelectorAll(".island,#island,svg")),
+        document.getElementById("about"),
+        document.getElementById("about-section")
       ];
+     about.addEventListener("click", function () {
+       document.querySelector("#logo svg").classList.toggle("invert");
+       document.querySelector("#about svg").classList.toggle("invert");
+       aboutSection.classList.toggle("hidden")
+            });
       image.onload = function () {
         nodes.map((n) => {
           document.getElementById(n.id).classList.remove("hidden");
         });
       };
       function moveIt(id, where, moveX, moveY, content) {
+        if (firstClick === false) {
+          firstClick = true;
+          document.querySelectorAll('.welcome').forEach((e) => {
+                      e.classList.toggle("hidden");
+                    });;
+        }
         document.getElementById("about").classList.toggle("hidden");
         document.getElementById("logo").classList.toggle("hidden");
         if (where === "out") {
@@ -1088,7 +759,6 @@ main.background-move-4::after {
             i.style.cursor = "default";
             i.setAttribute("pointer-events","none");
           } else {
-            i.style.cursor = "pointer";
             i.setAttribute("pointer-events","auto");
           }
         });
@@ -1100,36 +770,187 @@ main.background-move-4::after {
       function tryOne(id) {
         const node = nodes.find((n) => n.id === id);
         const el = document.getElementById(id);
-        // if (node.content==="video") {
-        //   if (node.embed.title!=="" & node.embed.url!=="") {
-        //       function iframeLoaded() {
-        //         console.log("happende");
-        //       }
-        //       const iframe = document.createElement('iframe');
-        //       // iframe.setAttribute("scrolling", "no");
-        //       // iframe.setAttribute("frameborder", "0");
-        //       iframe.setAttribute("title", node.embed.title);
-        //       iframe.style.zIndex = "9999999999999999";
-        //       // iframe.style.minHeight = "100%";
-        //       // iframe.style.minWidth = "100%";
-        //       // iframe.style.position = "absolute";
-        //       // iframe.style.left = "0";
-        //       // iframe.style.right = "0";
-        //       // iframe.setAttribute("width", "100%");
-        //       // iframe.setAttribute("height", "100%");
-        //       iframe.src = node.embed.url;
-        //       const mainnn = document.querySelector("main")
-        //       //document.querySelector("main").appendChild(iframe);
-        //       mainnn.insertBefore(iframe, mainnn.firstChild);
-        //       //document.querySelector("div." + el.id + " div").appendChild(iframe);
-        //       iframe.onload=iframeLoaded();
-        //   }
-        // }
-        document
-          .querySelector("div." + el.id + " div div.close")
-          .addEventListener("click", function () {
-            moveIt(el.id, "back", "0%", "0%", node.content);
-          });
+        const nodeSpace = document
+          .querySelector("div." + el.id)
+              if (node.content === "video-action") {
+                document.querySelector(".island-rev").classList.remove("hidden");
+              }
+        if (node.content==="video" | node.content==="video-action") {
+            function togglePlay() {
+              if (video.paused || video.ended) {
+                video.play();
+              } else {
+                video.pause();
+              }
+            }
+            function updatePlayButton() {
+              if (video.paused) {
+                playButton.setAttribute('data-title', 'Play');
+              } else {
+                playButton.setAttribute('data-title', 'Pause');
+              }
+            }
+            function formatTime(timeInSeconds) {
+              const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
+              return {
+                minutes: result.substr(3, 2),
+                seconds: result.substr(6, 2),
+              };
+            }
+            function initializeVideo() {
+              const videoDuration = Math.round(video.duration);
+              seek.setAttribute('max', videoDuration);
+              progressBar.setAttribute('max', videoDuration);
+              const time = formatTime(videoDuration);
+              duration.innerText = `${time.minutes}:${time.seconds}`;
+              duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+            }
+            function updateTimeElapsed() {
+              const time = formatTime(Math.round(video.currentTime));
+              timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
+              timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+            }
+            function updateProgress() {
+              seek.value = Math.floor(video.currentTime);
+              progressBar.value = Math.floor(video.currentTime);
+            }
+            function updateSeekTooltip(event) {
+              const skipTo = Math.round(
+                (event.offsetX / event.target.clientWidth) *
+                  parseInt(event.target.getAttribute('max'), 10)
+              );
+              seek.setAttribute('data-seek', skipTo);
+              const t = formatTime(skipTo);
+              seekTooltip.textContent = `${t.minutes}:${t.seconds}`;
+              const rect = video.getBoundingClientRect();
+              seekTooltip.style.left = `${event.pageX - rect.left}px`;
+            }
+            function skipAhead(event) {
+              const skipTo = event.target.dataset.seek
+                ? event.target.dataset.seek
+                : event.target.value;
+              video.currentTime = skipTo;
+              progressBar.value = skipTo;
+              seek.value = skipTo;
+            }
+            function updateVolume() {
+              if (video.muted) {
+                video.muted = false;
+              }
+              video.volume = volume.value;
+            }
+            function updateVolumeIcon() {
+              volumeIcons.forEach((icon) => {
+                icon.classList.add('hidden');
+              });
+              volumeButton.setAttribute('data-title', 'Mute');
+              if (video.muted || video.volume === 0) {
+                volumeMute.classList.remove('hidden');
+                volumeButton.setAttribute('data-title', 'Unmute');
+              } else if (video.volume > 0 && video.volume <= 0.5) {
+                volumeLow.classList.remove('hidden');
+              } else {
+                volumeHigh.classList.remove('hidden');
+              }
+            }
+            function toggleMute() {
+              video.muted = !video.muted;
+              if (video.muted) {
+                volume.setAttribute('data-volume', volume.value);
+                volume.value = 0;
+              } else {
+                volume.value = volume.dataset.volume;
+              }
+            }
+            function toggleFullScreen() {
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              } else if (document.webkitFullscreenElement) {
+                document.webkitExitFullscreen();
+              } else if (videoContainer.webkitRequestFullscreen) {
+                videoContainer.webkitRequestFullscreen();
+              } else {
+                videoContainer.requestFullscreen();
+              }
+            }
+            function updateFullscreenButton() {
+              fullscreenIcons.forEach((icon) => icon.classList.toggle('hidden'));
+
+              if (document.fullscreenElement) {
+                fullscreenButton.setAttribute('data-title', 'Exit full screen');
+              } else {
+                fullscreenButton.setAttribute('data-title', 'Full screen');
+              }
+            }
+            function hideControls() {
+              if (video.paused) {
+                return;
+              }
+              videoControls.classList.add('hide');
+            }
+            function showControls() {
+              videoControls.classList.remove('hide');
+            }
+            const videoContainer = nodeSpace.querySelector('div');
+            const video = videoContainer.querySelector('.video-source');
+            const videoControls = videoContainer.querySelector('.video-controls');
+            const timeElapsed = videoControls.querySelector('.bottom-controls .left-controls .time-elapsed');
+            const playButton = videoControls.querySelector('.bottom-controls .left-controls .play');
+            const duration = videoControls.querySelector('.bottom-controls .left-controls .duration');
+            const volume = videoControls.querySelector('.bottom-controls .left-controls .volume-controls .volume');
+            const volumeButton = videoControls.querySelector('.bottom-controls .left-controls .volume-controls .volume-button');
+            const fullscreenButton = videoControls.querySelector('.bottom-controls .right-controls .fullscreen-button');
+            const progressBar = videoControls.querySelector('.video-progress .progress-bar');
+            const seek = videoControls.querySelector('.video-progress .seek');
+            const seekTooltip = videoControls.querySelector('.video-progress .seek-tooltip');
+            const volumeIcons = volumeButton.querySelectorAll('use');
+            const volumeMute = volumeButton.querySelector('svg use.volume-mute');
+            const volumeLow = volumeButton.querySelector('svg use.volume-low');
+            const volumeHigh = volumeButton.querySelector('svg use.volume-high');
+            const fullscreenIcons = fullscreenButton.querySelectorAll('use');
+            const videoWorks = !!document.createElement('video').canPlayType;
+            video.addEventListener('loadeddata', function() {
+            if (videoWorks) {
+              video.controls = false;
+              videoControls.classList.remove('hidden');
+            }
+            
+            playButton.addEventListener('click', togglePlay);
+            video.addEventListener('play', updatePlayButton);
+            video.addEventListener('pause', updatePlayButton);
+            video.addEventListener('loadedmetadata', initializeVideo);
+            video.addEventListener('timeupdate', updateTimeElapsed);
+            video.addEventListener('timeupdate', updateProgress);
+            video.addEventListener('volumechange', updateVolumeIcon);
+            video.addEventListener('click', togglePlay);
+            video.addEventListener('mouseenter', showControls);
+            video.addEventListener('mouseleave', hideControls);
+            videoControls.addEventListener('mouseenter', showControls);
+            videoControls.addEventListener('mouseleave', hideControls);
+            seek.addEventListener('mousemove', updateSeekTooltip);
+            seek.addEventListener('input', skipAhead);
+            volume.addEventListener('input', updateVolume);
+            volumeButton.addEventListener('click', toggleMute);
+            fullscreenButton.addEventListener('click', toggleFullScreen);
+            videoContainer.addEventListener('fullscreenchange', updateFullscreenButton);
+            }, false);
+          document
+            .querySelector("div." + el.id + " div div.close")
+            .addEventListener("click", function () {
+              if (node.content === "video-action") {
+                document.querySelector(".island-rev").classList.remove("hidden");
+                document.querySelector(".island-rev").classList.add("hidden");
+              }
+              video.pause();
+              moveIt(el.id, "back", "0%", "0%", node.content);
+            });
+        } else {
+          document
+            .querySelector("div." + el.id + " div div.close")
+            .addEventListener("click", function () {
+              moveIt(el.id, "back", "0%", "0%", node.content);
+            });
+        }
         moveIt(el.id, "out", node.moveX, node.moveY, node.content);
       }
       function tryTwo(id) {
