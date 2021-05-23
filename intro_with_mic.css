@@ -1017,13 +1017,39 @@ main.background-move-5::after {
     font-size: calc(22px + 0.4vw);
   }
 }
+.blinker {
+  -webkit-animation: blinker 4s linear infinite;
+  animation: blinker 4s linear infinite;
+}
 
+@keyframes blinker {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes blinker {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
 /* ISLAND SECTION */
 .about_oa img,
 .about_os img,
 .about_ac img {
   width: 18vw;
-  margin: 2vh 0vw !important;
+  margin: 1.5vh 0vw !important;
   display: block;
 }
 .about_oa img {

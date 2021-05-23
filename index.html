@@ -135,7 +135,7 @@
           /></span>
           <span class="lighter">
             &#x2a; Don't worry, you are not being recorded, so don't be afraid
-            to sing. &#128521;
+            to sing. 5 seconds are enough &#128521;
           </span>
         </div>
         <div id="recording-feedback" class="feedback">
@@ -202,17 +202,7 @@
       </div>
       <div class="S3 node hidden">
         <div class="video">
-          <video
-            controls
-            class="video-source"
-            preload="metadata"
-            poster="./vid/Hyena Lullaby_2020.jpg"
-          >
-            <source
-              src="./vid/Hyena Lullaby_2020_Wcredits_HD_720p.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <iframe src="https://ocean-archive.org/embed/1626" title="Hyena lullaby" frameborder="0" scrolling="no"/></iframe>
           <div class="close"></div>
         </div>
       </div>
@@ -949,7 +939,7 @@
             id: "S3",
             moveX: "-50%",
             moveY: "-50%",
-            content: "video",
+            content: "video-embed-oa",
             embed: {
               url: "https://ocean-archive.org/embed/1626",
               title: "Hyena lullaby",
@@ -1283,6 +1273,7 @@
             e.classList.toggle("hidden");
           });
           about.classList.toggle("hidden");
+          aboutButton.classList.add("blinker");
         }, 6000);
       }
       function moveIt(id, where, moveX, moveY, content) {
@@ -1290,6 +1281,7 @@
           firstClick = true;
           notes.classList.toggle("hidden");
         }
+        aboutButton.classList.remove("blinker");
         about.classList.toggle("hidden");
         logo.classList.toggle("hidden");
         if (where === "out") {
@@ -1485,6 +1477,17 @@
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
+        } else if (node.content === "video-embed-oa") {
+              nodeSpace.setAttribute(
+                "style",
+                "height: calc(calc(0.56 * " +
+                  window.innerWidth +
+                  " * 0.56249816311px) - 60px)"
+              );
+          close.addEventListener("click", function clean(event) {
+            moveIt(el.id, "back", "0%", "0%", node.content);
+            event.currentTarget.removeEventListener(event.type, clean);
+          });
         } else if (node.content === "audio") {
           const calculateTime = (secs) => {
             const minutes = Math.floor(secs / 60);
@@ -1564,6 +1567,7 @@
         [logo, aboutButton].forEach((e) => {
           e.classList.toggle("invert");
         });
+        aboutButton.classList.remove("blinker");
         aboutSection.classList.toggle("hidden");
       });
     </script>

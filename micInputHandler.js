@@ -11,7 +11,7 @@ const [
   secondsThreshold,
   volumeThreshold,
   minHeight,
-] = [canvas.getContext("2d"), new Array(230), new Array(), 1, 0.01, 1.5];
+] = [canvas.getContext("2d"), new Array(230), new Array(), 5, 0.05, 1.5];
 let [satisfyingDurationMet, shouldStop, stopped] = [false, false, false];
 
 class AudioVisualizer {
