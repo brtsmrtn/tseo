@@ -13,9 +13,6 @@
       media="screen"
     />
     <style>
-      #svg-filter {
-        display: none;
-      }
       @font-face {
         font-family: "Amare Alta";
         font-style: normal;
@@ -117,7 +114,6 @@
               <audio
                 preload="false"
                 src="./nodes/sound/ATTC Kuakumba Bird of Paradise 30 sec sample.mp3"
-                style="width: 100%"
               ></audio>
             </div>
           </div>
@@ -127,9 +123,7 @@
             <button onclick="passParticipation()">I'D LIKE TO ANSWER</button>
           </div>
           <div class="space">
-            <button onclick="goToContent('yes')" style="box-shadow: unset">
-              SKIP
-            </button>
+            <button class="skip" onclick="goToContent('yes')">SKIP</button>
           </div>
         </div>
       </div>
@@ -152,9 +146,9 @@
           </div>
           <div class="space">
             <button
+              class="skip"
               id="skip-recording"
               onclick="goToContent('yes')"
-              style="box-shadow: unset"
             >
               SKIP
             </button>
@@ -206,7 +200,7 @@
           </div>
         </div>
       </div>
-      <div class="S3 node hidden" style="width: 56vw !important">
+      <div class="S3 node hidden">
         <div class="video">
           <video
             controls
@@ -219,6 +213,20 @@
               type="video/mp4"
             />
           </video>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="S4 node hidden">
+        <div class="video">
+          <iframe
+            id="S4_video"
+            src="https://www.youtube.com/embed/iIkl9-6qINk?playlist=iIkl9-6qINk&autoplay=0&rel=0&enablejsapi=1"
+            title="Answering the call of the ocean: Artist Taloi Havini explores the sound of the sea"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            scrolling="no"
+          ></iframe>
+
           <div class="close"></div>
         </div>
       </div>
@@ -254,14 +262,89 @@
             <div class="title-time"><span class="ultralighter"></span></div>
             <audio
               preload="false"
-              src="https://audio.ocean-archive.org/private/eu-central-1:12102e0b-bb96-42f0-9d3c-1df78ee120b2/418b7876-0b02-4d53-b0c4-38683f95c14b/6e46a790-b47c-11ea-ab3f-b3e2d9e4ba0f-Sonic Warfare _ Collateral Damage.m4a"
-              style="width: 100%"
+              src="./nodes/sound/ATTC Kuakumba Bird of Paradise 30 sec sample.mp3"
             ></audio>
             <div class="close"></div>
           </div>
         </div>
       </div>
-      <div class="S10 node hidden" style="width: 56vw !important">
+      <div class="S7 node hidden">
+        <div class="audio">
+          <div class="audio-controls">
+            <div class="audio-wave"></div>
+            <div class="audio-state">
+              <svg
+                fill="#6f00ff"
+                viewBox="0 0 448 512"
+                height="1.5em"
+                width="1.5em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+                ></path>
+              </svg>
+              <svg
+                class="hide"
+                fill="#6f00ff"
+                viewBox="0 0 448 512"
+                height="1.5em"
+                width="1.5em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"
+                ></path>
+              </svg>
+            </div>
+            <div class="title-time"><span class="ultralighter"></span></div>
+            <audio
+              preload="false"
+              src="./nodes/sound/ATTC Ocarina and Panpipe 30 sec sample.mp3"
+            ></audio>
+            <div class="close"></div>
+          </div>
+        </div>
+      </div>
+      <div class="S8 node hidden">
+        <div class="audio">
+          <div class="audio-controls">
+            <div class="audio-wave"></div>
+            <div class="audio-state">
+              <svg
+                fill="#6f00ff"
+                viewBox="0 0 448 512"
+                height="1.5em"
+                width="1.5em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+                ></path>
+              </svg>
+              <svg
+                class="hide"
+                fill="#6f00ff"
+                viewBox="0 0 448 512"
+                height="1.5em"
+                width="1.5em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"
+                ></path>
+              </svg>
+            </div>
+            <div class="title-time"><span class="ultralighter"></span></div>
+            <audio
+              preload="false"
+              src="./nodes/sound/ATTC Ocean Meditation 30 sec sample.mp3"
+            ></audio>
+            <div class="close"></div>
+          </div>
+        </div>
+      </div>
+      <div class="S10 node hidden">
         <div class="video">
           <video
             controls="controls"
@@ -297,7 +380,6 @@
             loop
             playsinline
             webkit-playsinline
-            style="width: 100% !important; object-fit: contain"
             xmlns="http://www.w3.org/2000/svg"
           >
             <source
@@ -306,7 +388,7 @@
             />
             <source src="./nodes/vid/Taloi 1b_sound.mp4" type="video/mp4" />
           </video>
-          <div class="close" style="margin-right: -20px"></div>
+          <div class="close"></div>
         </div>
         <div class="island-rev hidden">
           <svg
@@ -353,12 +435,10 @@
             class="video-source"
             preload="metadata"
             poster="./vid/Hyena Lullaby_2020.jpg"
-            autoplay
             loop
             muted
             playsinline
             webkit-playsinline
-            style="width: 100% !important"
             xmlns="http://www.w3.org/2000/svg"
           >
             <source
@@ -366,7 +446,7 @@
               type="video/mp4"
             />
           </video>
-          <div class="close" style="margin-right: -20px"></div>
+          <div class="close"></div>
         </div>
         <div class="island-rev hidden">
           <svg
@@ -423,18 +503,22 @@
           <img
             src="./nodes/images/FK201122-Area4-Complete_Falkor_Coverage.jpg"
           />
-          <div
-            style="
-              height: 100%;
-              width: 100%;
-              margin: unset;
-              display: flex;
-              padding: 0px 10px;
-              overflow-y: hidden;
-              align-items: center;
-            "
-          >
+          <div>
             <span class="ultralighter">This image is ....</span>
+          </div>
+          <div class="close"></div>
+        </div>
+      </div>
+      <div class="S19 node hidden">
+        <div class="image">
+          <img
+            src="./nodes/images/Still_image_of_Bougainville_from_Habitat_series_by_Taloi_Havini_2019_5.jpg"
+          />
+          <div>
+            <span class="ultralighter"
+              >Still image of Bougainville from Habitat series by Taloi Havini
+              2019</span
+            >
           </div>
           <div class="close"></div>
         </div>
@@ -447,7 +531,6 @@
           preserveAspectRatio="xMidYMid meet"
           width="1920"
           height="1080"
-          style="position: absolute; cursor: default !important"
         >
           <use href="./img/shapes-adjust.svg#island"></use>
         </svg>
@@ -460,11 +543,6 @@
           preserveAspectRatio="xMidYMid meet"
           fill="currentColor"
           class="nodes"
-          style="
-            position: fixed;
-            z-index: 65 !important;
-            cursor: default !important;
-          "
         >
           <filter
             id="filter"
@@ -513,10 +591,11 @@
             onclick="toggleNode(this.id)"
           ></use>
           <use
-            href="./img/shapes-adjust.svg#shape_11"
+            href="./img/shapes-adjust.svg#shape_8"
             id="S4"
-            x="1264"
-            y="512"
+            x="650"
+            y="432"
+            class="svg_video"
             onclick="toggleNode(this.id)"
           ></use>
           <use
@@ -531,22 +610,24 @@
             href="./img/shapes-adjust.svg#shape_6"
             id="S6"
             class="svg_audio"
-            x="650"
-            y="432"
+            x="1264"
+            y="512"
             onclick="toggleNode(this.id)"
           ></use>
           <use
-            href="./img/shapes-adjust.svg#shape_11"
+            href="./img/shapes-adjust.svg#shape_6"
             id="S7"
+            class="svg_audio"
             x="1362"
             y="587"
             onclick="toggleNode(this.id)"
           ></use>
           <use
-            href="./img/shapes-adjust.svg#shape_11"
+            href="./img/shapes-adjust.svg#shape_6"
+            class="svg_audio"
             id="S8"
-            x="1311"
-            y="306"
+            x="1162"
+            y="612"
             onclick="toggleNode(this.id)"
           ></use>
           <use
@@ -625,8 +706,9 @@
             onclick="toggleNode(this.id)"
           ></use>
           <use
-            href="./img/shapes-adjust.svg#shape_11"
+            href="./img/shapes-adjust.svg#shape_3"
             id="S19"
+            class="svg_image"
             x="453"
             y="675"
             onclick="toggleNode(this.id)"
@@ -641,8 +723,8 @@
           <use
             href="./img/shapes-adjust.svg#shape_11"
             id="S21"
-            x="1162"
-            y="612"
+            x="1311"
+            y="306"
             onclick="toggleNode(this.id)"
           ></use>
           <use
@@ -705,7 +787,7 @@
       <img src="./img/about.png" />
       <div class="hidden" id="about-section">
         <div>
-          <span><strong>This is about section.</strong></span>
+          <span><strong>This is about section.</strong><br /><br /></span>
           <div>
             <div>
               <svg viewBox="0 -10 80 80">
@@ -770,6 +852,28 @@
             <div>
               <span class="lighter">experience</span>
             </div>
+          </div>
+          <div>&nbsp;</div>
+          <div class="about_os">
+            <img src="./img/oceanspace.png" />
+          </div>
+          <div class="about_oa">
+            <img src="./img/OA_type_white.png" />
+          </div>
+          <div class="about_ac">
+            <img src="./img/tba21-academy.png" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <span
+              >Taloi Havini was born in the Autonomous Region of Bougainville,
+              in the South West Pacific Ocean. Read more about her on her
+              <a href="https://www.taloihavini.com/" target="blank">website</a
+              >.<br /><br />
+            </span>
+            <img src="./img/Taloi_Havini_by_Zan_Wimberley.jpg" />
+            <span class="courtesy">Taloi Havini. Photo: Zan Wimberley</span>
           </div>
         </div>
       </div>
@@ -851,7 +955,17 @@
               title: "Hyena lullaby",
             },
           },
-          { id: "S4", moveX: "50%", moveY: "50%", content: "video", embed: {} },
+          {
+            id: "S4",
+            moveX: "50%",
+            moveY: "50%",
+            content: "video-embed",
+            embed: {
+              url: "https://www.youtube.com/embed/iIkl9-6qINk",
+              title:
+                "Answering the call of the ocean: Artist Taloi Havini explores the sound of the sea",
+            },
+          },
           {
             id: "S5",
             moveX: "0%",
@@ -867,15 +981,21 @@
             moveX: "0%",
             moveY: "0%",
             content: "audio",
-            embed: { url: "", title: "Audio XY" },
+            embed: { url: "", title: "ATTC Kuakumba Bird of Paradise" },
           },
-          { id: "S7", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          {
+            id: "S7",
+            moveX: "0%",
+            moveY: "0%",
+            content: "audio",
+            embed: { url: "", title: "ATTC Ocarina and Panpipe" },
+          },
           {
             id: "S8",
-            moveX: "-50%",
-            moveY: "-50%",
-            content: "video",
-            embed: { url: "", title: "" },
+            moveX: "0%",
+            moveY: "0%",
+            content: "audio",
+            embed: { url: "", title: "ATTC Ocean Meditation" },
           },
           { id: "S9", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
           {
@@ -941,7 +1061,13 @@
             content: "image",
             embed: {},
           },
-          { id: "S19", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          {
+            id: "S19",
+            moveX: "0%",
+            moveY: "100%",
+            content: "image",
+            embed: {},
+          },
           {
             id: "S20",
             moveX: "0%",
@@ -977,17 +1103,11 @@
         document.body.appendChild(document.createElement("script")).src =
           "micInputHandler.js";
       }
-      //   image.onload = function () {
-      //     console.log("happened");
-      //   };
       function passIntro() {
         document.querySelector("main").classList.toggle("cover");
-        document.getElementById("intro-feedback").classList.toggle("start");
         document
-          .querySelectorAll("#intro-feedback,#intro-message")
-          .forEach(function (e) {
-            e.classList.toggle("intro-feedback-move");
-          });
+          .getElementById("intro")
+          .classList.toggle("intro-feedback-move");
         document.querySelector("main").classList.toggle("background-move-1");
         document.getElementById("participation").classList.toggle("hidden");
         document
@@ -1209,6 +1329,7 @@
           });
         } else if (node.content === "image-action") {
           if (el.id === "S12") {
+            const img = nodeSpace.querySelector("div.image-action img");
             nodes.classList.add("hidden");
             island.classList.remove("start");
             island.classList.add("hidden");
@@ -1226,7 +1347,6 @@
                 " * 7 * 622px),calc(" +
                 window.innerHeight / 1949 +
                 " * 7 * 796px)) scale(7)";
-              const img = nodeSpace.querySelector("div.image-action img");
               img.setAttribute(
                 "style",
                 "transform: " +
@@ -1257,6 +1377,18 @@
               nodeSpace
                 .querySelector("div.image-action img")
                 .classList.toggle("hidden");
+              const transform =
+                "translate(0px,0px) rotate(0deg) translate(0px,0px) scale(1)";
+              img.setAttribute(
+                "style",
+                "transform: " +
+                  transform +
+                  "; -webkit-transform: " +
+                  transform +
+                  "; -ms-transform: " +
+                  transform +
+                  ";"
+              );
               moveIt(el.id, "back", "0%", "0%", node.content);
               event.currentTarget.removeEventListener(event.type, clean);
             });
@@ -1340,6 +1472,16 @@
             } else if (node.content === "video") {
               video.pause();
             }
+            moveIt(el.id, "back", "0%", "0%", node.content);
+            event.currentTarget.removeEventListener(event.type, clean);
+          });
+        } else if (node.content === "video-embed") {
+          const video = document.getElementById(el.id + "_video");
+          close.addEventListener("click", function clean(event) {
+            video.contentWindow.postMessage(
+              '{"event":"command","func":"stopVideo","args":""}',
+              "*"
+            );
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
