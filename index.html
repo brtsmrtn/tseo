@@ -1493,7 +1493,7 @@
               );
               const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
             setTimeout(function () {
-              console.log(innerDoc.querySelector("html body"))
+              console.log(innerDoc.body)
             }, 2000);
                //div div div div div:nth-child(2) div div video
           close.addEventListener("click", function clean(event) {
