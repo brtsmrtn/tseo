@@ -1485,12 +1485,12 @@
                   " * 0.56249816311px) - 60px)"
               );
           close.addEventListener("click", function clean(event) {
-            const iframe = nodeSpace.querySelector("div.video > iframe");
-            var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            console.log(innerDoc);
-            if (innerDoc) {
-              console.log(innerDoc);
-            }
+            // const iframe = nodeSpace.querySelector("div.video > iframe");
+            // var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            // console.log(innerDoc);
+            // if (innerDoc) {
+            //   console.log(innerDoc);
+            // }
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
