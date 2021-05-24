@@ -1,72 +1,4 @@
-(function e(t, n, r) {
-  function s(o, u) {
-    if (!n[o]) {
-      if (!t[o]) {
-        var a = typeof require == "function" && require;
-        if (!u && a) return a(o, !0);
-        if (i) return i(o, !0);
-        var f = new Error("Cannot find module '" + o + "'");
-        throw ((f.code = "MODULE_NOT_FOUND"), f);
-      }
-      var l = (n[o] = { exports: {} });
-      t[o][0].call(
-        l.exports,
-        function (e) {
-          var n = t[o][1][e];
-          return s(n ? n : e);
-        },
-        l,
-        l.exports,
-        e,
-        t,
-        n,
-        r
-      );
-    }
-    return n[o].exports;
-  }
-  var i = typeof require == "function" && require;
-  for (var o = 0; o < r.length; o++) s(r[o]);
-  return s;
-})(
-  {
-    1: [
-      function (require, module, exports) {
-        (function (global) {
-          "use strict";
-
-          if (
-            global.AnalyserNode &&
-            !global.AnalyserNode.prototype.getFloatTimeDomainData
-          ) {
-            var uint8 = new Uint8Array(2048);
-            global.AnalyserNode.prototype.getFloatTimeDomainData = function (
-              array
-            ) {
-              this.getByteTimeDomainData(uint8);
-              for (var i = 0, imax = array.length; i < imax; i++) {
-                array[i] = (uint8[i] - 128) * 0.0078125;
-              }
-            };
-          }
-        }.call(
-          this,
-          typeof global !== "undefined"
-            ? global
-            : typeof self !== "undefined"
-            ? self
-            : typeof window !== "undefined"
-            ? window
-            : {}
-        ));
-      },
-      {},
-    ],
-  },
-  {},
-  [1]
-);
-const [main, canvas] = [
+const [main, canvas, continueButton] = [
   document.querySelector("main"),
   document.createElement("canvas"),
 ];
@@ -77,28 +9,11 @@ const [
   previousLevels,
   secondsRunner,
   secondsThreshold,
-  maxSecondsThreshold,
   volumeThreshold,
   minHeight,
-] = [canvas.getContext("2d"), new Array(230), new Array(), 2, 5, 0.025, 1.5];
+] = [canvas.getContext("2d"), new Array(230), new Array(), 5, 0.05, 1.5];
 let [satisfyingDurationMet, shouldStop, stopped] = [false, false, false];
 
-function clearWindow(skipped) {
-  if (skipped) {
-    document.querySelectorAll("#recording-message span").forEach((e) => {
-      e.classList.toggle("start-from-end");
-    });
-    setTimeout(function () {
-      document.getElementById("recording").classList.toggle("hidden");
-      document.querySelector("main").classList.toggle("background-move-5");
-      canvas.classList.toggle("fast-end");
-      goToContent(skipped);
-    }, 2000);
-    setTimeout(function () {
-      canvas.classList.toggle("hidden");
-    }, 4000);
-  }
-}
 class AudioVisualizer {
   constructor(audioContext, processFrame, processError) {
     this.audioContext = audioContext;
@@ -116,84 +31,98 @@ class AudioVisualizer {
 
   connectStream(stream) {
     const ac = this.audioContext;
-    const pc = this.processFrame;
-    if (ac.state === "running") {
-      ac.suspend();
-    }
-    ac.resume();
-    ac.onstatechange = () => {
-      function initRenderLoop(analyser) {
-        const frequencyData = new Float32Array(analyser.getFloatTimeDomainData);
-        const processFrame = pc || (() => {});
-        const renderFrame = () => {
-          analyser.getFloatTimeDomainData(frequencyData);
-          processFrame(frequencyData);
-          requestAnimationFrame(renderFrame);
-        };
-        requestAnimationFrame(renderFrame);
-      }
-      if (ac.state === "running") {
-        const [source, meter] = [
-          ac.createMediaStreamSource(stream),
-          createAudioMeter(ac),
-        ];
-        source.connect(meter);
-        this.analyser = ac.createAnalyser();
-        this.analyser.smoothingTimeConstant = 0;
-        this.analyser.fftSize = 32;
-        initRenderLoop(this.analyser, ac);
-        source.connect(this.analyser);
-        setTimeout(function () {
-          ac.disconnect();
-          if (ac.state !== "closed") {
-            ac.close().then(function () {
-              source.disconnect(0);
-              clearWindow("no");
-              clearInterval(recordingOfSatisfyingDuration);
-            });
-          } else {
-            source.disconnect(0);
-            clearWindow("no");
-            clearInterval(recordingOfSatisfyingDuration);
-          }
-        }, maxSecondsThreshold * 1000);
-        const recordingOfSatisfyingDuration = setInterval(
-          function () {
-            secondsRunner.push({
-              currentVolume: meter.volume,
-              currentTime: meter.context.currentTime,
-            });
-            const satisfiedRunner = consecutiveSecondsMeetingVolumeThreshold(
-              secondsRunner,
-              secondsThreshold,
-              satisfyingDurationMet
-            );
-            if (satisfiedRunner) {
-              satisfyingDurationMet = true;
-              const [beginning, ending, duration] = [
-                satisfiedRunner[0]["currentTime"] - 1,
-                satisfiedRunner[satisfiedRunner.length - 1]["currentTime"],
-                satisfiedRunner.length + 1,
-              ];
-              if (
-                satisfiedRunner[satisfiedRunner.length - 1][
-                  "satisfyingDurationMet"
-                ] === false
-              ) {
-                ac.disconnect();
-                ac.close().then(function () {
+    if (ac && ac.state === "running") {
+      const [mediaRecorder, source, recordedChunks, meter] = [
+        new MediaRecorder(stream, { mimeType: "audio/webm" }),
+        ac.createMediaStreamSource(stream),
+        [],
+        createAudioMeter(ac),
+      ];
+      mediaRecorder.start();
+      mediaRecorder.addEventListener("dataavailable", function (e) {
+        e.data.size > 0 && recordedChunks.push(e.data);
+      });
+      source.connect(meter);
+      this.analyser = ac.createAnalyser();
+      this.analyser.smoothingTimeConstant = 0;
+      this.analyser.fftSize = 32;
+      this.initRenderLoop(this.analyser, ac);
+      source.connect(this.analyser);
+      const recordingOfSatisfyingDuration = setInterval(
+        function () {
+          secondsRunner.push({
+            currentVolume: meter.volume,
+            currentTime: meter.context.currentTime,
+          });
+          const satisfiedRunner = consecutiveSecondsMeetingVolumeThreshold(
+            secondsRunner,
+            secondsThreshold,
+            satisfyingDurationMet
+          );
+          if (satisfiedRunner) {
+            satisfyingDurationMet = true;
+            const [beginning, ending, duration] = [
+              satisfiedRunner[0]["currentTime"] - 1,
+              satisfiedRunner[satisfiedRunner.length - 1]["currentTime"],
+              satisfiedRunner.length + 1,
+            ];
+            if (
+              satisfiedRunner[satisfiedRunner.length - 1][
+                "satisfyingDurationMet"
+              ] === false
+            ) {
+              ac.close().then(function () {
+                mediaRecorder.stop();
+                mediaRecorder.addEventListener("stop", function () {
+                  // downloadLink.href = URL.createObjectURL(
+                  //   new Blob(recordedChunks)
+                  // );
+                  // downloadLink.download = "chant.wav";
                   source.disconnect(0);
-                  clearWindow("no");
+
+                  document
+                    .querySelectorAll("#recording-message span")
+                    .forEach((e) => {
+                      e.classList.toggle("start-from-end");
+                    });
+                  setTimeout(function () {
+                    document
+                      .getElementById("recording")
+                      .classList.toggle("hidden");
+                    document
+                      .querySelector("main")
+                      .classList.toggle("background-move-5");
+                    canvas.classList.toggle("fast-end");
+                    goToContent("no");
+                  }, 2000);
+                  setTimeout(function () {
+                    canvas.classList.toggle("hidden");
+                  }, 4000);
                   clearInterval(recordingOfSatisfyingDuration);
                 });
-              }
+              });
             }
-          },
-          1000,
-          ac
-        );
-      }
+          }
+        },
+        1000,
+        ac
+      );
+    } else if (ac && ac.state === "suspended") {
+      console.log("User perhaps didn't yet click anything.");
+    }
+  }
+
+  initRenderLoop() {
+    const frequencyData = new Float32Array(
+      this.analyser.getFloatTimeDomainData
+    );
+    const processFrame = this.processFrame || (() => {});
+    const renderFrame = () => {
+      this.analyser.getFloatTimeDomainData(frequencyData);
+      processFrame(frequencyData);
+      requestAnimationFrame(renderFrame);
     };
+    requestAnimationFrame(renderFrame);
   }
 }
 
@@ -245,13 +174,7 @@ function consecutiveSecondsMeetingVolumeThreshold(
   }
 }
 
-function createAudioMeter(
-  audioContext,
-  clipLevel,
-  averaging,
-  clipLag,
-  disconnect
-) {
+function createAudioMeter(audioContext, clipLevel, averaging, clipLag) {
   const processor = audioContext.createScriptProcessor(256);
   [
     processor.clipping,
@@ -342,8 +265,7 @@ function HSVtoRGB(h, s, v, a) {
 }
 
 function handleMicrophoneInput() {
-  const audioContext = new (window["AudioContext"] ||
-    window["webkitAudioContext"])();
+  const audioContext = new AudioContext();
   window.addEventListener("resize", resizeCanvas, false);
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -369,7 +291,7 @@ function handleMicrophoneInput() {
     }
   };
   const processError = () => {
-    clearWindow("yes");
+    console.log("Please allow access to your microphone.");
   };
   resizeCanvas();
   const a = new AudioVisualizer(audioContext, processFrame, processError);

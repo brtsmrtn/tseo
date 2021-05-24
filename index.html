@@ -123,7 +123,7 @@
             <button onclick="passParticipation()">I'D LIKE TO ANSWER</button>
           </div>
           <div class="space">
-            <button class="skip" onclick="goToContent('yes')">SKIP</button>
+            <button class="skip" onclick="goToContent('yes',null)">SKIP</button>
           </div>
         </div>
       </div>
@@ -135,20 +135,18 @@
           /></span>
           <span class="lighter">
             &#x2a; Don't worry, you are not being recorded, so don't be afraid
-            to sing. 5 seconds are enough &#128521;
+            to sing &#128521;
           </span>
         </div>
         <div id="recording-feedback" class="feedback">
           <div class="space">
-            <button id="start-recording" onclick="startRecording()">
-              LET'S DO IT
-            </button>
+            <button id="start-recording">LET'S DO IT</button>
           </div>
           <div class="space">
             <button
               class="skip"
               id="skip-recording"
-              onclick="goToContent('yes')"
+              onclick="goToContent('yes',null)"
             >
               SKIP
             </button>
@@ -202,7 +200,7 @@
       </div>
       <div class="S3 node hidden">
         <div class="video">
-          <iframe title="Hyena lullaby" frameborder="0" scrolling="no"/></iframe>
+          <iframe title="Hyena lullaby" frameborder="0" scrolling="no"></iframe>
           <div class="close"></div>
         </div>
       </div>
@@ -715,6 +713,7 @@
             id="S21"
             x="1311"
             y="306"
+            đ
             onclick="toggleNode(this.id)"
           ></use>
           <use
@@ -725,6 +724,7 @@
             onclick="toggleNode(this.id)"
           ></use>
         </svg>
+        <img id="myWave" src="" class="hidden" />
       </div>
       <div id="notes" class="hidden">
         <div class="welcome hidden start">
@@ -844,6 +844,7 @@
             </div>
           </div>
           <div>&nbsp;</div>
+          <div>&nbsp;</div>
           <div class="about_os">
             <img src="./img/oceanspace.png" />
           </div>
@@ -868,8 +869,8 @@
         </div>
       </div>
     </div>
-    
-    <script src="micInputHandlerSafari.js"></script>
+
+    <script src="micInputHandler.js"></script>
     <script type="text/javascript">
       let landscape = true;
       window.addEventListener(
@@ -908,7 +909,7 @@
       window.dispatchEvent(resizeEvent);
       let firstClick = false;
 
-//!window.location.hostname.includes("ocean-archive.org") ? ("https://ocean-archive.org/embed/1626") : ("https://" + window.location.hostname + "/embed/1626")
+      //!window.location.hostname.includes("ocean-archive.org") ? ("https://ocean-archive.org/embed/1626") : ("https://" + window.location.hostname + "/embed/1626")
 
       const [
         audioInvitation,
@@ -923,6 +924,7 @@
         aboutSection,
         logo,
         notes,
+        letsDoIt,
       ] = [
         document.querySelector("#participation audio"),
         document.querySelectorAll("#participation .audio .audio-controls svg"),
@@ -938,8 +940,16 @@
             moveY: "-50%",
             content: "text",
             embed: {},
+            hasBeen: false,
           },
-          { id: "S2", moveX: "50%", moveY: "-50%", content: "text", embed: {} },
+          {
+            id: "S2",
+            moveX: "50%",
+            moveY: "-50%",
+            content: "text",
+            embed: {},
+            hasBeen: false,
+          },
           {
             id: "S3",
             moveX: "-50%",
@@ -949,6 +959,7 @@
               url: "https://ocean-archive.org/embed/1626",
               title: "Hyena lullaby",
             },
+            hasBeen: false,
           },
           {
             id: "S4",
@@ -960,6 +971,7 @@
               title:
                 "Answering the call of the ocean: Artist Taloi Havini explores the sound of the sea",
             },
+            hasBeen: false,
           },
           {
             id: "S5",
@@ -970,6 +982,7 @@
               url: "https://ocean-archive.org/embed/1626",
               title: "Hyena lullaby",
             },
+            hasBeen: false,
           },
           {
             id: "S6",
@@ -977,6 +990,7 @@
             moveY: "0%",
             content: "audio",
             embed: { url: "", title: "ATTC Kuakumba Bird of Paradise" },
+            hasBeen: false,
           },
           {
             id: "S7",
@@ -984,6 +998,7 @@
             moveY: "0%",
             content: "audio",
             embed: { url: "", title: "ATTC Ocarina and Panpipe" },
+            hasBeen: false,
           },
           {
             id: "S8",
@@ -992,7 +1007,14 @@
             content: "audio",
             embed: { url: "", title: "ATTC Ocean Meditation" },
           },
-          { id: "S9", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          {
+            id: "S9",
+            moveX: "0%",
+            moveY: "0%",
+            content: "audio",
+            embed: {},
+            hasBeen: false,
+          },
           {
             id: "S10",
             moveX: "25%",
@@ -1002,6 +1024,7 @@
               url: "https://ocean-archive.org/embed/1626",
               title: "Hyena lullaby",
             },
+            hasBeen: false,
           },
           {
             id: "S11",
@@ -1009,6 +1032,7 @@
             moveY: "-50%",
             content: "text",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S12",
@@ -1016,6 +1040,7 @@
             moveY: "0%",
             content: "image-action",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S13",
@@ -1023,8 +1048,16 @@
             moveY: "-50%",
             content: "video",
             embed: { url: "", title: "" },
+            hasBeen: false,
           },
-          { id: "S14", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          {
+            id: "S14",
+            moveX: "0%",
+            moveY: "0%",
+            content: "audio",
+            embed: {},
+            hasBeen: false,
+          },
           {
             id: "S15",
             moveX: "0%",
@@ -1034,6 +1067,7 @@
               url: "https://ocean-archive.org/embed/1626",
               title: "Snippet_1_",
             },
+            hasBeen: false,
           },
           {
             id: "S16",
@@ -1041,6 +1075,7 @@
             moveY: "0%",
             content: "image-action",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S17",
@@ -1048,6 +1083,7 @@
             moveY: "-50%",
             content: "text",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S18",
@@ -1055,6 +1091,7 @@
             moveY: "100%",
             content: "image",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S19",
@@ -1062,6 +1099,7 @@
             moveY: "100%",
             content: "image",
             embed: {},
+            hasBeen: false,
           },
           {
             id: "S20",
@@ -1069,23 +1107,55 @@
             moveY: "0%",
             content: "video",
             embed: { url: "", title: "" },
+            hasBeen: false,
           },
-          { id: "S21", moveX: "0%", moveY: "0%", content: "audio", embed: {} },
+          {
+            id: "S21",
+            moveX: "0%",
+            moveY: "0%",
+            content: "audio",
+            embed: {},
+            hasBeen: false,
+          },
           {
             id: "S22",
             moveX: "0%",
             moveY: "0%",
             content: "video",
             embed: { url: "", title: "" },
+            hasBeen: false,
           },
         ],
-        [].slice.call(document.querySelectorAll(".island,#island,.island svg")),
+        [].slice.call(
+          document.querySelectorAll(".island,#island,.island svg,#myWave")
+        ),
         document.getElementById("about"),
         document.querySelector("#about img"),
         document.getElementById("about-section"),
         document.getElementById("logo"),
         document.getElementById("notes"),
+        document.getElementById("start-recording"),
       ];
+      let recordingHappened = false;
+
+      // const iframe = document.querySelector(".S3 > div.video > iframe");
+      // iframe.addEventListener("load", function (e) {
+      //   console.log(iframe.contentWindow.document.body.innerHTML);
+      //   console.log(e);
+      //   console.log(e.target);
+      //   console.log(e.target.contentWindow);
+      //   console.log(e.target.contentWindow.document);
+      //   console.log(
+      //     e.target.contentDocument.querySelector(
+      //       "div div div div div:nth-child(2) div div video"
+      //     )
+      //   );
+      //   console.log(
+      //     e.target.contentWindow.document.querySelector(
+      //       "#embed_item > div.file.h-100.row > div > div > video"
+      //     )
+      //   );
+      // });
       // let isSafari =
       //   navigator.vendor.match(/apple/i) &&
       //   !navigator.userAgent.match(/crios/i) &&
@@ -1131,12 +1201,9 @@
               promise
                 .catch((error) => {
                   console.log("auto-play prevented");
-                  // Auto-play was prevented
-                  // Show a UI element to let the user manually start playback
                 })
                 .then(() => {
                   console.log("auto-play ok");
-                  // Auto-play started
                 });
             }
           }
@@ -1177,53 +1244,47 @@
         ].map((t) =>
           document.getElementById("participation").classList.toggle(t)
         );
-
-        // document
-        //   .querySelectorAll("#participation-feedback,#participation-message")
-        //   .forEach(function (e) {
-        //     e.classList.toggle("participation-feedback-move-in");
-        //     e.classList.toggle("participation-feedback-move-out");
-        //   });
         document.getElementById("recording").classList.toggle("hidden");
         document.getElementById("recording-feedback").classList.toggle("start");
         document
           .getElementById("recording")
           .classList.toggle("recording-feedback-move-in");
-        // document
-        //   .querySelectorAll("#recording-feedback,#recording-message")
-        //   .forEach(function (e) {
-        //     e.classList.toggle("recording-feedback-move-in");
-        //   });
         setTimeout(function () {
           document.getElementById("participation").classList.toggle("hidden");
           document.querySelector("main").classList.toggle("cover");
         }, 2000);
       }
-      function startRecording() {
-        document
-          .getElementById("participation")
-          .classList.toggle("participation-feedback-move-out");
-        document.querySelector("body > canvas").classList.toggle("hidden");
-        document.querySelector("main").classList.toggle("cover");
-        document.querySelector("main").classList.toggle("background-move-3");
-        document.getElementById("start-recording").classList.toggle("fast-end");
-        document.getElementById("skip-recording").classList.toggle("fast-end");
-        setTimeout(function () {
+      letsDoIt.addEventListener("click", function clean(event) {
+        if (recordingHappened === false) {
           document
-            .querySelectorAll("#recording-message span")
-            .forEach(function (e) {
-              e.classList.toggle("fast-end");
-            });
-        }, 1000);
-        setTimeout(function () {
+            .getElementById("participation")
+            .classList.toggle("participation-feedback-move-out");
+          document.querySelector("body > canvas").classList.toggle("hidden");
           document.querySelector("main").classList.toggle("cover");
+          document.querySelector("main").classList.toggle("background-move-3");
+          letsDoIt.classList.toggle("fast-end");
           document
-            .getElementById("recording-feedback")
-            .classList.toggle("start");
-          handleMicrophoneInput();
-        }, 2000);
-      }
-      function goToContent(skipped) {
+            .getElementById("skip-recording")
+            .classList.toggle("fast-end");
+          setTimeout(function () {
+            document
+              .querySelectorAll("#recording-message span")
+              .forEach(function (e) {
+                e.classList.toggle("fast-end");
+              });
+          }, 1000);
+          setTimeout(function () {
+            document.querySelector("main").classList.toggle("cover");
+            document
+              .getElementById("recording-feedback")
+              .classList.toggle("start");
+            handleMicrophoneInput();
+          }, 2000);
+        }
+        recordingHappened = true;
+        event.currentTarget.removeEventListener(event.type, clean);
+      });
+      function goToContent(skipped, canvasSnap) {
         audioInvitation.pause();
         document
           .getElementById("recording")
@@ -1257,6 +1318,8 @@
           }, 4000);
         } else if (skipped === "no") {
           setTimeout(function () {
+            document.getElementById("myWave").classList.toggle("show");
+            document.getElementById("myWave").classList.toggle("hidden");
             document
               .querySelectorAll("#notes .welcome span")
               .forEach(function (e) {
@@ -1295,6 +1358,9 @@
             document.getElementById(id).setAttribute("filter", "url(#filter)");
           }, 500);
         } else {
+          if (nodesArray.filter((node) => node.hasBeen === true).length === 2) {
+            console.log("you are done");
+          }
           document.querySelector("." + id).classList.remove("hidden");
           document.querySelector("." + id).classList.add("hidden");
         }
@@ -1312,6 +1378,8 @@
       }
       function toggleNode(id) {
         const node = nodesArray.find((n) => n.id === id);
+        const nodeIndex = nodesArray.findIndex((node) => node.id === id);
+        nodesArray[nodeIndex].hasBeen = true;
         const el = document.getElementById(id);
         const close = document.querySelector("div." + el.id + " div div.close");
         moveIt(el.id, "out", node.moveX, node.moveY, node.content);
@@ -1484,26 +1552,34 @@
           });
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
-          iframe.setAttribute("src",node.embed.url);
-          iframe.addEventListener( "load", function(e) {
+          iframe.setAttribute("src", node.embed.url);
+          // iframe.addEventListener("load", function (e) {
+          //   console.log(e);
+          //   console.log(e.target);
+          //   console.log(e.target.contentDocument);
+          //   console.log(e.target.contentWindow.document);
+          //   console.log(
+          //     e.target.contentDocument.querySelector(
+          //       "div div div div div:nth-child(2) div div video"
+          //     )
+          //   );
+          //   console.log(
+          //     e.target.contentWindow.document.querySelector(
+          //       "#embed_item > div.file.h-100.row > div > div > video"
+          //     )
+          //   );
+          // });
 
-    console.log(e.target);
-    console.log(e.target.contentDocument);
-    console.log(e.target.contentWindow.document);
-    console.log(e.target.contentDocument.querySelector("div div div div div:nth-child(2) div div video"))
-    console.log(e.target.contentWindow.document.querySelector("#embed_item > div.file.h-100.row > div > div > video"))
-} );
-          
-              nodeSpace.setAttribute(
-                "style",
-                "height: calc(calc(0.56 * " +
-                  window.innerWidth +
-                  " * 0.56249816311px) - 60px)"
-              );
-            
-               //div div div div div:nth-child(2) div div video
+          nodeSpace.setAttribute(
+            "style",
+            "height: calc(calc(0.56 * " +
+              window.innerWidth +
+              " * 0.56249816311px) - 60px)"
+          );
+
           close.addEventListener("click", function clean(event) {
-            // 
+            iframe.setAttribute("src", "");
+            //
             // console.log(innerDoc);
             // if (innerDoc) {
             //   console.log(innerDoc);

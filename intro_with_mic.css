@@ -217,6 +217,14 @@ canvas {
   opacity: 0;
   max-height: 0%;
 }
+div {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 button {
   width: auto;
   overflow: visible;
@@ -296,7 +304,37 @@ body.out > main > .rnInner {
   -webkit-transition: transform 14s ease-out;
   transition: transform 14s ease-out;
 }
-
+#myWave {
+  height: 50%;
+  filter: blur(6px);
+  z-index: 51 !important;
+}
+#myWave.show {
+  opacity: 0;
+  animation: steam 10000ms linear infinite;
+}
+@keyframes steam {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1.25);
+    opacity: 0.8;
+    left: 100%;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-25%) translateZ(0) scaleY(0.75);
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    left: 0%;
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
 @keyframes rnUnit {
   50% {
     -webkit-transform: rotate(-1deg);
@@ -1035,8 +1073,8 @@ main.background-move-5::after {
 .about_oa img,
 .about_os img,
 .about_ac img {
-  width: 18vw;
-  margin: 1.5vh 0vw !important;
+  width: 10vw;
+  margin: 1vh 0vw !important;
   display: block;
 }
 .about_oa img {
@@ -1311,15 +1349,17 @@ div.S2 {
   left: 10%;
   height: 80%;
 }
+div.S18 {
+  width: 80vw !important;
+}
 div.S18,
 div.S19 {
-  width: 80vw !important;
   height: unset !important;
   left: 3vw;
   top: 2vw;
 }
 div.S19 {
-  width: 80vw !important;
+  width: 60vw !important;
 }
 div.S18 .image img,
 div.S19 .image img {
