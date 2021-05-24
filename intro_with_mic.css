@@ -305,7 +305,7 @@ body.out > main > .rnInner {
   transition: transform 14s ease-out;
 }
 #myWave {
-  height: 50%;
+  height: 25%;
   filter: blur(6px);
   z-index: 51 !important;
 }
@@ -382,7 +382,7 @@ body.out > main > .rnInner {
 }
 .cover {
   z-index: 103;
-  cursor: grab;
+  cursor: default;
 }
 .start {
   -webkit-animation: show_anything 2s 2s normal forwards ease-out;
@@ -1277,7 +1277,7 @@ div.island svg > * {
   width: 40px;
   height: 40px;
 }
-div.island svg > *:hover {
+div.island svg:not(#island) > *:hover {
   cursor: pointer;
 }
 div.island-rev {
@@ -1300,10 +1300,10 @@ div.S10 {
 }
 div.S1,
 div.S4 {
-  overflow: hidden;
   height: 80%;
 }
 div.S4 {
+  overflow: hidden;
   left: 3%;
   width: 73vw;
   bottom: 10%;
@@ -1395,6 +1395,7 @@ div.S16 .image-action img {
   transition: all 3s;
   opacity: 1;
   width: 100%;
+  top: -5%;
   position: absolute;
 }
 div.S16 .image-action img.notyet {
@@ -1439,8 +1440,8 @@ div.S15 div.video-rev {
   background-color: black;
 }
 div.S15 div.island-rev svg {
-  transform: scale(0.6, 2.85);
-  -webkit-transform: scale(0.6, 2.85);
+  transform: scale(0.5, 2.55);
+  -webkit-transform: scale(0.5, 2.55);
 }
 div.S15 div.island-rev svg g {
   -webkit-transform: translate(0px, 1080px) scale(0.1, -0.1);

@@ -870,9 +870,24 @@
       </div>
     </div>
 
-    <script src="micInputHandler.js"></script>
     <script type="text/javascript">
-      let landscape = true;
+      let [
+        landscape,
+        firstClick,
+        recordingHappened,
+        satisfyingDurationMet,
+        shouldStop,
+        stopped,
+        resizeEvent,
+      ] = [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        window.document.createEvent("UIEvents"),
+      ];
       window.addEventListener(
         "resize",
         function () {
@@ -904,14 +919,11 @@
         },
         false
       );
-      var resizeEvent = window.document.createEvent("UIEvents");
       resizeEvent.initUIEvent("resize", true, false, window, 0);
       window.dispatchEvent(resizeEvent);
-      let firstClick = false;
-
-      //!window.location.hostname.includes("ocean-archive.org") ? ("https://ocean-archive.org/embed/1626") : ("https://" + window.location.hostname + "/embed/1626")
-
       const [
+        main,
+        canvas,
         audioInvitation,
         audioInvitationControls,
         audioInvitationState,
@@ -926,6 +938,8 @@
         notes,
         letsDoIt,
       ] = [
+        document.querySelector("main"),
+        document.createElement("canvas"),
         document.querySelector("#participation audio"),
         document.querySelectorAll("#participation .audio .audio-controls svg"),
         document.querySelector(
@@ -1136,38 +1150,26 @@
         document.getElementById("notes"),
         document.getElementById("start-recording"),
       ];
-      let recordingHappened = false;
+      document.querySelector("body").appendChild(canvas);
+      canvas.classList.toggle("hidden");
+      const [
+        ctx,
+        previousLevels,
+        secondsRunner,
+        secondsThreshold,
+        maxSecondsThreshold,
+        volumeThreshold,
+        minHeight,
+      ] = [
+        canvas.getContext("2d"),
+        new Array(230),
+        new Array(),
+        5,
+        60,
+        0.02,
+        1.5,
+      ];
 
-      // const iframe = document.querySelector(".S3 > div.video > iframe");
-      // iframe.addEventListener("load", function (e) {
-      //   console.log(iframe.contentWindow.document.body.innerHTML);
-      //   console.log(e);
-      //   console.log(e.target);
-      //   console.log(e.target.contentWindow);
-      //   console.log(e.target.contentWindow.document);
-      //   console.log(
-      //     e.target.contentDocument.querySelector(
-      //       "div div div div div:nth-child(2) div div video"
-      //     )
-      //   );
-      //   console.log(
-      //     e.target.contentWindow.document.querySelector(
-      //       "#embed_item > div.file.h-100.row > div > div > video"
-      //     )
-      //   );
-      // });
-      // let isSafari =
-      //   navigator.vendor.match(/apple/i) &&
-      //   !navigator.userAgent.match(/crios/i) &&
-      //   !navigator.userAgent.match(/fxios/i);
-
-      // if (isSafari) {
-      //   document.body.appendChild(document.createElement("script")).src =
-      //     "micInputHandlerSafari.js";
-      // } else {
-      //   document.body.appendChild(document.createElement("script")).src =
-      //     "micInputHandlerSafari.js";
-      // }
       function passIntro() {
         document.querySelector("main").classList.toggle("cover");
         document
@@ -1181,6 +1183,8 @@
         document
           .getElementById("participation")
           .classList.toggle("participation-feedback-move-in");
+        document.body.appendChild(document.createElement("script")).src =
+          "micInputHandler.js";
         function togglePlay(close) {
           if (audioInvitationIsPlaying === true) {
             audioInvitationControls[0].classList.remove("hide");
@@ -1196,16 +1200,7 @@
             audioInvitationControls[0].classList.remove("hide");
             audioInvitationControls[0].classList.add("hide");
             audioInvitationControls[1].classList.remove("hide");
-            const promise = audioInvitation.play();
-            if (promise !== undefined) {
-              promise
-                .catch((error) => {
-                  console.log("auto-play prevented");
-                })
-                .then(() => {
-                  console.log("auto-play ok");
-                });
-            }
+            audioInvitation.play();
           }
         }
         let audioInvitationIsPlaying = false;
@@ -1294,8 +1289,8 @@
           .classList.remove("participation-feedback-move-in");
         document.getElementById("recording").classList.add("hidden");
         document.getElementById("participation").classList.add("hidden");
-        showContent();
         document.querySelector("main").classList.toggle("cover");
+        showContent();
         document.querySelector("body").classList.toggle("out");
         if (skipped === "yes") {
           document.querySelector("main").classList.toggle("background-move-4");
@@ -1332,7 +1327,6 @@
       function showContent() {
         notes.classList.toggle("hidden");
         setTimeout(function () {
-          document.querySelector("main").classList.toggle("cover");
           island.classList.remove("hidden");
         }, 4000);
         setTimeout(function () {
@@ -1342,6 +1336,7 @@
           });
           about.classList.toggle("hidden");
           aboutButton.classList.add("blinker");
+          document.querySelector("main").classList.toggle("cover");
         }, 6000);
       }
       function moveIt(id, where, moveX, moveY, content) {
@@ -1411,7 +1406,7 @@
                 window.innerWidth / 2529 +
                 " * 7 * 622px),calc(" +
                 window.innerHeight / 1949 +
-                " * 7 * 796px)) scale(7)";
+                " * 7 * 956px)) scale(7)";
               img.setAttribute(
                 "style",
                 "transform: " +
@@ -1471,14 +1466,14 @@
                 .querySelectorAll("div.image-action img")[1]
                 .classList.toggle("notyet");
               close.classList.add("start");
-            }, 4000);
+            }, 2500);
             setTimeout(function () {
               nodeSpace
                 .querySelectorAll("div.image-action img")[2]
                 .classList.toggle("notyet");
               close.classList.remove("hidden");
               close.classList.remove("start");
-            }, 6000);
+            }, 4000);
 
             close.addEventListener("click", function clean(event) {
               close.classList.add("hidden");
@@ -1553,37 +1548,14 @@
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src", node.embed.url);
-          // iframe.addEventListener("load", function (e) {
-          //   console.log(e);
-          //   console.log(e.target);
-          //   console.log(e.target.contentDocument);
-          //   console.log(e.target.contentWindow.document);
-          //   console.log(
-          //     e.target.contentDocument.querySelector(
-          //       "div div div div div:nth-child(2) div div video"
-          //     )
-          //   );
-          //   console.log(
-          //     e.target.contentWindow.document.querySelector(
-          //       "#embed_item > div.file.h-100.row > div > div > video"
-          //     )
-          //   );
-          // });
-
           nodeSpace.setAttribute(
             "style",
             "height: calc(calc(0.56 * " +
               window.innerWidth +
               " * 0.56249816311px) - 60px)"
           );
-
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
-            //
-            // console.log(innerDoc);
-            // if (innerDoc) {
-            //   console.log(innerDoc);
-            // }
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
@@ -1608,19 +1580,7 @@
               audioControls[0].classList.remove("hide");
               audioControls[0].classList.add("hide");
               audioControls[1].classList.remove("hide");
-              const promise = audio.play();
-              if (promise !== undefined) {
-                promise
-                  .catch((error) => {
-                    console.log("auto-play prevented");
-                    // Auto-play was prevented
-                    // Show a UI element to let the user manually start playback
-                  })
-                  .then(() => {
-                    console.log("auto-play ok");
-                    // Auto-play started
-                  });
-              }
+              audio.play();
             }
           }
           const audio = nodeSpace.querySelector("audio");

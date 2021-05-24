@@ -66,22 +66,6 @@
   {},
   [1]
 );
-const [main, canvas] = [
-  document.querySelector("main"),
-  document.createElement("canvas"),
-];
-document.querySelector("body").appendChild(canvas);
-canvas.classList.toggle("hidden");
-const [
-  ctx,
-  previousLevels,
-  secondsRunner,
-  secondsThreshold,
-  maxSecondsThreshold,
-  volumeThreshold,
-  minHeight,
-] = [canvas.getContext("2d"), new Array(230), new Array(), 5, 60, 0.02, 1.5];
-let [satisfyingDurationMet, shouldStop, stopped] = [false, false, false];
 
 function clearWindow(skipped, canvasSnap) {
   if (skipped) {
