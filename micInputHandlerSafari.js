@@ -77,11 +77,28 @@ const [
   previousLevels,
   secondsRunner,
   secondsThreshold,
+  maxSecondsThreshold,
   volumeThreshold,
   minHeight,
-] = [canvas.getContext("2d"), new Array(230), new Array(), 5, 0.05, 1.5];
+] = [canvas.getContext("2d"), new Array(230), new Array(), 2, 5, 0.025, 1.5];
 let [satisfyingDurationMet, shouldStop, stopped] = [false, false, false];
 
+function clearWindow(skipped) {
+  if (skipped) {
+    document.querySelectorAll("#recording-message span").forEach((e) => {
+      e.classList.toggle("start-from-end");
+    });
+    setTimeout(function () {
+      document.getElementById("recording").classList.toggle("hidden");
+      document.querySelector("main").classList.toggle("background-move-5");
+      canvas.classList.toggle("fast-end");
+      goToContent(skipped);
+    }, 2000);
+    setTimeout(function () {
+      canvas.classList.toggle("hidden");
+    }, 4000);
+  }
+}
 class AudioVisualizer {
   constructor(audioContext, processFrame, processError) {
     this.audioContext = audioContext;
@@ -126,6 +143,20 @@ class AudioVisualizer {
         this.analyser.fftSize = 32;
         initRenderLoop(this.analyser, ac);
         source.connect(this.analyser);
+        setTimeout(function () {
+          ac.disconnect();
+          if (ac.state !== "closed") {
+            ac.close().then(function () {
+              source.disconnect(0);
+              clearWindow("no");
+              clearInterval(recordingOfSatisfyingDuration);
+            });
+          } else {
+            source.disconnect(0);
+            clearWindow("no");
+            clearInterval(recordingOfSatisfyingDuration);
+          }
+        }, maxSecondsThreshold * 1000);
         const recordingOfSatisfyingDuration = setInterval(
           function () {
             secondsRunner.push({
@@ -149,29 +180,11 @@ class AudioVisualizer {
                   "satisfyingDurationMet"
                 ] === false
               ) {
+                ac.disconnect();
                 ac.close().then(function () {
                   source.disconnect(0);
-
-                  document
-                    .querySelectorAll("#recording-message span")
-                    .forEach((e) => {
-                      e.classList.toggle("start-from-end");
-                    });
-                  setTimeout(function () {
-                    document
-                      .getElementById("recording")
-                      .classList.toggle("hidden");
-                    document
-                      .querySelector("main")
-                      .classList.toggle("background-move-5");
-                    canvas.classList.toggle("fast-end");
-                    goToContent("no");
-                  }, 2000);
-                  setTimeout(function () {
-                    canvas.classList.toggle("hidden");
-                  }, 4000);
+                  clearWindow("no");
                   clearInterval(recordingOfSatisfyingDuration);
-                  //});
                 });
               }
             }
@@ -232,7 +245,13 @@ function consecutiveSecondsMeetingVolumeThreshold(
   }
 }
 
-function createAudioMeter(audioContext, clipLevel, averaging, clipLag) {
+function createAudioMeter(
+  audioContext,
+  clipLevel,
+  averaging,
+  clipLag,
+  disconnect
+) {
   const processor = audioContext.createScriptProcessor(256);
   [
     processor.clipping,
@@ -350,7 +369,7 @@ function handleMicrophoneInput() {
     }
   };
   const processError = () => {
-    console.log("Please allow access to your microphone.");
+    clearWindow("yes");
   };
   resizeCanvas();
   const a = new AudioVisualizer(audioContext, processFrame, processError);

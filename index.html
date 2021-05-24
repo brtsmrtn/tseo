@@ -202,7 +202,7 @@
       </div>
       <div class="S3 node hidden">
         <div class="video">
-          <iframe src="https://ocean-archive.org/embed/1626" title="Hyena lullaby" frameborder="0" scrolling="no"/></iframe>
+          <iframe title="Hyena lullaby" frameborder="0" scrolling="no"/></iframe>
           <div class="close"></div>
         </div>
       </div>
@@ -868,6 +868,8 @@
         </div>
       </div>
     </div>
+    
+    <script src="micInputHandlerSafari.js"></script>
     <script type="text/javascript">
       let landscape = true;
       window.addEventListener(
@@ -905,6 +907,9 @@
       resizeEvent.initUIEvent("resize", true, false, window, 0);
       window.dispatchEvent(resizeEvent);
       let firstClick = false;
+
+//!window.location.hostname.includes("ocean-archive.org") ? ("https://ocean-archive.org/embed/1626") : ("https://" + window.location.hostname + "/embed/1626")
+
       const [
         audioInvitation,
         audioInvitationControls,
@@ -1081,18 +1086,18 @@
         document.getElementById("logo"),
         document.getElementById("notes"),
       ];
-      let isSafari =
-        navigator.vendor.match(/apple/i) &&
-        !navigator.userAgent.match(/crios/i) &&
-        !navigator.userAgent.match(/fxios/i);
+      // let isSafari =
+      //   navigator.vendor.match(/apple/i) &&
+      //   !navigator.userAgent.match(/crios/i) &&
+      //   !navigator.userAgent.match(/fxios/i);
 
-      if (isSafari) {
-        document.body.appendChild(document.createElement("script")).src =
-          "micInputHandlerSafari.js";
-      } else {
-        document.body.appendChild(document.createElement("script")).src =
-          "micInputHandler.js";
-      }
+      // if (isSafari) {
+      //   document.body.appendChild(document.createElement("script")).src =
+      //     "micInputHandlerSafari.js";
+      // } else {
+      //   document.body.appendChild(document.createElement("script")).src =
+      //     "micInputHandlerSafari.js";
+      // }
       function passIntro() {
         document.querySelector("main").classList.toggle("cover");
         document
@@ -1478,15 +1483,21 @@
             event.currentTarget.removeEventListener(event.type, clean);
           });
         } else if (node.content === "video-embed-oa") {
+          const iframe = nodeSpace.querySelector("div.video > iframe");
+          iframe.setAttribute("src",node.embed.url);
               nodeSpace.setAttribute(
                 "style",
                 "height: calc(calc(0.56 * " +
                   window.innerWidth +
                   " * 0.56249816311px) - 60px)"
               );
+              const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            setTimeout(function () {
+              console.log(innerDoc.querySelector("html body"))
+            }, 2000);
+               //div div div div div:nth-child(2) div div video
           close.addEventListener("click", function clean(event) {
-            // const iframe = nodeSpace.querySelector("div.video > iframe");
-            // var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            // 
             // console.log(innerDoc);
             // if (innerDoc) {
             //   console.log(innerDoc);
