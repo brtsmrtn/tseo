@@ -1487,6 +1487,7 @@
           close.addEventListener("click", function clean(event) {
             const iframe = nodeSpace.querySelector("div.video > iframe");
             var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            console.log(innerDoc);
             if (innerDoc) {
               console.log(innerDoc);
             }
