@@ -1485,16 +1485,22 @@
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src",node.embed.url);
+          iframe.addEventListener( "load", function(e) {
+
+    console.log(e.target);
+    console.log(e.target.contentDocument);
+    console.log(e.target.contentWindow.document);
+    console.log(e.target.contentDocument.querySelector("div div div div div:nth-child(2) div div video"))
+    console.log(e.target.contentWindow.document.querySelector("#embed_item > div.file.h-100.row > div > div > video"))
+} );
+          
               nodeSpace.setAttribute(
                 "style",
                 "height: calc(calc(0.56 * " +
                   window.innerWidth +
                   " * 0.56249816311px) - 60px)"
               );
-              const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            setTimeout(function () {
-              console.log(innerDoc.body)
-            }, 2000);
+            
                //div div div div div:nth-child(2) div div video
           close.addEventListener("click", function clean(event) {
             // 
