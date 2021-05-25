@@ -1,21 +1,93 @@
-const [main, canvas, downloadLink, downloadButton, continueButton] = [
-  document.querySelector("main"),
-  document.createElement("canvas"),
-  document.getElementById("download-recording"),
-  document.querySelector("#download-recording button"),
-  document.getElementById("continue-to-content"),
-];
-document.querySelector("body").appendChild(canvas);
-const [
-  ctx,
-  previousLevels,
-  secondsRunner,
-  secondsThreshold,
-  volumeThreshold,
-  minHeight,
-] = [canvas.getContext("2d"), new Array(230), new Array(), 1, 0.01, 1.5];
-let [satisfyingDurationMet, shouldStop, stopped] = [false, false, false];
+(function e(t, n, r) {
+  function s(o, u) {
+    if (!n[o]) {
+      if (!t[o]) {
+        var a = typeof require == "function" && require;
+        if (!u && a) return a(o, !0);
+        if (i) return i(o, !0);
+        var f = new Error("Cannot find module '" + o + "'");
+        throw ((f.code = "MODULE_NOT_FOUND"), f);
+      }
+      var l = (n[o] = { exports: {} });
+      t[o][0].call(
+        l.exports,
+        function (e) {
+          var n = t[o][1][e];
+          return s(n ? n : e);
+        },
+        l,
+        l.exports,
+        e,
+        t,
+        n,
+        r
+      );
+    }
+    return n[o].exports;
+  }
+  var i = typeof require == "function" && require;
+  for (var o = 0; o < r.length; o++) s(r[o]);
+  return s;
+})(
+  {
+    1: [
+      function (require, module, exports) {
+        (function (global) {
+          "use strict";
 
+          if (
+            global.AnalyserNode &&
+            !global.AnalyserNode.prototype.getFloatTimeDomainData
+          ) {
+            var uint8 = new Uint8Array(2048);
+            global.AnalyserNode.prototype.getFloatTimeDomainData = function (
+              array
+            ) {
+              this.getByteTimeDomainData(uint8);
+              for (var i = 0, imax = array.length; i < imax; i++) {
+                array[i] = (uint8[i] - 128) * 0.0078125;
+              }
+            };
+          }
+        }.call(
+          this,
+          typeof global !== "undefined"
+            ? global
+            : typeof self !== "undefined"
+            ? self
+            : typeof window !== "undefined"
+            ? window
+            : {}
+        ));
+      },
+      {},
+    ],
+  },
+  {},
+  [1]
+);
+
+function clearWindow(skipped, canvasSnap) {
+  if (skipped) {
+    document.querySelectorAll("#recording-message span").forEach((e) => {
+      e.classList.toggle("start-from-end");
+    });
+    setTimeout(function () {
+      document.getElementById("recording").classList.toggle("hidden");
+      document.querySelector("main").classList.toggle("background-move-5");
+      canvas.classList.toggle("fast-end");
+      if (canvasSnap) {
+        goToContent(skipped, canvasSnap);
+        document.getElementById("myWave").src = canvasSnap;
+      } else {
+        goToContent(skipped, null);
+      }
+    }, 2000);
+    setTimeout(function () {
+      canvas.classList.toggle("hidden");
+    }, 4000);
+  }
+}
 class AudioVisualizer {
   constructor(audioContext, processFrame, processError) {
     this.audioContext = audioContext;
@@ -33,104 +105,79 @@ class AudioVisualizer {
 
   connectStream(stream) {
     const ac = this.audioContext;
-    if (ac && ac.state === "running") {
-      const [mediaRecorder, source, recordedChunks, meter] = [
-        new MediaRecorder(stream, { mimeType: "audio/webm" }),
-        ac.createMediaStreamSource(stream),
-        [],
-        createAudioMeter(ac),
-      ];
-      mediaRecorder.start();
-      mediaRecorder.addEventListener("dataavailable", function (e) {
-        e.data.size > 0 && recordedChunks.push(e.data);
-      });
-      source.connect(meter);
-      this.analyser = ac.createAnalyser();
-      this.analyser.smoothingTimeConstant = 0;
-      this.analyser.fftSize = 32;
-      this.initRenderLoop(this.analyser, ac);
-      source.connect(this.analyser);
-      const recordingOfSatisfyingDuration = setInterval(
-        function () {
-          secondsRunner.push({
-            currentVolume: meter.volume,
-            currentTime: meter.context.currentTime,
-          });
-          const satisfiedRunner = consecutiveSecondsMeetingVolumeThreshold(
-            secondsRunner,
-            secondsThreshold,
-            satisfyingDurationMet
-          );
-          if (satisfiedRunner) {
-            satisfyingDurationMet = true;
-            const [beginning, ending, duration] = [
-              satisfiedRunner[0]["currentTime"] - 1,
-              satisfiedRunner[satisfiedRunner.length - 1]["currentTime"],
-              satisfiedRunner.length + 1,
-            ];
-            if (
-              satisfiedRunner[satisfiedRunner.length - 1][
-                "satisfyingDurationMet"
-              ] === false
-            ) {
-              console.log(
-                "Great! You chanted approx. for " +
-                  duration +
-                  " consecutive seconds; your chant should be somewhere between " +
-                  beginning +
-                  " and " +
-                  ending
-              );
-              ac.close().then(function () {
-                mediaRecorder.stop();
-                mediaRecorder.addEventListener("stop", function () {
-                  downloadLink.href = URL.createObjectURL(
-                    new Blob(recordedChunks)
-                  );
-                  downloadLink.download = "chant.wav";
-                  source.disconnect(0);
-                  document
-                    .querySelector("#recording-message span")
-                    .classList.toggle("start-from-end");
-                  setTimeout(function () {
-                    document
-                      .querySelector("main")
-                      .classList.toggle("background-move-5");
-                    canvas.classList.toggle("fast-end");
-                    [downloadButton, continueButton].map((e) => {
-                      e.classList.toggle("start-from-end");
-                    });
-                  }, 2000);
-                  setTimeout(function () {
-                    [canvas, downloadButton, continueButton].map((e) => {
-                      e.classList.toggle("hidden");
-                    });
-                  }, 4000);
-                  clearInterval(recordingOfSatisfyingDuration);
-                });
-              });
-            }
-          }
-        },
-        1000,
-        ac
-      );
-    } else if (ac && ac.state === "suspended") {
-      console.log("User perhaps didn't yet click anything.");
+    const pc = this.processFrame;
+    if (ac.state === "running") {
+      ac.suspend();
     }
-  }
+    ac.resume();
+    ac.onstatechange = () => {
+      function initRenderLoop(analyser) {
+        const frequencyData = new Float32Array(analyser.getFloatTimeDomainData);
+        const processFrame = pc || (() => {});
+        const renderFrame = () => {
+          analyser.getFloatTimeDomainData(frequencyData);
+          processFrame(frequencyData);
+          requestAnimationFrame(renderFrame);
+        };
+        requestAnimationFrame(renderFrame);
+      }
+      if (ac.state === "running") {
+        const [source, meter] = [
+          ac.createMediaStreamSource(stream),
+          createAudioMeter(ac),
+        ];
+        source.connect(meter);
+        this.analyser = ac.createAnalyser();
+        this.analyser.smoothingTimeConstant = 0;
+        this.analyser.fftSize = 32;
+        initRenderLoop(this.analyser, ac);
+        source.connect(this.analyser);
+        const stopRecording = setInterval(function () {
+          stream.getTracks().forEach((track) => track.stop());
+          source.disconnect(0);
+          clearWindow("no");
+          clearInterval(recordingOfSatisfyingDuration);
+          clearInterval(stopRecording);
+          if (ac.state !== "closed") {
+            ac.close();
+          }
+        }, maxSecondsThreshold * 1000);
 
-  initRenderLoop() {
-    const frequencyData = new Float32Array(
-      this.analyser.getFloatTimeDomainData
-    );
-    const processFrame = this.processFrame || (() => {});
-    const renderFrame = () => {
-      this.analyser.getFloatTimeDomainData(frequencyData);
-      processFrame(frequencyData);
-      requestAnimationFrame(renderFrame);
+        const recordingOfSatisfyingDuration = setInterval(
+          function () {
+            secondsRunner.push({
+              currentVolume: meter.volume,
+              currentTime: meter.context.currentTime,
+            });
+            const satisfiedRunner = consecutiveSecondsMeetingVolumeThreshold(
+              secondsRunner,
+              secondsThreshold,
+              satisfyingDurationMet
+            );
+            if (satisfiedRunner) {
+              satisfyingDurationMet = true;
+
+              if (
+                satisfiedRunner[satisfiedRunner.length - 1][
+                  "satisfyingDurationMet"
+                ] === false
+              ) {
+                stream.getTracks().forEach((track) => track.stop());
+                source.disconnect(0);
+                clearWindow("no", canvas.toDataURL("image/png"));
+                clearInterval(recordingOfSatisfyingDuration);
+                clearInterval(stopRecording);
+                if (ac.state !== "closed") {
+                  ac.close();
+                }
+              }
+            }
+          },
+          1000,
+          ac
+        );
+      }
     };
-    requestAnimationFrame(renderFrame);
   }
 }
 
@@ -273,7 +320,8 @@ function HSVtoRGB(h, s, v, a) {
 }
 
 function handleMicrophoneInput() {
-  const audioContext = new AudioContext();
+  const audioContext = new (window["AudioContext"] ||
+    window["webkitAudioContext"])();
   window.addEventListener("resize", resizeCanvas, false);
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -299,12 +347,8 @@ function handleMicrophoneInput() {
     }
   };
   const processError = () => {
-    console.log("Please allow access to your microphone.");
+    clearWindow("yes");
   };
   resizeCanvas();
   const a = new AudioVisualizer(audioContext, processFrame, processError);
-  setTimeout(function () {
-    document.querySelector("#recording-message span").innerHTML =
-      "Thanks! You can download the recording and continue to the content (not yet ready).";
-  }, 2000);
 }
