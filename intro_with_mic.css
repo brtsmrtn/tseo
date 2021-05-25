@@ -1716,8 +1716,11 @@ video {
 
   align-items: baseline;
   align-content: baseline;
-  object-position: top;
+  object-position: left;
   object-fit: cover;
+}
+.S15 video {
+  object-position: top !important;
 }
 
 .video-controls {
