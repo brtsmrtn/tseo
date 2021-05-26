@@ -2255,13 +2255,14 @@
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
+            console.log(e.id);
             console.log(
-              e.target.contentWindow.document.querySelector(
-                "." +
-                  el.id +
-                  " #embed_item > div.file.h-100.row > div > div > video"
-              )
+              e.target.contentWindow.document.body.querySelector("." + el.id)
             );
+            console.log(
+              e.target.contentWindow.document.querySelector("." + el.id)
+            );
+            //+                 " #embed_item > div.file.h-100.row > div > div > video"
           });
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
