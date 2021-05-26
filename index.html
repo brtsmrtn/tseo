@@ -1547,6 +1547,8 @@
                   window.innerWidth +
                   " * 0.56249816311px) + 50px)"
               );
+          });
+          [".S3", ".S6", ".S10", ".S13", ".S14", ".S17"].forEach((el) => {
             iframe.addEventListener("load", function (e) {
               const iframeBody = e.target.contentDocument.body;
               setTimeout(function () {
@@ -1556,8 +1558,9 @@
                   );
                   console.log(video);
                   video.pause();
+                  video.currentTime = 0;
                 }
-              }, 500);
+              }, 1000);
             });
           });
           document
@@ -2271,9 +2274,12 @@
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.addEventListener("load", function (e) {
+            console.log("i happened");
             const iframeBody = e.target.contentDocument.body;
             setTimeout(function () {
+              console.log("here too");
               if (iframeBody) {
+                console.log(iframeBody);
                 const video = iframeBody.querySelector(
                   "#root #body div #embed_item > div.file.h-100.row > div > div > video"
                 );
