@@ -2033,12 +2033,13 @@
                 const video = iframeBody.querySelector(
                   "#root #body div #embed_item > div.file.h-100.row > div > div > video"
                 );
-                console.log(video);
-                video.pause();
+                video.currentTime = 0;
                 video.muted = false;
-                console.log(video);
+                console.log(video.paused());
+                video.pause();
+                console.log(video.paused());
               }
-            }, 1000);
+            }, 2000);
           });
         });
 
@@ -2284,35 +2285,24 @@
           });
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
-          iframe.addEventListener("load", function (e) {
-            const iframeBody = e.target.contentDocument.body;
-            console.log("here yes");
-            if (iframeBody) {
-              console.log("here as well");
-              console.log(iframeBody);
-              const video = iframeBody.querySelector(
-                "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-              );
-              console.log(video);
-              video.currentTime = 0;
-              video.play();
-              console.log(video);
-            }
-          });
+          console.log(iframe);
+          const iframeBody = e.target.contentDocument.body;
+          console.log(iframeBody);
+          const video = iframeBody.querySelector(
+            "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+          );
+          console.log(video);
+          console.log(video.paused());
+          video.currentTime = 0;
+          console.log(video.paused());
+          video.play();
 
           close.addEventListener("click", function clean(event) {
-            iframe.addEventListener("load", function (e) {
-              console.log("made it here too");
-              const iframeBody = e.target.contentDocument.body;
-              if (iframeBody) {
-                console.log("and here too");
-                const video = iframeBody.querySelector(
-                  "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-                );
-                console.log(video);
-                video.pause();
-              }
-            });
+            console.log(video);
+            console.log(video.paused());
+            video.currentTime = 0;
+            video.pause();
+            console.log(video.paused());
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
