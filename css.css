@@ -947,6 +947,7 @@ div.S21 {
   height: unset !important;
   right: 3vw;
   top: 2vw;
+  width: 45vw !important;
 }
 div.S18,
 div.S19,
@@ -961,7 +962,7 @@ div.S22 {
   top: 8vw;
 }
 div.S19 {
-  width: 75vw !important;
+  width: 65vw !important;
 }
 div.S18 .image img,
 div.S19 .image img,

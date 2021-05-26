@@ -2256,8 +2256,10 @@
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
             console.log(
-              document.querySelector(
-                "#embed_item > div.file.h-100.row > div > div > video"
+              e.target.contentWindow.document.querySelector(
+                "." +
+                  el.id +
+                  " #embed_item > div.file.h-100.row > div > div > video"
               )
             );
           });
