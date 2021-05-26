@@ -2294,6 +2294,9 @@
           }
           close.addEventListener("click", function clean(event) {
             if (iframeDoc) {
+              const video = iframeDoc.body.querySelector(
+                "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+              );
               if (video) {
                 video.pause();
               }
