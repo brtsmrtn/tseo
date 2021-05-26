@@ -941,7 +941,7 @@ div.S18 {
   width: 85vw !important;
 }
 div.S22 {
-  width: 60vw !important;
+  width: 75vw !important;
 }
 div.S21 {
   height: unset !important;
@@ -970,8 +970,6 @@ div.S20 .image img,
 div.S21 .image img,
 div.S22 .image img {
   width: calc(100% - 60px);
-  object-fit: scale-down;
-  object-position: top;
 }
 div.S18 .image div:nth-child(1),
 div.S19 .image div:nth-child(1),

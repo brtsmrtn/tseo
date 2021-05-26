@@ -2258,7 +2258,12 @@
             console.log(el.id);
             console.log(node.id);
             console.log(e.target.contentDocument);
-            console.log(e.target.contentDocument.querySelector("." + node.id));
+            console.log(
+              e.target.contentWindow.document.body.querySelectorAll("video")
+            );
+            console.log(
+              e.contentWindow.document.body.querySelectorAll("video")
+            );
             console.log(
               e.target.contentDocument.body.querySelector("." + node.id)
             );
@@ -2270,6 +2275,9 @@
             );
             //+                 " #embed_item > div.file.h-100.row > div > div > video"
           });
+          console.log(
+            iframe.contentWindow.document.body.querySelectorAll("video")
+          );
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
             moveIt(el.id, "back", "0%", "0%", node.content);
