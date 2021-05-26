@@ -2255,7 +2255,12 @@
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
-            console.log(e.id);
+            console.log(el.id);
+            console.log(e.target.contentDocument);
+            console.log(e.target.contentDocument.querySelector("." + node.id));
+            console.log(
+              e.target.contentDocument.body.querySelector("." + node.id)
+            );
             console.log(
               e.target.contentWindow.document.body.querySelector("." + el.id)
             );
