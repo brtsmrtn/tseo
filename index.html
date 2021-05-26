@@ -2035,9 +2035,9 @@
                 );
                 video.currentTime = 0;
                 video.muted = false;
-                console.log(video.paused());
+                console.log(video.paused);
                 video.pause();
-                console.log(video.paused());
+                console.log(video.paused);
               }
             }, 2000);
           });
@@ -2292,17 +2292,17 @@
             "#root #body div #embed_item > div.file.h-100.row > div > div > video"
           );
           console.log(video);
-          console.log(video.paused());
+          console.log(video.paused);
           video.currentTime = 0;
-          console.log(video.paused());
+          console.log(video.paused);
           video.play();
 
           close.addEventListener("click", function clean(event) {
             console.log(video);
-            console.log(video.paused());
+            console.log(video.paused);
             video.currentTime = 0;
             video.pause();
-            console.log(video.paused());
+            console.log(video.paused);
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
