@@ -2256,6 +2256,7 @@
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
             console.log(el.id);
+            console.log(node.id);
             console.log(e.target.contentDocument);
             console.log(e.target.contentDocument.querySelector("." + node.id));
             console.log(
