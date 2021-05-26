@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>The Soul Expanding Ocean</title>
+    <title>The Soul Expanding Ocean #1: Taloi Havini</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -1522,7 +1522,7 @@
               .querySelector(el)
               .setAttribute(
                 "style",
-                "height: calc(0.7 * " +
+                "height: calc(0.6 * " +
                   window.innerWidth +
                   " * 0.56249816311px)"
               );
@@ -1530,7 +1530,7 @@
               .querySelector(el + " div.video > iframe")
               .setAttribute(
                 "style",
-                "height: calc(calc(0.7 * " +
+                "height: calc(calc(0.6 * " +
                   window.innerWidth +
                   " * 0.56249816311px) - 33.7498897866px)"
               );
@@ -1538,7 +1538,7 @@
               .querySelector(el + " div.video")
               .setAttribute(
                 "style",
-                "height: calc(calc(0.7 * " +
+                "height: calc(calc(0.6 * " +
                   window.innerWidth +
                   " * 0.56249816311px) + 50px)"
               );
@@ -1547,13 +1547,13 @@
             .querySelector(".S4")
             .setAttribute(
               "style",
-              "height: calc(0.7 * " + window.innerWidth + " * 0.56249816311px)"
+              "height: calc(0.6 * " + window.innerWidth + " * 0.56249816311px)"
             );
           document
             .querySelector(".S4 div.video > iframe")
             .setAttribute(
               "style",
-              "height: calc(calc(0.7 * " +
+              "height: calc(calc(0.6 * " +
                 window.innerWidth +
                 " * 0.56249816311px) - 83.7498897866px)"
             );
@@ -1561,7 +1561,7 @@
             .querySelector(".S4 div.video")
             .setAttribute(
               "style",
-              "height: calc(calc(0.7 * " +
+              "height: calc(calc(0.6 * " +
                 window.innerWidth +
                 " * 0.56249816311px) + 50px)"
             );
@@ -2255,8 +2255,11 @@
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
-            console.log(e.target.contentDocument);
-            console.log(e.target.contentWindow.document);
+            console.log(
+              document.querySelector(
+                "#embed_item > div.file.h-100.row > div > div > video"
+              )
+            );
           });
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
