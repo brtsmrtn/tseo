@@ -2018,6 +2018,7 @@
         const OAembeds = nodesArray.filter((n) =>
           ["S3", "S6", "S10", "S13", "S14", "S17"].includes(n.id)
         );
+        console.log("gothere");
         OAembeds.forEach((el) => {
           const iframe = document.querySelector(
             "." + el.id + " div.video > iframe"
@@ -2029,7 +2030,6 @@
             setTimeout(function () {
               console.log("here too");
               if (iframeBody) {
-                console.log(iframeBody);
                 const video = iframeBody.querySelector(
                   "#root #body div #embed_item > div.file.h-100.row > div > div > video"
                 );
@@ -2285,10 +2285,7 @@
           });
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
-          console.log(iframe);
-          const iframeBody = e.target.contentDocument.body;
-          console.log(iframeBody);
-          const video = iframeBody.querySelector(
+          const video = iframe.contentDocument.body.querySelector(
             "#root #body div #embed_item > div.file.h-100.row > div > div > video"
           );
           console.log(video);
