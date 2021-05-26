@@ -631,7 +631,7 @@
             title="Artist-at-Sea: Taloi Havini - Ice Age Geology of the Great Barrier Reef"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/2004"
+            src=""
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -727,7 +727,7 @@
             title="Taloi Havini and Ben Hakalitz in conversation"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/1991"
+            src=""
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -846,7 +846,7 @@
             title="Taloi Havini on Answer to the call"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/1989"
+            src=""
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -891,7 +891,7 @@
             title="Ben Hakalitz introducing instruments"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/1992"
+            src=""
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -908,7 +908,6 @@
             title="Mario Celestino introducing instruments"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/1993"
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -989,7 +988,7 @@
             title="Taloi Havini: Answer to the Call - drone footage"
             frameborder="0"
             scrolling="no"
-            src="https://ocean-archive.org/embed/2005"
+            src=""
           ></iframe>
           <div>
             <span class="ultralighter"
@@ -1548,22 +1547,6 @@
                   " * 0.56249816311px) + 50px)"
               );
           });
-          [".S3", ".S6", ".S10", ".S13", ".S14", ".S17"].forEach((el) => {
-            const iframe = document.querySelector(el + " div.video > iframe");
-            iframe.addEventListener("load", function (e) {
-              const iframeBody = e.target.contentDocument.body;
-              setTimeout(function () {
-                if (iframeBody) {
-                  const video = iframeBody.querySelector(
-                    "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-                  );
-                  console.log(video);
-                  video.pause();
-                  video.currentTime = 0;
-                }
-              }, 1000);
-            });
-          });
           document
             .querySelector(".S4")
             .setAttribute(
@@ -1694,7 +1677,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/2004",
             hasBeen: false,
           },
           {
@@ -1718,7 +1701,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/1991",
             hasBeen: false,
           },
           {
@@ -1750,7 +1733,7 @@
             moveX: "25%",
             moveY: "25%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/1989",
             hasBeen: false,
           },
           {
@@ -1774,7 +1757,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/1992",
             hasBeen: false,
           },
           {
@@ -1782,7 +1765,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/1993",
             hasBeen: false,
           },
           {
@@ -1806,7 +1789,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: "",
+            embed: "https://ocean-archive.org/embed/2005",
             hasBeen: false,
           },
           {
@@ -2032,6 +2015,33 @@
         }
       }
       function showContent() {
+        const OAembeds = nodesArray.filter((n) =>
+          ["S3", "S6", "S10", "S13", "S14", "S17"].includes(n.id)
+        );
+        OAembeds.forEach((el) => {
+          const iframe = document.querySelector(
+            "." + el.id + " div.video > iframe"
+          );
+          iframe.setAttribute("src", el.embed);
+          iframe.addEventListener("load", function (e) {
+            [];
+            const iframeBody = e.target.contentDocument.body;
+            setTimeout(function () {
+              console.log("here too");
+              if (iframeBody) {
+                console.log(iframeBody);
+                const video = iframeBody.querySelector(
+                  "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+                );
+                console.log(video);
+                video.pause();
+                video.muted = false;
+                console.log(video);
+              }
+            }, 1000);
+          });
+        });
+
         notes.classList.toggle("hidden");
         setTimeout(function () {
           island.classList.remove("hidden");
@@ -2275,34 +2285,33 @@
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.addEventListener("load", function (e) {
-            console.log("i happened");
             const iframeBody = e.target.contentDocument.body;
-            setTimeout(function () {
-              console.log("here too");
-              if (iframeBody) {
-                console.log(iframeBody);
-                const video = iframeBody.querySelector(
-                  "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-                );
-                console.log(video);
-                video.play();
-                video.muted = false;
-              }
-            }, 500);
+            console.log("here yes");
+            if (iframeBody) {
+              console.log("here as well");
+              console.log(iframeBody);
+              const video = iframeBody.querySelector(
+                "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+              );
+              console.log(video);
+              video.currentTime = 0;
+              video.play();
+              console.log(video);
+            }
           });
 
           close.addEventListener("click", function clean(event) {
             iframe.addEventListener("load", function (e) {
+              console.log("made it here too");
               const iframeBody = e.target.contentDocument.body;
-              setTimeout(function () {
-                if (iframeBody) {
-                  const video = iframeBody.querySelector(
-                    "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-                  );
-                  console.log(video);
-                  video.pause();
-                }
-              }, 500);
+              if (iframeBody) {
+                console.log("and here too");
+                const video = iframeBody.querySelector(
+                  "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+                );
+                console.log(video);
+                video.pause();
+              }
             });
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
