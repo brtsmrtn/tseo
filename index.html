@@ -2256,6 +2256,9 @@
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
             console.log(e.target.contentDocument.body);
+            var body = e.target.contentDocument.body;
+            console.log(body);
+            console.log(body.querySelector("#root"));
             console.log(
               e.target.contentWindow.document.body.querySelectorAll("video")
             );
