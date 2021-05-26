@@ -6,55 +6,482 @@
     <title>The Soul Expanding Ocean</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./intro_with_mic.css"
-      media="screen"
-    />
     <style>
       @font-face {
         font-family: "Amare Alta";
         font-style: normal;
         font-weight: 800;
-        src: url("./fonts/Amare-Alta.otf") format("opentype");
-        src: url("./fonts/Amare-Alta.eot") format("embedded-opentype"),
-          url("./fonts/Amare-Alta.eot?#iefix") format("embedded-opentype"),
-          url("./fonts/Amare-Alta.woff") format("woff"),
-          url("./fonts/Amare-Alta.ttf") format("truetype");
+        src: url(fonts/Amare-Alta.otf) format("opentype");
+        src: url(fonts/Amare-Alta.eot) format("embedded-opentype"),
+          url(fonts/Amare-Alta.woff) format("woff"),
+          url(fonts/Amare-Alta.ttf) format("truetype");
       }
       @font-face {
         font-family: "Amare Medium";
         font-style: normal;
         font-weight: 400;
-        src: url("./fonts/Amare-Medium.otf") format("opentype");
-        src: url("./fonts/Amare-Medium.eot") format("embedded-opentype"),
-          url("./fonts/Amare-Medium.eot?#iefix") format("eot"),
-          url("./fonts/Amare-Medium.woff") format("woff"),
-          url("./fonts/Amare-Medium.ttf") format("truetype");
+        src: url(fonts/Amare-Medium.otf) format("opentype");
+        src: url(fonts/Amare-Medium.eot) format("embedded-opentype"),
+          url(fonts/Amare-Medium.woff) format("woff"),
+          url(fonts/Amare-Medium.ttf) format("truetype");
       }
       @font-face {
         font-family: "Amare Linnea";
         font-style: normal;
         font-weight: 100;
-        src: url("./fonts/Amare-Linnea.otf") format("opentype");
-        src: url("./fonts/Amare-Linnea.eot") format("embedded-opentype"),
-          url("./fonts/Amare-Linnea.eot?#iefix") format("embedded-opentype"),
-          url("./fonts/Amare-Linnea.woff") format("woff"),
-          url("./fonts/Amare-Linnea.ttf") format("truetype");
+        src: url(fonts/Amare-Linnea.otf) format("opentype");
+        src: url(fonts/Amare-Linnea.eot) format("embedded-opentype"),
+          url(fonts/Amare-Linnea.woff) format("woff"),
+          url(fonts/Amare-Linnea.ttf) format("truetype");
       }
       @font-face {
         font-family: "Roboto Mono";
         font-style: normal;
         font-weight: 400;
-        src: url("./fonts/RobotoMono-Regular.otf") format("opentype");
-        src: url("./fonts/RobotoMono-Regular.eot") format("embedded-opentype"),
-          url("./fonts/RobotoMono-Regular.eot?#iefix")
-            format("embedded-opentype"),
-          url("./fonts/RobotoMono-Regular.woff") format("woff"),
-          url("./fonts/RobotoMono-Regular.ttf") format("truetype");
+        src: url(fonts/RobotoMono-Regular.otf) format("opentype");
+        src: url(fonts/RobotoMono-Regular.eot) format("embedded-opentype"),
+          url(fonts/RobotoMono-Regular.woff) format("woff"),
+          url(fonts/RobotoMono-Regular.ttf) format("truetype");
+      }
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Amare Linnea", "Amare Medium", "Amare Alta", sans-serif;
+      }
+      body,
+      html,
+      main {
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        min-width: 100vw;
+        min-height: 100%;
+        text-align: center;
+        display: block;
+        color: #fff;
+      }
+      #toLandscape,
+      main {
+        background: rgb(1, 35, 205, 0.95);
+        background: -moz-linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.95) 0,
+          rgba(102, 16, 242, 0.95) 21%,
+          rgba(123, 4, 198, 0.95) 63%,
+          rgba(67, 0, 167, 0.95) 95%
+        );
+        background: -webkit-linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.95) 0,
+          rgba(102, 16, 242, 0.95) 21%,
+          rgba(123, 4, 198, 0.95) 63%,
+          rgba(67, 0, 167, 0.95) 95%
+        );
+        background: linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.95) 0,
+          rgba(102, 16, 242, 0.95) 21%,
+          rgba(123, 4, 198, 0.95) 63%,
+          rgba(67, 0, 167, 0.95) 95%
+        );
+        background-size: 100% 1200%;
+        background-position: 0 0;
+      }
+      #toLandscape {
+        z-index: 10000;
+        top: 0;
+        position: absolute !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      #toLandscape > div {
+        display: flex;
+        height: 50%;
+      }
+      #toLandscape > div:nth-child(1) {
+        align-self: center;
+        align-items: center;
+        width: 90vw;
+      }
+      span.lighter a,
+      span.lighter a:active,
+      span.lighter a:hover,
+      span.lighter a:link,
+      span.lighter a:visited {
+        color: #fff;
+      }
+      span.lighter a:hover {
+        text-decoration: none;
+      }
+      #toLandscape img {
+        object-position: center;
+        object-fit: contain;
+        width: 100%;
+        filter: invert(1);
+        -webkit-filter: invert(1);
+      }
+      #landscapeGood {
+        visibility: hidden;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: absolute;
+        z-index: 10001;
+        bottom: 30px;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        justify-items: center;
+        justify-self: center;
+        width: 100vw;
+      }
+      #landscapeGood span {
+        background-color: rgba(60, 60, 60, 0.8);
+        padding: 10px 20px;
+      }
+      #landscapeGood.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @-webkit-keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+      @keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+      @-webkit-keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+      @keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+      span {
+        font-weight: 800;
+        line-height: calc(58px + 0.4vw);
+        font-size: calc(40px + 0.4vw);
+      }
+      button,
+      div,
+      span:not(.read) {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      span.lighter {
+        vertical-align: middle;
+        line-height: calc(30px + 0.4vw);
+        font-size: calc(20px + 0.4vw);
+        font-weight: 100;
+      }
+      .hidden,
+      .hidden > * {
+        visibility: hidden;
+        opacity: 0;
+        max-height: 0%;
+      }
+      button {
+        width: auto;
+        overflow: visible;
+        color: #fff;
+        background: rgba(67, 0, 167, 0.25);
+        border: 2px solid rgba(147, 203, 254, 0.6);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: calc(30px + 0.4vw);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        height: 10%;
+        padding: calc(0.5% + 20px) calc(1vw + 15px);
+        box-shadow: 20px 10px 50px #93cbfe;
+        -webkit-transition: box-shadow 0.75s ease-in-out, color 1s, font-size 1s;
+        transition: box-shadow 0.75s ease-in-out, color 1s, font-size 1s;
+      }
+      button.skip {
+        box-shadow: unset;
+      }
+      button:hover {
+        background: rgba(67, 0, 167, 0.5);
+        box-shadow: 10px 10px 50px 30px rgba(147, 203, 254, 0.6);
+        font-size: calc(32px + 0.4vw);
+      }
+      .rnInner {
+        width: 100%;
+        position: absolute;
+        top: -10%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: transform 6s ease;
+        transition: transform 6s ease;
+        -webkit-transform-origin: -120% top;
+        transform-origin: -120% top;
+        z-index: 50;
+      }
+      .rnUnit {
+        width: 12vw;
+        height: 120%;
+        background: repeating-linear-gradient(
+          to left,
+          rgba(67, 0, 167, 0.32) 4vw,
+          rgba(67, 0, 167, 0.52) 8vw,
+          rgba(67, 0, 167, 0.12) 10vw
+        );
+        background-size: 100% 100%;
+        display: inline-block;
+        -webkit-transform-origin: 0 0;
+        -webkit-transform: rotate(1deg);
+        transform-origin: 0 0;
+        transform: rotate(1deg);
+        animation: rnUnit 5s ease infinite;
+      }
+      @keyframes rnUnit {
+        50% {
+          -webkit-transform: rotate(-1deg);
+          transform: rotate(-1deg);
+        }
+      }
+      .rnUnit:nth-child(1) {
+        animation-delay: -0.2s;
+      }
+      .rnUnit:nth-child(2) {
+        animation-delay: -0.4s;
+      }
+      .rnUnit:nth-child(3) {
+        animation-delay: -0.6s;
+      }
+      .rnUnit:nth-child(4) {
+        animation-delay: -0.8s;
+      }
+      .rnUnit:nth-child(5) {
+        animation-delay: -1s;
+      }
+      .rnUnit:nth-child(6) {
+        animation-delay: -1.2s;
+      }
+      .rnUnit:nth-child(7) {
+        animation-delay: -1.4s;
+      }
+      .rnUnit:nth-child(8) {
+        animation-delay: -1.6s;
+      }
+      .rnUnit:nth-child(9) {
+        animation-delay: -1.8s;
+      }
+      .rnUnit:nth-child(10) {
+        animation-delay: -2s;
+      }
+      .feedback {
+        text-align: center;
+        z-index: 101;
+      }
+      .message {
+        z-index: 101;
+      }
+      .cover {
+        z-index: 103;
+        cursor: default;
+      }
+      .start {
+        -webkit-animation: show_anything 2s 2s normal forwards ease-out;
+        animation: show_anything 2s 2s normal forwards ease-out;
+      }
+      .feedback .space {
+        position: absolute;
+        display: flex;
+        width: 100%;
+      }
+      .feedback .space:nth-child(1) {
+        justify-content: center;
+      }
+      .feedback .space:nth-child(2) {
+        bottom: 5%;
+        left: 5%;
+        justify-content: flex-start;
+      }
+      @-webkit-keyframes show_anything {
+        0% {
+          visibility: hidden;
+          opacity: 0;
+        }
+        10% {
+          visibility: visible;
+          opacity: 0.05;
+        }
+        100% {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+      @keyframes show_anything {
+        0% {
+          visibility: hidden;
+          opacity: 0;
+        }
+        10% {
+          visibility: visible;
+          opacity: 0.05;
+        }
+        100% {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+      #intro {
+        position: absolute;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+      }
+      #intro-message {
+        width: 90vw;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+      }
+      #intro-feedback {
+        display: flex;
+        opacity: 0;
+        justify-content: space-evenly;
+        flex-direction: row;
+        align-items: center;
+      }
+      main.background-move-1 {
+        z-index: 1;
+        opacity: 0.85;
+        animation: dec_op_1_085 2s linear;
+      }
+      main.background-move-1::after {
+        content: "";
+        background: rgb(1, 35, 205, 0.65);
+        background: -moz-linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.65) 0,
+          rgba(102, 16, 242, 0.65) 21%,
+          rgba(123, 4, 198, 0.65) 63%,
+          rgba(67, 0, 167, 0.65) 95%
+        );
+        background: -webkit-linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.65) 0,
+          rgba(102, 16, 242, 0.65) 21%,
+          rgba(123, 4, 198, 0.65) 63%,
+          rgba(67, 0, 167, 0.65) 95%
+        );
+        background: linear-gradient(
+          115deg,
+          rgba(1, 35, 205, 0.65) 0,
+          rgba(102, 16, 242, 0.65) 21%,
+          rgba(123, 4, 198, 0.65) 63%,
+          rgba(67, 0, 167, 0.65) 95%
+        );
+        opacity: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        animation: inc_op_0_1 2s linear;
+      }
+      @keyframes inc_op_0_1 {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes dec_op_1_085 {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.85;
+        }
+      }
+      @media (max-height: 800px) {
+        span.lighter {
+          vertical-align: middle;
+          line-height: calc(24px + 0.4vw);
+          font-size: calc(18px + 0.4vw);
+          font-weight: 100;
+        }
+      }
+      @media (max-height: 600px) and (max-width: 900px) {
+        span.lighter {
+          vertical-align: middle;
+          line-height: calc(22px + 0.4vw);
+          font-size: calc(16px + 0.4vw);
+          font-weight: 100;
+        }
+        span {
+          line-height: calc(34px + 0.4vw);
+          font-size: calc(24px + 0.4vw);
+        }
+        button {
+          font-size: calc(20px + 0.4vw);
+          padding: 15px calc(2vw + 15px) 20px calc(2vw + 15px);
+        }
+        button:enabled:hover {
+          font-size: calc(22px + 0.4vw);
+        }
       }
     </style>
+    <link rel="stylesheet" type="text/css" href="./css.css" media="screen" />
   </head>
   <body>
     <main class="hidden">
@@ -81,23 +508,14 @@
             <div class="audio-controls">
               <div class="audio-wave"></div>
               <div class="audio-state">
-                <svg
-                  fill="#6f00ff"
-                  viewBox="0 0 448 512"
-                  height="1.5em"
-                  width="1.5em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
                   ></path>
                 </svg>
                 <svg
                   class="hide"
-                  fill="#6f00ff"
                   viewBox="0 0 448 512"
-                  height="1.5em"
-                  width="1.5em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
@@ -207,7 +625,7 @@
           </div>
         </div>
       </div>
-      <div class="S3 node hidden" style="">
+      <div class="S3 node hidden">
         <div class="video">
           <iframe
             title="Artist-at-Sea: Taloi Havini - Ice Age Geology of the Great Barrier Reef"
@@ -223,7 +641,7 @@
           <div class="close"></div>
         </div>
       </div>
-      <div class="S4 node hidden" style="">
+      <div class="S4 node hidden">
         <div class="video">
           <iframe
             id="S4_video"
@@ -266,12 +684,7 @@
           <div class="close"></div>
         </div>
         <div class="island-rev hidden">
-          <svg
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="xMidYMid slice"
-            height="100%"
-            width="100%"
-          >
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
             <g
               transform="translate(0, 1080) scale(0.1, -0.1)"
               fill="#000000"
@@ -307,7 +720,7 @@
           </svg>
         </div>
       </div>
-      <div class="S6 node hidden" style="">
+      <div class="S6 node hidden">
         <div class="video">
           <iframe
             title="Taloi Havini and Ben Hakalitz in conversation"
@@ -353,7 +766,12 @@
                 ></path>
               </svg>
             </div>
-            <div class="title-time"><span class="ultralighter"></span></div>
+            <div class="title-time">
+              <span class="ultralighter"
+                >Taloi Havini, "Answer to the Call" (2021), fragment: Ocarina
+                and Panpipe (0:27)</span
+              >
+            </div>
             <audio
               preload="false"
               src="./nodes/sound/ATTC Ocarina and Panpipe 30 sec sample.mp3"
@@ -367,23 +785,14 @@
           <div class="audio-controls">
             <div class="audio-wave"></div>
             <div class="audio-state">
-              <svg
-                fill="#6f00ff"
-                viewBox="0 0 448 512"
-                height="1.5em"
-                width="1.5em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
                 ></path>
               </svg>
               <svg
                 class="hide"
-                fill="#6f00ff"
                 viewBox="0 0 448 512"
-                height="1.5em"
-                width="1.5em"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -391,7 +800,12 @@
                 ></path>
               </svg>
             </div>
-            <div class="title-time"><span class="ultralighter"></span></div>
+            <div class="title-time">
+              <span class="ultralighter"
+                >Taloi Havini, "Answer to the Call" (2021), fragment: Ocean
+                Meditation (0:29)</span
+              >
+            </div>
             <audio
               preload="false"
               src="./nodes/sound/ATTC Ocean Meditation 30 sec sample.mp3"
@@ -424,7 +838,7 @@
           </div>
         </div>
       </div>
-      <div class="S10 node hidden" style="">
+      <div class="S10 node hidden">
         <div class="video">
           <iframe
             title="Taloi Havini on Answer to the call"
@@ -464,11 +878,7 @@
       </div>
       <div class="S12 node hidden">
         <div class="image-action">
-          <img
-            style=""
-            class="hidden"
-            src="./nodes/images/bougainville_island.png"
-          />
+          <img class="hidden" src="./nodes/images/bougainville_island.png" />
           <div class="close hidden"></div>
         </div>
       </div>
@@ -525,12 +935,7 @@
           <div class="close"></div>
         </div>
         <div class="island-rev hidden">
-          <svg
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="xMidYMid slice"
-            height="100%"
-            width="100%"
-          >
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
             <g>
               <path
                 d="M0 5400 l0 -5400 9600 0 9600 0 0 5400 0 5400 -9600 0 -9600 0 0
@@ -564,13 +969,16 @@
       </div>
       <div class="S16 node hidden">
         <div class="image-action">
-          <img src="./nodes/images/outline_layer_1.png" class="notyet" />
-          <img src="./nodes/images/outline_layer_2.png" class="notyet" />
-          <img src="./nodes/images/outline_layer_both.png" class="notyet" />
+          <img src="./nodes/images/outline_layer_1.png" class="hidden notyet" />
+          <img src="./nodes/images/outline_layer_2.png" class="hidden notyet" />
+          <img
+            src="./nodes/images/outline_layer_both.png"
+            class="hidden notyet"
+          />
           <div class="close hidden"></div>
         </div>
       </div>
-      <div class="S17 node hidden" style="">
+      <div class="S17 node hidden">
         <div class="video">
           <iframe
             title="Taloi Havini: Answer to the Call - drone footage"
@@ -938,7 +1346,7 @@
           <span><strong>22 elements</strong></span>
         </div>
         <div>
-          <span class="lighter" style="text-align: justify"
+          <span class="lighter"
             >22 elements is an interactive Ocean Archive interface, designed to
             take you through the exhibition The Soul Expanding Ocean #1: Taloi
             Havini. Its 22 content points, or elements, correspond to the 22
@@ -1009,7 +1417,7 @@
               <span class="lighter">Experience</span>
             </div>
           </div>
-          <span class="lighter" style="text-align: justify"
+          <span class="lighter"
             ><br />Ocean Archive is a digital platform in the making. Designed
             to be a pedagogical, research and storytelling tool for a broad
             audience, it brings together a multitude of Ocean voices and stories
@@ -1061,7 +1469,8 @@
               in Venice until October 17, 2021. <br /><br />To see the full
               digital presentation of the project, visit the collection on
               <strong style="background-color: yellow">Ocean Archive</strong>.
-              <br /><br />The project was commissioned by
+              <br /><br />The exhibition "The Soul Expanding Ocean #1: Taloi
+              Havini" was commissioned by
               <a href="http://tba21.org/academy" target="blank"
                 >TBA21–Academy</a
               >
@@ -1076,14 +1485,17 @@
     </div>
 
     <script type="text/javascript">
-      document.querySelector("#toLandscape span").innerHTML =
+      const generalNote =
         "<strong>Please keep your device in landscape mode.</strong><br />If nothing happens, you might have your screen lock on.";
+      document.querySelector("#toLandscape span").innerHTML = generalNote;
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.querySelector("#toLandscape span").innerHTML =
-          '<strong>Please keep your device in landscape mode.</strong><br /> <br />If nothing happens, you might have your screen lock on. In that case, follow <a href="https://support.apple.com/en-us/HT204547" target="blank">this tutorial<a/> or open Control center > Tap Portrait Orientation Lock -> Turn your device sideways.';
+          generalNote +
+          'In that case, follow <a href="https://support.apple.com/en-us/HT204547" target="blank">this tutorial<a/> or open Control center > Tap Portrait Orientation Lock -> Turn your device sideways.';
       } else if (/Android/i.test(navigator.userAgent)) {
         document.querySelector("#toLandscape span").innerHTML =
-          '<strong>Please keep your device in landscape mode.</strong><br /> <br />If nothing happens, you might have your screen lock on. In that case, follow <a href="https://support.google.com/accessibility/android/answer/6006961?hl=en" target="blank">this tutorial<a/> or open Settings > Tap Accessibility -> Tap Auto-rotate screen -> Turn your device sideways.';
+          generalNote +
+          'In that case, follow <a href="https://support.google.com/accessibility/android/answer/6006961?hl=en" target="blank">this tutorial<a/> or open Settings > Tap Accessibility -> Tap Auto-rotate screen -> Turn your device sideways.';
       }
       let [
         landscape,
@@ -1105,11 +1517,82 @@
       window.addEventListener(
         "resize",
         function () {
+          [".S3", ".S6", ".S10", ".S13", ".S14", ".S17"].forEach((el) => {
+            document
+              .querySelector(el)
+              .setAttribute(
+                "style",
+                "height: calc(0.7 * " +
+                  window.innerWidth +
+                  " * 0.56249816311px)"
+              );
+            document
+              .querySelector(el + " div.video > iframe")
+              .setAttribute(
+                "style",
+                "height: calc(calc(0.7 * " +
+                  window.innerWidth +
+                  " * 0.56249816311px) - 33.7498897866px)"
+              );
+            document
+              .querySelector(el + " div.video")
+              .setAttribute(
+                "style",
+                "height: calc(calc(0.7 * " +
+                  window.innerWidth +
+                  " * 0.56249816311px) + 50px)"
+              );
+          });
+          document
+            .querySelector(".S4")
+            .setAttribute(
+              "style",
+              "height: calc(0.7 * " + window.innerWidth + " * 0.56249816311px)"
+            );
+          document
+            .querySelector(".S4 div.video > iframe")
+            .setAttribute(
+              "style",
+              "height: calc(calc(0.7 * " +
+                window.innerWidth +
+                " * 0.56249816311px) - 83.7498897866px)"
+            );
+          document
+            .querySelector(".S4 div.video")
+            .setAttribute(
+              "style",
+              "height: calc(calc(0.7 * " +
+                window.innerWidth +
+                " * 0.56249816311px) + 50px)"
+            );
+          const ratioX = (window.innerHeight + 70) / window.innerWidth;
+          const ratioFull = Math.abs(
+            window.innerHeight / 1080 - window.innerWidth / window.innerHeight
+          );
+          document
+            .querySelector(".S15 div.island-rev svg")
+            .setAttribute(
+              "style",
+              "transform: scale(" +
+                ratioX +
+                ", " +
+                (2 + ratioFull) +
+                "); -webkit-transform: scale(" +
+                ratioX +
+                ", " +
+                (2 + ratioFull) +
+                ");"
+            );
+          document
+            .querySelector(".S15 div.island-rev svg g")
+            .setAttribute(
+              "style",
+              "transform: translate(0px, 1080px) scale(0.1, -0.1); -webkit-transform: translate(0px, 1080px) scale(0.1, -0.1);"
+            );
           if (
             (window.orientation && Math.abs(window.orientation) !== 90) ||
             window.innerHeight > window.innerWidth
           ) {
-            document.querySelector("main").classList.remove("hidden");
             document.querySelector("main").classList.add("hidden");
             document.getElementById("toLandscape").classList.remove("hidden");
             landscape = false;
@@ -1118,7 +1601,6 @@
             (window.orientation && Math.abs(window.orientation) === 90) ||
             window.innerHeight <= window.innerWidth
           ) {
-            document.getElementById("toLandscape").classList.remove("hidden");
             document.getElementById("toLandscape").classList.add("hidden");
             document.querySelector("main").classList.remove("hidden");
             if (landscape === false) {
@@ -1135,7 +1617,6 @@
             window.innerHeight > window.innerWidth
           ) {
             landscape = false;
-            document.querySelector("main").classList.remove("hidden");
             document.querySelector("main").classList.add("hidden");
             document.getElementById("toLandscape").classList.remove("hidden");
           }
@@ -1192,11 +1673,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/2004",
-              title:
-                "Artist-at-Sea: Taloi Havini - Ice Age Geology of the Great Barrier Reef",
-            },
+            embed: "https://ocean-archive.org/embed/2004",
             hasBeen: false,
           },
           {
@@ -1204,11 +1681,7 @@
             moveX: "50%",
             moveY: "50%",
             content: "video-embed",
-            embed: {
-              url: "https://www.youtube.com/embed/iIkl9-6qINk",
-              title:
-                "Answering the call of the ocean: Artist Taloi Havini explores the sound of the sea",
-            },
+            embed: "https://www.youtube.com/embed/iIkl9-6qINk",
             hasBeen: false,
           },
           {
@@ -1216,10 +1689,7 @@
             moveX: "0%",
             moveY: "0%",
             content: "video-action",
-            embed: {
-              url: "https://ocean-archive.org/embed/1626",
-              title: "Hyena lullaby",
-            },
+            embed: "https://ocean-archive.org/embed/1626",
             hasBeen: false,
           },
           {
@@ -1227,10 +1697,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/1991",
-              title: "Taloi Havini and Ben Hakalitz in conversation",
-            },
+            embed: "https://ocean-archive.org/embed/1991",
             hasBeen: false,
           },
           {
@@ -1238,11 +1705,7 @@
             moveX: "0%",
             moveY: "-25%",
             content: "audio",
-            embed: {
-              url: "",
-              title:
-                'Taloi Havini, "Answer to the Call" (2021), fragment: Ocarina and Panpipe',
-            },
+            embed: {},
             hasBeen: false,
           },
           {
@@ -1250,11 +1713,8 @@
             moveX: "0%",
             moveY: "-25%",
             content: "audio",
-            embed: {
-              url: "",
-              title:
-                'Taloi Havini, "Answer to the Call" (2021), fragment: Ocean Meditation',
-            },
+            embed: {},
+            hasBeen: false,
           },
           {
             id: "S9",
@@ -1269,10 +1729,7 @@
             moveX: "25%",
             moveY: "25%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/1989",
-              title: "Taloi Havini on Answer to the call",
-            },
+            embed: "https://ocean-archive.org/embed/1989",
             hasBeen: false,
           },
           {
@@ -1296,10 +1753,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/1992",
-              title: "Ben Hakalitz introducing instruments",
-            },
+            embed: "https://ocean-archive.org/embed/1992",
             hasBeen: false,
           },
           {
@@ -1307,10 +1761,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/1993",
-              title: "Mario Celestino introducing instruments",
-            },
+            embed: "https://ocean-archive.org/embed/1993",
             hasBeen: false,
           },
           {
@@ -1318,10 +1769,7 @@
             moveX: "0%",
             moveY: "0%",
             content: "video-action",
-            embed: {
-              url: "https://ocean-archive.org/embed/1626",
-              title: "Snippet_1_",
-            },
+            embed: "https://ocean-archive.org/embed/1626",
             hasBeen: false,
           },
           {
@@ -1337,10 +1785,7 @@
             moveX: "-50%",
             moveY: "-50%",
             content: "video-embed-oa",
-            embed: {
-              url: "https://ocean-archive.org/embed/2005",
-              title: "Taloi Havini: Answer to the Call - drone footage",
-            },
+            embed: "https://ocean-archive.org/embed/2005",
             hasBeen: false,
           },
           {
@@ -1431,7 +1876,6 @@
         function togglePlay(close) {
           if (audioInvitationIsPlaying === true) {
             audioInvitationControls[0].classList.remove("hide");
-            audioInvitationControls[1].classList.remove("hide");
             audioInvitationControls[1].classList.add("hide");
             if (close !== "stopped") {
               audioInvitation.pause();
@@ -1440,7 +1884,6 @@
               audioInvitationIsPlaying = false;
             }
           } else if (audioInvitationIsPlaying === false) {
-            audioInvitationControls[0].classList.remove("hide");
             audioInvitationControls[0].classList.add("hide");
             audioInvitationControls[1].classList.remove("hide");
             audioInvitation.play();
@@ -1625,7 +2068,6 @@
               });
             notes.classList.toggle("hidden");
           }
-          document.querySelector("." + id).classList.remove("hidden");
           document.querySelector("." + id).classList.add("hidden");
           about.classList.remove("hidden");
         }
@@ -1649,9 +2091,6 @@
         const close = document.querySelector("div." + el.id + " div div.close");
         moveIt(el.id, "out", node.moveX, node.moveY, node.content);
         const nodeSpace = document.querySelector("div." + el.id);
-        if (node.content === "video-action") {
-          nodeSpace.querySelector("div.island-rev").classList.remove("hidden");
-        }
         if (node.content === "image") {
           close.addEventListener("click", function clean(event) {
             moveIt(el.id, "back", "0%", "0%", node.content);
@@ -1727,20 +2166,26 @@
               islands.map((i) => {
                 i.classList.toggle("hidden");
               });
-              nodeSpace
-                .querySelectorAll("div.image-action img")[0]
-                .classList.toggle("notyet");
+              ["hidden", "notyet"].map((c) =>
+                nodeSpace
+                  .querySelectorAll("div.image-action img")[0]
+                  .classList.toggle(c)
+              );
             }, 1000);
             setTimeout(function () {
-              nodeSpace
-                .querySelectorAll("div.image-action img")[1]
-                .classList.toggle("notyet");
+              ["hidden", "notyet"].map((c) =>
+                nodeSpace
+                  .querySelectorAll("div.image-action img")[1]
+                  .classList.toggle(c)
+              );
               close.classList.add("start");
             }, 2500);
             setTimeout(function () {
-              nodeSpace
-                .querySelectorAll("div.image-action img")[2]
-                .classList.toggle("notyet");
+              ["hidden", "notyet"].map((c) =>
+                nodeSpace
+                  .querySelectorAll("div.image-action img")[2]
+                  .classList.toggle(c)
+              );
               close.classList.remove("hidden");
               close.classList.remove("start");
             }, 4000);
@@ -1753,6 +2198,7 @@
               nodeSpace
                 .querySelectorAll("div.image-action img")
                 .forEach((e) => {
+                  e.classList.toggle("hidden");
                   e.classList.toggle("notyet");
                 });
               moveIt(el.id, "back", "0%", "0%", node.content);
@@ -1767,23 +2213,13 @@
           const video = videoContainer.querySelector(".video-source");
 
           if ((el.id === "S15") | (el.id === "S5")) {
+            nodeSpace
+              .querySelector("div.island-rev")
+              .classList.remove("hidden");
             function removeControls(video) {
               video.removeAttribute("controls");
             }
-            const promise = video.play();
-            if (promise !== undefined) {
-              promise
-                .catch((error) => {
-                  console.log("auto-play prevented");
-                })
-                .then(() => {
-                  video.play();
-                });
-            } else {
-              console.log("something went wrong");
-              video.play();
-              console.log("tagy");
-            }
+            video.play();
             window.onload = removeControls(video);
             if (video.paused) {
               video.play();
@@ -1806,25 +2242,7 @@
             event.currentTarget.removeEventListener(event.type, clean);
           });
         } else if (node.content === "video-embed") {
-          const iframe = nodeSpace.querySelector("div.video > iframe");
-          const videoSpace = nodeSpace.querySelector("div.video");
           const video = document.getElementById(el.id + "_video");
-          nodeSpace.setAttribute(
-            "style",
-            "height: calc(0.7 * " + window.innerWidth + " * 0.56249816311px)"
-          );
-          iframe.setAttribute(
-            "style",
-            "height: calc(calc(0.7 * " +
-              window.innerWidth +
-              " * 0.56249816311px) - 83.7498897866px)"
-          );
-          videoSpace.setAttribute(
-            "style",
-            "height: calc(calc(0.7 * " +
-              window.innerWidth +
-              " * 0.56249816311px) + 50px)"
-          );
           close.addEventListener("click", function clean(event) {
             video.contentWindow.postMessage(
               '{"event":"command","func":"stopVideo","args":""}',
@@ -1835,48 +2253,28 @@
           });
         } else if (node.content === "video-embed-oa") {
           const iframe = nodeSpace.querySelector("div.video > iframe");
-          const videoSpace = nodeSpace.querySelector("div.video");
-          iframe.setAttribute("src", node.embed.url);
-          nodeSpace.setAttribute(
-            "style",
-            "height: calc(0.7 * " + window.innerWidth + " * 0.56249816311px)"
-          );
-          iframe.setAttribute(
-            "style",
-            "height: calc(calc(0.7 * " +
-              window.innerWidth +
-              " * 0.56249816311px) - 33.7498897866px)"
-          );
-          videoSpace.setAttribute(
-            "style",
-            "height: calc(calc(0.7 * " +
-              window.innerWidth +
-              " * 0.56249816311px) + 50px)"
-          );
+          iframe.setAttribute("src", node.embed);
+          iframe.addEventListener("load", function (e) {
+            console.log(e.target.contentDocument);
+            console.log(e.target.contentWindow.document);
+          });
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
         } else if (node.content === "audio") {
-          const calculateTime = (secs) => {
-            const minutes = Math.floor(secs / 60);
-            const seconds = Math.floor(secs % 60);
-            const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-            return `${minutes}:${returnedSeconds}`;
-          };
-          const displayDuration = () => {
-            titleTime.textContent =
-              node.embed.title + " (" + calculateTime(audio.duration) + ")";
-          };
           function togglePlay(close) {
-            if (audioIsPlaying) {
+            if (audioIsPlaying === true) {
               audioControls[0].classList.remove("hide");
-              audioControls[1].classList.remove("hide");
               audioControls[1].classList.add("hide");
-              audio.pause();
+              if (close !== "stopped") {
+                audio.pause();
+              } else {
+                audio.currentTime = 0;
+                audioIsPlaying = false;
+              }
             } else {
-              audioControls[0].classList.remove("hide");
               audioControls[0].classList.add("hide");
               audioControls[1].classList.remove("hide");
               audio.play();
@@ -1889,9 +2287,6 @@
           const audioState = nodeSpace.querySelector(
             ".audio .audio-controls .audio-state"
           );
-          const titleTime = nodeSpace.querySelector(
-            ".audio .audio-controls .title-time span"
-          );
           let audioIsPlaying = false;
           audio.onplaying = function () {
             audioIsPlaying = true;
@@ -1899,17 +2294,19 @@
           audio.onpause = function () {
             audioIsPlaying = false;
           };
-          audioState.onclick = function (event) {
-            togglePlay();
+          audio.onended = function () {
+            audioIsPlaying = true;
+            togglePlay("stopped");
           };
-          titleTime.textContent = node.embed.title;
+          audioState.onclick = function (event) {
+            togglePlay("play");
+          };
           if (audio.readyState > 0) {
-            togglePlay();
-            displayDuration();
+            togglePlay("play");
           }
           close.addEventListener("click", function clean(event) {
             audioIsPlaying = true;
-            togglePlay();
+            togglePlay("play");
             audio.currentTime = 0;
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
