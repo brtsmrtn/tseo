@@ -2018,7 +2018,6 @@
         const OAembeds = nodesArray.filter((n) =>
           ["S3", "S6", "S10", "S13", "S14", "S17"].includes(n.id)
         );
-        console.log("gothere");
         OAembeds.forEach((el) => {
           const iframe = document.querySelector(
             "." + el.id + " div.video > iframe"
@@ -2028,16 +2027,13 @@
             [];
             const iframeBody = e.target.contentDocument.body;
             setTimeout(function () {
-              console.log("here too");
               if (iframeBody) {
                 const video = iframeBody.querySelector(
                   "#root #body div #embed_item > div.file.h-100.row > div > div > video"
                 );
                 video.currentTime = 0;
                 video.muted = false;
-                console.log(video.paused);
                 video.pause();
-                console.log(video.paused);
               }
             }, 2000);
           });
@@ -2275,6 +2271,7 @@
           });
         } else if (node.content === "video-embed") {
           const video = document.getElementById(el.id + "_video");
+          video.play();
           close.addEventListener("click", function clean(event) {
             video.contentWindow.postMessage(
               '{"event":"command","func":"stopVideo","args":""}',
@@ -2288,18 +2285,10 @@
           const video = iframe.contentDocument.body.querySelector(
             "#root #body div #embed_item > div.file.h-100.row > div > div > video"
           );
-          console.log(video);
-          console.log(video.paused);
           video.currentTime = 0;
-          console.log(video.paused);
           video.play();
-
           close.addEventListener("click", function clean(event) {
-            console.log(video);
-            console.log(video.paused);
-            video.currentTime = 0;
             video.pause();
-            console.log(video.paused);
             moveIt(el.id, "back", "0%", "0%", node.content);
             event.currentTarget.removeEventListener(event.type, clean);
           });
