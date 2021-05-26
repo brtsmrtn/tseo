@@ -2255,32 +2255,33 @@
           const iframe = nodeSpace.querySelector("div.video > iframe");
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
-            console.log(e.target.contentDocument.body);
             var body = e.target.contentDocument.body;
-            console.log(body);
-            console.log(body.querySelector("#root"));
+            console.log(body.querySelector("#root #body"));
+            console.log(body.querySelector("#root #body div"));
+            console.log(body.querySelector("#root #body div div"));
             console.log(
-              e.target.contentWindow.document.body.querySelectorAll("video")
+              body.querySelector("#root #body div div div.file.h-100.row")
             );
             console.log(
-              e.target.contentDocument.body.querySelector("." + node.id)
+              body.querySelector("#root #body div div div.file.h-100.row div")
             );
             console.log(
-              e.target.contentWindow.document.body.querySelector("." + el.id)
+              body.querySelector(
+                "#root #body div div div.file.h-100.row div div"
+              )
             );
             console.log(
-              e.target.contentWindow.document.querySelector("." + el.id)
+              body.querySelector(
+                "#root #body div div div.file.h-100.row div div video"
+              )
             );
-            //+                 " #embed_item > div.file.h-100.row > div > div > video"
+            console.log(
+              body.querySelector(
+                "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+              )
+            );
           });
-          console.log(
-            iframe.contentWindow.document.body.querySelectorAll("video")
-          );
-          var trying = iframe.contentWindow.document.querySelector("video");
-          console.log(trying);
-          console.log(
-            iframe.contentWindow.document.body.querySelectorAll("video")
-          );
+
           close.addEventListener("click", function clean(event) {
             iframe.setAttribute("src", "");
             moveIt(el.id, "back", "0%", "0%", node.content);

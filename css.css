@@ -885,13 +885,20 @@ div.S10,
 div.S17 {
   width: 60vw !important;
 }
-div.S1,
+div.S10 {
+  bottom: 10%;
+  left: 5%;
+}
+
 div.S3,
 div.S6,
-div.S9,
-div.S13,
 div.S14,
-div.S10,
+div.S13 {
+  bottom: 10%;
+  right: 5%;
+}
+div.S1,
+div.S9,
 div.S17 {
   bottom: 10%;
   right: 12%;
