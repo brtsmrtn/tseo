@@ -2256,47 +2256,53 @@
           iframe.setAttribute("src", node.embed);
           iframe.addEventListener("load", function (e) {
             var body = e.target.contentDocument.body;
-            var parentDiv = body.querySelector("#root #body div");
-            var observer = new MutationObserver(function (
-              mutationList,
-              obsrvr
-            ) {
-              var div_to_check = document.getElementById("embed_item");
-              console.log("checking for div...");
-              if (div_to_check) {
-                console.log("div is loaded now"); // DO YOUR STUFF!
-                obsrvr.disconnect(); // stop observing
-                return;
+            setTimeout(function () {
+              if (body) {
+                var observer = new MutationObserver(function (
+                  mutationList,
+                  obsrvr
+                ) {
+                  console.log(body);
+                  var parentDiv = body.querySelector("#root #body div");
+                  console.log(parentDiv);
+                  var div_to_check = parentDiv.getElementById("embed_item");
+                  console.log("checking for div...");
+                  if (div_to_check) {
+                    console.log("div is loaded now"); // DO YOUR STUFF!
+                    obsrvr.disconnect(); // stop observing
+                    return;
+                  }
+                });
+                observer.observe(parentDiv, {
+                  childList: true,
+                  subtree: true,
+                });
               }
-            });
-            observer.observe(parentDiv, {
-              childList: true,
-              subtree: true,
-            });
-            console.log(body.querySelector("#root #body"));
-            console.log(body.querySelector("#root #body div"));
-            console.log(body.querySelector("#root #body div div"));
-            console.log(
-              body.querySelector("#root #body div div div.file.h-100.row")
-            );
-            console.log(
-              body.querySelector("#root #body div div div.file.h-100.row div")
-            );
-            console.log(
-              body.querySelector(
-                "#root #body div div div.file.h-100.row div div"
-              )
-            );
-            console.log(
-              body.querySelector(
-                "#root #body div div div.file.h-100.row div div video"
-              )
-            );
-            console.log(
-              body.querySelector(
-                "#root #body div #embed_item > div.file.h-100.row > div > div > video"
-              )
-            );
+            }, 500);
+            // console.log(body.querySelector("#root #body"));
+            // console.log(body.querySelector("#root #body div"));
+            // console.log(body.querySelector("#root #body div div"));
+            // console.log(
+            //   body.querySelector("#root #body div div div.file.h-100.row")
+            // );
+            // console.log(
+            //   body.querySelector("#root #body div div div.file.h-100.row div")
+            // );
+            // console.log(
+            //   body.querySelector(
+            //     "#root #body div div div.file.h-100.row div div"
+            //   )
+            // );
+            // console.log(
+            //   body.querySelector(
+            //     "#root #body div div div.file.h-100.row div div video"
+            //   )
+            // );
+            // console.log(
+            //   body.querySelector(
+            //     "#root #body div #embed_item > div.file.h-100.row > div > div > video"
+            //   )
+            // );
           });
 
           close.addEventListener("click", function clean(event) {
