@@ -839,7 +839,7 @@ main.background-move-5::after {
   right: -40vw; */
 }
 #participation-message .audio {
-  width: 75%;
+  width: 100%;
   text-align: left;
 }
 #participation-feedback {
