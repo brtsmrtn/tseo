@@ -1549,6 +1549,7 @@
               );
           });
           [".S3", ".S6", ".S10", ".S13", ".S14", ".S17"].forEach((el) => {
+            const iframe = document.querySelector(el + " div.video > iframe");
             iframe.addEventListener("load", function (e) {
               const iframeBody = e.target.contentDocument.body;
               setTimeout(function () {
