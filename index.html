@@ -2258,12 +2258,12 @@
             var body = e.target.contentDocument.body;
             setTimeout(function () {
               if (body) {
+                var parentDiv = body.querySelector("#root #body div");
                 var observer = new MutationObserver(function (
                   mutationList,
                   obsrvr
                 ) {
                   console.log(body);
-                  var parentDiv = body.querySelector("#root #body div");
                   console.log(parentDiv);
                   var div_to_check = parentDiv.getElementById("embed_item");
                   console.log("checking for div...");
