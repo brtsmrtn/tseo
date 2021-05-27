@@ -1345,8 +1345,18 @@
       <div>
         <span class="lighter"></span>
       </div>
-      <div>
+      <div class="rotate">
         <img src="./img/rotate-phone.png" />
+      </div>
+      <div
+        class="confused hidden"
+        style="display: flex; justify-content: center; align-self: center"
+      >
+        <img
+          class="hidden"
+          style="display: flex; width: 50%"
+          src="./img/confused-face.png"
+        />
       </div>
     </div>
     <div id="landscapeGood">
@@ -1511,9 +1521,33 @@
         navigator.userAgent.indexOf("FBAN") != -1 ||
         navigator.userAgent.indexOf("FBAV") != -1
       ) {
+        document
+          .querySelector("#toLandscape .rotate")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .rotate img")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .confused")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .confused img")
+          .classList.toggle("hidden");
         document.querySelector("#toLandscape span").innerHTML =
           "<strong>Almost there! </strong><br />This page does not work in the Facebook in-app browser. Please tap the three dots on the bottom-right of your screen and click Open in Browser (or the name of your default browser).";
       } else if (/Instagram/i.test(navigator.userAgent)) {
+        document
+          .querySelector("#toLandscape .rotate")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .rotate img")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .confused")
+          .classList.toggle("hidden");
+        document
+          .querySelector("#toLandscape .confused img")
+          .classList.toggle("hidden");
         document.querySelector("#toLandscape span").innerHTML =
           "<strong>Almost there! </strong><br />This page does not work in the Instagram in-app browser. Please tap the three dots on the top-right of your screen and click Open in Browser (or the name of your default browser).";
       } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
