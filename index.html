@@ -1507,14 +1507,21 @@
       const generalNote =
         "<strong>Please keep your device in landscape mode.</strong><br />If nothing happens, you might have your screen lock on.";
       document.querySelector("#toLandscape span").innerHTML = generalNote;
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      if (
+        navigator.userAgent.indexOf("FBAN") != -1 ||
+        navigator.userAgent.indexOf("FBAV") != -1
+      ) {
         document.querySelector("#toLandscape span").innerHTML =
-          generalNote +
-          'In that case, follow <a href="https://support.apple.com/en-us/HT204547" target="blank">this tutorial<a/> or open Control center > Tap Portrait Orientation Lock -> Turn your device sideways.';
+          "<strong>Almost there! </strong><br />This page does not work in the Facebook in-app browser. Please tap the three dots on the bottom-right of your screen and click Open in Browser (or the name of your default browser).";
+      } else if (/Instagram/i.test(navigator.userAgent)) {
+        document.querySelector("#toLandscape span").innerHTML =
+          "<strong>Almost there! </strong><br />This page does not work in the Instagram in-app browser. Please tap the three dots on the top-right of your screen and click Open in Browser (or the name of your default browser).";
+      } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        document.querySelector("#toLandscape span").innerHTML =
+          '<strong>Please keep your device in landscape mode.</strong><br />If nothing happens, you might have your screen lock on. In that case, follow <a href="https://support.apple.com/en-us/HT204547" target="blank">this tutorial<a/> or open Control center > Tap Portrait Orientation Lock -> Turn your device sideways.';
       } else if (/Android/i.test(navigator.userAgent)) {
         document.querySelector("#toLandscape span").innerHTML =
-          generalNote +
-          'In that case, follow <a href="https://support.google.com/accessibility/android/answer/6006961?hl=en" target="blank">this tutorial<a/> or open Settings > Tap Accessibility -> Tap Auto-rotate screen -> Turn your device sideways.';
+          '<strong>Please keep your device in landscape mode.</strong><br />If nothing happens, you might have your screen lock on. In that case, follow <a href="https://support.google.com/accessibility/android/answer/6006961?hl=en" target="blank">this tutorial<a/> or open Settings > Tap Accessibility -> Tap Auto-rotate screen -> Turn your device sideways.';
       }
       let [
         landscape,
