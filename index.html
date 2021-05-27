@@ -683,6 +683,14 @@
             />
           </video>
           <div class="close"></div>
+          <div class="tooa">
+            <a
+              href="https://ocean-archive.org/view/1626"
+              title="Hyena Lullaby"
+              target="blank"
+              ><img src="./img/to-oa.png"
+            /></a>
+          </div>
         </div>
         <div class="island-rev hidden">
           <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
@@ -937,6 +945,11 @@
             <source src="./nodes/vid/Taloi 1b_sound.mp4" type="video/mp4" />
           </video>
           <div class="close"></div>
+          <div class="tooa">
+            <a href="https://www.instagram.com/p/CNfjhLFhzTm/" target="blank"
+              ><img src="./img/to-oa.png"
+            /></a>
+          </div>
         </div>
         <div class="island-rev hidden">
           <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
@@ -2034,10 +2047,9 @@
                 );
                 if (video) {
                   video.currentTime = 0;
-                  video.muted = false;
                   video.pause();
                 }
-              }, 2000);
+              }, 3000);
             }
           });
         });
@@ -2288,6 +2300,7 @@
               "#root #body div #embed_item > div.file.h-100.row > div > div > video"
             );
             if (video) {
+              video.muted = false;
               video.currentTime = 0;
               video.play();
             }
@@ -2298,6 +2311,7 @@
                 "#root #body div #embed_item > div.file.h-100.row > div > div > video"
               );
               if (video) {
+                video.muted = true;
                 video.pause();
               }
             }
